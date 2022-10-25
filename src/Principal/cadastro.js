@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 
 export const Cadastrar = (props) => {
     const {openCadastrar, handleClose, handleSave} = props; 
 
     const styles = StyleSheet.create({
         container: {
-            flex: 0.50,
+            height: 385,
             marginTop: '20%',
             marginRight: 14,
             marginLeft: 14,
@@ -23,11 +23,29 @@ export const Cadastrar = (props) => {
             shadowRadius: 4 
         },
         content: {
-            marginVertical: 20,
+            marginVertical: -15,
             marginLeft: 10,
             marginRight: 10,
             flexDirection: 'row',
             justifyContent: 'flex-end'
+        },
+        input: {
+            backgroundColor: "#000720",
+            marginBottom: 20,
+            marginLeft: 15,
+            marginRight: 15,
+            paddingLeft: 8,
+            height: 42,
+            borderWidth: 1,
+            borderColor: 'rgba(50,115,220, 0.4)',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            elevation: 5,
+            shadowOpacity: 0.28,
+            shadowRadius: 4
         },
         saveButtom: {
             zIndex: 99,
@@ -69,7 +87,10 @@ export const Cadastrar = (props) => {
                 <View style={{padding: '5%'}}>
                     <Text style={{color: '#E5E5E5', fontSize: 30}}>Cadastrar</Text>
                 </View>
-                <TouchableOpacity style={{flex: 1, zIndex: 9}} onPress={handleClose}></TouchableOpacity>
+                <TextInput style={styles.input} placeholder="Nome"  placeholderTextColor='#D0D1CE'/>
+                <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE'/>
+                <TextInput style={styles.input} placeholder="Senha" placeholderTextColor='#D0D1CE'/>
+                <TextInput style={styles.input} placeholder="Confirmar Senha" placeholderTextColor='#D0D1CE'/>
                 <View style={styles.content}>
                     <TouchableOpacity style={styles.saveButtom} onPress={handleSave} activeOpacity={0.7}>
                         <Text style={styles.actionText}>Salvar</Text>
