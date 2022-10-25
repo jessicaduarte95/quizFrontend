@@ -45,7 +45,8 @@ export const Cadastrar = (props) => {
             },
             elevation: 5,
             shadowOpacity: 0.28,
-            shadowRadius: 4
+            shadowRadius: 4,
+            color: '#D0D1CE'
         },
         saveButtom: {
             zIndex: 99,

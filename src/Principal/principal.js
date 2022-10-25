@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Cadastrar } from './cadastro';
+import { Login } from './login';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export const Principal = () => {
@@ -43,8 +44,11 @@ export const Principal = () => {
     });
 
     const [openCadastrar, setOpenCadastrar] = useState(false);
+    const [openLogin, setOpenLogin] = useState(false);
     const handleCloseCadastrar = () => setOpenCadastrar(false)
     const handleOpenCadastrar = () => setOpenCadastrar(true)
+    const handleCloseLogin = () => setOpenLogin(false)
+    const handleOpenLogin = () => setOpenLogin(true)
     const handleSave = () => alert("Cadastro realizado com sucesso!")
     
     return (
@@ -56,8 +60,8 @@ export const Principal = () => {
         locations={[.3,0.67]}
         colors={['#3544A7','#000720']}>
       <View style={styles.loginCadastro}>
-        <TouchableOpacity>
-          <Text style={{color: '#D0D1CE', paddingRight: '6%', fontSize: 17}}>Login</Text>
+        <TouchableOpacity onPress={handleOpenLogin}>
+          <Text style={{color: '#D0D1CE', paddingRight: '6%', fontSize: 17}}>Entrar</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={handleOpenCadastrar}>
           <Text style={{color: '#D0D1CE', fontSize: 17}}>Cadastrar</Text>
@@ -72,6 +76,7 @@ export const Principal = () => {
       </View>
       <StatusBar style="auto"/>
       <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleSave={handleSave}/>
+      <Login openLogin={openLogin} handleCloseLogin={handleCloseLogin}/>
       </LinearGradient>
     </View>
   );
