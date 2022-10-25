@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Modal } from 'react-native';
-import { Cadastrar } from './cadastro'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { Cadastrar } from './cadastro';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export const Principal = () => {
     const styles = StyleSheet.create({
         container: {
           flex: 1,
-          backgroundColor: '#000720',
+          alignItems: 'center',
+          justifyContent: 'space-between', 
+        },
+        principal: {
           alignItems: 'center',
           justifyContent: 'space-between', 
         },
@@ -15,8 +19,7 @@ export const Principal = () => {
           flex: 1,
           paddingTop: '12%',
           flexDirection: 'row',
-          justifyContent: 'center',
-          width: '100%',
+          width: '100%'
         },
         firstPart: {
           justifyContent: 'center', 
@@ -31,7 +34,7 @@ export const Principal = () => {
         },
         title2: {
           color: '#DADADA',
-          fontSize: 70,
+          fontSize: 80,
         },
         backgroundImage: {
           height: '100%',
@@ -46,6 +49,12 @@ export const Principal = () => {
     
     return (
     <View style={styles.container}>
+      <LinearGradient 
+        style={styles.principal}
+        start={{x:1,y:1.9}}
+        end={{x:1,y:0}}
+        locations={[.3,0.67]}
+        colors={['#3544A7','#000720']}>
       <View style={styles.loginCadastro}>
         <TouchableOpacity>
           <Text style={{color: '#D0D1CE', paddingRight: '6%', fontSize: 17}}>Login</Text>
@@ -63,6 +72,7 @@ export const Principal = () => {
       </View>
       <StatusBar style="auto"/>
       <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleSave={handleSave}/>
+      </LinearGradient>
     </View>
   );
 }
