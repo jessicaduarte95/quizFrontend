@@ -88,21 +88,10 @@ export const Cadastrar = (props) => {
         },
         alertButtom: {
             zIndex: 99,
-            // backgroundColor: '#000720',
             borderRadius: 6,
             marginTop: 3,
             marginRight: 8,
-            padding: 10,
-            // borderWidth: 1,
-            // borderColor: 'rgba(50,115,220, 0.4)',
-            // shadowColor: 'rgba(50,115,220, 0.9)',
-            // shadowOffset: {
-            //     width: 0,
-            //     height: 2
-            // },
-            // elevation: 5,
-            // shadowOpacity: 0.28,
-            // shadowRadius: 4 
+            padding: 10
         },
         actionText: {
             textAlign: 'center',
