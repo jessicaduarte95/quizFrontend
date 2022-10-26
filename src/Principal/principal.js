@@ -49,7 +49,6 @@ export const Principal = () => {
     const handleOpenCadastrar = () => setOpenCadastrar(true)
     const handleCloseLogin = () => setOpenLogin(false)
     const handleOpenLogin = () => setOpenLogin(true)
-    const handleSave = () => alert("Cadastro realizado com sucesso!")
     
     return (
     <View style={styles.container}>
@@ -75,7 +74,7 @@ export const Principal = () => {
         <Image source={require('../../img/astronautaImg.png')}/>
       </View>
       <StatusBar style="auto"/>
-      <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleSave={handleSave} handleOpenCadastrar={handleOpenCadastrar}/>
+      <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar}/>
       <Login openLogin={openLogin} handleCloseLogin={handleCloseLogin}/>
       </LinearGradient>
     </View>
