@@ -75,7 +75,7 @@ export const Principal = () => {
         <Image source={require('../../img/astronautaImg.png')}/>
       </View>
       <StatusBar style="auto"/>
-      <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleSave={handleSave}/>
+      <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleSave={handleSave} handleOpenCadastrar={handleOpenCadastrar}/>
       <Login openLogin={openLogin} handleCloseLogin={handleCloseLogin}/>
       </LinearGradient>
     </View>
