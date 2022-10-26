@@ -5,7 +5,7 @@ export const Login = (props) => {
 
     const styles = StyleSheet.create({
         container: {
-            height: 260,
+            height: 270,
             marginTop: '40%',
             marginRight: 14,
             marginLeft: 14,
@@ -23,11 +23,11 @@ export const Login = (props) => {
             shadowRadius: 4 
         },
         content: {
-            marginVertical: -15,
-            marginLeft: 10,
-            marginRight: 10,
+            marginVertical: -8,
+            marginLeft: 15,
+            marginRight: 15,
             flexDirection: 'row',
-            justifyContent: 'flex-end'
+            justifyContent: 'space-between'
         },
         input: {
             backgroundColor: "#000720",
@@ -53,7 +53,6 @@ export const Login = (props) => {
             backgroundColor: '#000720',
             borderRadius: 6,
             marginTop: 8,
-            marginRight: 8,
             padding: 10,
             borderWidth: 1,
             borderColor: 'rgba(50,115,220, 0.4)',
@@ -67,11 +66,6 @@ export const Login = (props) => {
             shadowRadius: 4 
         },
         actionText: {
-            textAlign: 'center',
-            fontWeight: 'bold',
-            color: '#E5E5E5'
-        },
-        cancelText: {
             textAlign: 'center',
             fontWeight: 'bold',
             color: '#E5E5E5'
@@ -92,10 +86,13 @@ export const Login = (props) => {
                 <TextInput style={styles.input} placeholder="Senha" placeholderTextColor='#D0D1CE'/>
                 <View style={styles.content}>
                     <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
+                        <Text style={styles.actionText}>Esqueci minha senha</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
                         <Text style={styles.actionText}>Entrar</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
-                        <Text style={styles.cancelText} onPress={handleCloseLogin}>Fechar</Text>
+                        <Text style={styles.actionText} onPress={handleCloseLogin}>Fechar</Text>
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>

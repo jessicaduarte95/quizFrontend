@@ -6,7 +6,7 @@ export const Cadastrar = (props) => {
 
     const styles = StyleSheet.create({
         container: {
-            height: 385,
+            height: 375,
             marginTop: '20%',
             marginRight: 14,
             marginLeft: 14,
@@ -72,7 +72,7 @@ export const Cadastrar = (props) => {
             zIndex: 99,
             backgroundColor: '#000720',
             borderRadius: 6,
-            marginTop: 8,
+            marginTop: 3,
             marginRight: 8,
             padding: 10,
             borderWidth: 1,
