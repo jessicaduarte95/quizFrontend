@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import  Axios  from 'axios';
 import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 
@@ -127,6 +127,7 @@ export const Cadastrar = (props) => {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const [alertImplemented, setAlertImplemented] = useState('');
     const [openAlert, setOpenAlert] = useState(false);
     const handleCloseAlert = () => setOpenAlert(false)
     const handleOpenAlert = () => setOpenAlert(true)
@@ -138,10 +139,12 @@ export const Cadastrar = (props) => {
             })
             .then((response) => {
                 if(response.data == true){
-                    alert('Email já existe!')
+                    handleClose();
+                    handleOpenCadastrar();
+                    setAlertImplemented('Esse email já existe!');
+                    handleOpenAlert();
                 }else if(response.data == false){
                     handleClose();
-                    alert('Cadastro realizado com sucesso!')
                 }
             })
             .catch((error) => {
@@ -149,6 +152,7 @@ export const Cadastrar = (props) => {
                 handleClose();
             })
         }else if (senha.length < 6 || nome.length == 0 || email.length == 0){
+            setAlertImplemented('A senha deve conter no mínimo 6 caracteres e todos os campos devem ser preenchidos.')
             await handleClose();
             await handleOpenCadastrar()
             handleOpenAlert()
@@ -157,6 +161,10 @@ export const Cadastrar = (props) => {
         setEmail('');
         setSenha('');
     }
+
+    useEffect(() => {
+        alertImplemented;
+    }, [alertImplemented])
 
     return(
         <Modal 
@@ -194,7 +202,7 @@ export const Cadastrar = (props) => {
                     </View>
                     <View>
                         <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17}}>
-                            A senha deve conter no mínimo 6 caracteres e todos os campos devem ser preenchidos.
+                            {alertImplemented}
                         </Text>
                     </View>
                     <View style={styles.content}>
