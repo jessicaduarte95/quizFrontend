@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import  Axios  from "axios";
+import  Axios  from 'axios';
 import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 
 export const Cadastrar = (props) => {
@@ -133,7 +133,7 @@ export const Cadastrar = (props) => {
 
     const cadastroUsuario = async () => {
         if (senha.length >= 6 && nome.length > 0 && email.length > 0){
-            await Axios.post('http://192.168.0.3:5000/cadastrar', {
+            await Axios.post(`http://192.168.0.3:5000/cadastrar`, {
                 nome, email, senha
             })
             .then((response) => {
