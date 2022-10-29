@@ -137,7 +137,7 @@ export const Cadastrar = (props) => {
                 nome, email, senha
             })
             .then((response) => {
-                console.log(response)
+                console.log("Testeeeee ", response.data)
                 handleClose();
             })
             .catch((error) => {
