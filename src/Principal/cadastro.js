@@ -148,7 +148,7 @@ export const Cadastrar = (props) => {
                 if(response.data == true){
                     handleClose();
                     handleOpenCadastrar();
-                    setAlertImplemented('Esse email já existe!');
+                    setAlertImplemented('Esse email já existe! Cadastre outro email ou retaure a sua senha.');
                     handleOpenAlert();
                 }else if(response.data == false){
                     handleClose();

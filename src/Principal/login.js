@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 
 export const Login = (props) => {
@@ -72,6 +73,14 @@ export const Login = (props) => {
         }
     })
 
+    const [loginEmail, setLoginEmail] = useState('');
+    const [loginSenha, setLoginSenha] = useState('');
+
+    const loginUsuario = () => {
+        console.log("Email: ", loginEmail)
+        console.log("Senha: ", loginSenha)
+    }
+
     return(
         <Modal
         visible={openLogin}
@@ -82,13 +91,13 @@ export const Login = (props) => {
                 <View style={{padding: '5%'}}>
                     <Text style={{color: '#E5E5E5', fontSize: 30}}>Entrar</Text>
                 </View>
-                <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE'/>
-                <TextInput style={styles.input} placeholder="Senha" placeholderTextColor='#D0D1CE'/>
+                <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginEmail(text)}/>
+                <TextInput style={styles.input} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginSenha(text)}/>
                 <View style={styles.content}>
                     <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
                         <Text style={styles.actionText}>Esqueci minha senha</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
+                    <TouchableOpacity style={styles.saveButtom} onPress={loginUsuario} activeOpacity={0.7}>
                         <Text style={styles.actionText}>Entrar</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
