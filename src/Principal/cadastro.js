@@ -121,6 +121,13 @@ export const Cadastrar = (props) => {
             elevation: 5,
             shadowOpacity: 0.28,
             shadowRadius: 4 
+        },
+        buttonOk: {
+            marginVertical: -15,
+            marginLeft: 10,
+            marginRight: 10,
+            flexDirection: 'row',
+            justifyContent: 'flex-end'
         }
     })
 
@@ -129,8 +136,8 @@ export const Cadastrar = (props) => {
     const [senha, setSenha] = useState('');
     const [alertImplemented, setAlertImplemented] = useState('');
     const [openAlert, setOpenAlert] = useState(false);
-    const handleCloseAlert = () => setOpenAlert(false)
-    const handleOpenAlert = () => setOpenAlert(true)
+    const handleCloseAlert = () => setOpenAlert(false);
+    const handleOpenAlert = () => setOpenAlert(true);
 
     const cadastroUsuario = async () => {
         if (senha.length >= 6 && nome.length > 0 && email.length > 0){
@@ -205,7 +212,7 @@ export const Cadastrar = (props) => {
                             {alertImplemented}
                         </Text>
                     </View>
-                    <View style={styles.content}>
+                    <View style={styles.buttonOk}>
                         <TouchableOpacity style={styles.alertButtom} onPress={handleCloseAlert} activeOpacity={0.7}>
                             <Text style={{textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5',  fontSize: 17}}>Ok</Text>
                         </TouchableOpacity>
