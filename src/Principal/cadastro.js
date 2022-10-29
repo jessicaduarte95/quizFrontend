@@ -137,8 +137,12 @@ export const Cadastrar = (props) => {
                 nome, email, senha
             })
             .then((response) => {
-                console.log("Testeeeee ", response.data)
-                handleClose();
+                if(response.data == true){
+                    alert('Email já existe!')
+                }else if(response.data == false){
+                    handleClose();
+                    alert('Cadastro realizado com sucesso!')
+                }
             })
             .catch((error) => {
                 console.log(error)
