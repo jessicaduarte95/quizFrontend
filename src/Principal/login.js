@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
+import  Axios  from 'axios';
 
 export const Login = (props) => {
     const {openLogin, handleCloseLogin} = props;
@@ -76,9 +77,18 @@ export const Login = (props) => {
     const [loginEmail, setLoginEmail] = useState('');
     const [loginSenha, setLoginSenha] = useState('');
 
-    const loginUsuario = () => {
-        console.log("Email: ", loginEmail)
-        console.log("Senha: ", loginSenha)
+    const loginUsuario = async () => {
+        await Axios.post(`http://192.168.0.3:5000/login`, {
+            loginEmail, loginSenha
+        }).then((response) => {
+            if(response.data == true){
+                console.log("Está funcionando if")
+            }else if (response.data == false){
+                console.log("Está funcionando else")
+            }
+        }).catch((error) => {
+            console.log(error)
+        })
     }
 
     return(
