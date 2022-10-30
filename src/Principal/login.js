@@ -83,8 +83,11 @@ export const Login = (props) => {
         }).then((response) => {
             if(response.data == true){
                 console.log("Está funcionando if")
+                handleCloseLogin()
+                alert('Seja Bem-Vindo ao quiz!')
             }else if (response.data == false){
                 console.log("Está funcionando else")
+                alert('Seu email ou sua senha estão errados!')
             }
         }).catch((error) => {
             console.log(error)
