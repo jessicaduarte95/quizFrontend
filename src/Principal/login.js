@@ -102,7 +102,7 @@ export const Login = (props) => {
                     <Text style={{color: '#E5E5E5', fontSize: 30}}>Entrar</Text>
                 </View>
                 <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginEmail(text)}/>
-                <TextInput style={styles.input} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginSenha(text)}/>
+                <TextInput style={styles.input} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginSenha(text)}/>
                 <View style={styles.content}>
                     <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
                         <Text style={styles.actionText}>Esqueci minha senha</Text>
