@@ -19,8 +19,7 @@ export const Nivel = () => {
           },
           levels: {
             flexDirection: 'column',
-            justifyContent: 'center',
-            marginTop: 60
+            justifyContent: 'center'
           },
           buttonLevels: {
             zIndex: 99,
@@ -45,6 +44,13 @@ export const Nivel = () => {
             fontWeight: 'bold',
             color: '#E5E5E5',
             fontSize: 20
+        },
+        nomeUsuario: {
+            paddingTop: 15,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            paddingLeft: 35,
+            width: '100%'
         }
     })
 
@@ -62,6 +68,9 @@ export const Nivel = () => {
                 <TouchableOpacity onPress={() => navigation.navigate('Principal')}>
                     <Text style={{color: '#D0D1CE', paddingRight: '6%', fontSize: 17}}>Sair</Text>
                 </TouchableOpacity>
+            </View>
+            <View style={styles.nomeUsuario}>
+                <Text style={{fontWeight: 'bold', color: '#E5E5E5', fontSize: 30}}>Olá Jéssica!</Text>
             </View>
             <View style={styles.levels}>
                 <TouchableOpacity style={styles.buttonLevels}>
