@@ -117,11 +117,9 @@ export const Login = (props) => {
             loginEmail, loginSenha
         }).then((response) => {
             if(response.data == true){
-                console.log("Está funcionando if")
                 handleCloseLogin()
                 alert('Seja Bem-Vindo ao quiz!')
             }else if (response.data == false){
-                console.log("Está funcionando else")
                 handleCloseLogin();
                 handleOpenLogin();
                 handleOpenAlert();
