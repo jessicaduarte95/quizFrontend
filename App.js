@@ -1,9 +1,11 @@
 import { Principal } from './src/Principal/principal';
+import { NavigationContainer } from '@react-navigation/native';
+import Routes from './routes';
 
 export default function App() {
   return (
-    <>
-      <Principal/>
-    </>
+    <NavigationContainer>
+      <Routes/>
+    </NavigationContainer>
   );
 }

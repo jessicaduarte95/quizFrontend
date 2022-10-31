@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import  Axios  from 'axios';
 
 export const Login = (props) => {
     const {openLogin, handleCloseLogin, handleOpenLogin} = props;
+    const navigation = useNavigation();
 
     const styles = StyleSheet.create({
         container: {
@@ -118,7 +120,7 @@ export const Login = (props) => {
         }).then((response) => {
             if(response.data == true){
                 handleCloseLogin()
-                alert('Seja Bem-Vindo ao quiz!')
+                navigation.navigate('Nivel')
             }else if (response.data == false){
                 handleCloseLogin();
                 handleOpenLogin();
@@ -127,6 +129,8 @@ export const Login = (props) => {
         }).catch((error) => {
             console.log(error)
         })
+        setLoginEmail('')
+        setLoginSenha('')
     }
 
     return(
