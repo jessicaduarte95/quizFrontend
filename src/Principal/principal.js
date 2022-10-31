@@ -75,7 +75,7 @@ export const Principal = () => {
       </View>
       <StatusBar style="auto"/>
       <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar}/>
-      <Login openLogin={openLogin} handleCloseLogin={handleCloseLogin}/>
+      <Login openLogin={openLogin} handleCloseLogin={handleCloseLogin} handleOpenLogin={handleOpenLogin}/>
       </LinearGradient>
     </View>
   );

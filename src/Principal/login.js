@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInpu
 import  Axios  from 'axios';
 
 export const Login = (props) => {
-    const {openLogin, handleCloseLogin} = props;
+    const {openLogin, handleCloseLogin, handleOpenLogin} = props;
 
     const styles = StyleSheet.create({
         container: {
@@ -71,11 +71,46 @@ export const Login = (props) => {
             textAlign: 'center',
             fontWeight: 'bold',
             color: '#E5E5E5'
+        },
+        containerAlert: {
+            height: 212,
+            marginTop: '50%',
+            marginRight: 14,
+            marginLeft: 14,
+            backgroundColor: '#000929',
+            borderRadius: 30,
+            borderWidth: 1,
+            borderColor: 'rgba(50,115,220, 0.3)',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            elevation: 5,
+            shadowOpacity: 0.28,
+            shadowRadius: 4 
+        },
+        alertButtom: {
+            zIndex: 99,
+            borderRadius: 6,
+            marginTop: 3,
+            marginRight: 8,
+            padding: 10
+        },
+        buttonOk: {
+            marginVertical: -15,
+            marginLeft: 10,
+            marginRight: 10,
+            flexDirection: 'row',
+            justifyContent: 'flex-end'
         }
     })
 
     const [loginEmail, setLoginEmail] = useState('');
     const [loginSenha, setLoginSenha] = useState('');
+    const [openAlert, setOpenAlert] = useState(false);
+    const handleCloseAlert = () => setOpenAlert(false);
+    const handleOpenAlert = () => setOpenAlert(true);
 
     const loginUsuario = async () => {
         await Axios.post(`http://192.168.0.3:5000/login`, {
@@ -87,7 +122,9 @@ export const Login = (props) => {
                 alert('Seja Bem-Vindo ao quiz!')
             }else if (response.data == false){
                 console.log("Está funcionando else")
-                alert('Seu email ou sua senha estão errados!')
+                handleCloseLogin();
+                handleOpenLogin();
+                handleOpenAlert();
             }
         }).catch((error) => {
             console.log(error)
@@ -118,6 +155,27 @@ export const Login = (props) => {
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>
+            <Modal
+             visible={openAlert}
+             transparent={true}
+             onRequestClose={handleCloseAlert}
+             animationType='fade'>
+                <SafeAreaView style={styles.containerAlert}>
+                    <View style={{padding: '5%'}}>
+                        <Text style={{color: '#E5E5E5', fontSize: 30}}>Atenção</Text>
+                    </View>
+                    <View>
+                        <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17}}>
+                            Seu email e/ou sua senha estão incorretos!
+                        </Text>
+                    </View>
+                    <View style={styles.buttonOk}>
+                        <TouchableOpacity style={styles.alertButtom} onPress={handleCloseAlert} activeOpacity={0.7}>
+                            <Text style={{textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5',  fontSize: 17}}>Ok</Text>
+                        </TouchableOpacity>
+                    </View>
+                </SafeAreaView>
+            </Modal>
         </Modal>
     )
 }
