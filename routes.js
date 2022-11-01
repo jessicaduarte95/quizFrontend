@@ -1,4 +1,4 @@
-import { createStackNavigator, CardStyleInterpolators, TransitionPresets, } from '@react-navigation/stack';
+import { createStackNavigator, TransitionPresets, } from '@react-navigation/stack';
 import { Principal } from './src/Principal/principal';
 import { Nivel } from './src/Niveis/nivel';
 
