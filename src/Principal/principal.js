@@ -12,15 +12,12 @@ export const Principal = () => {
           alignItems: 'center',
           justifyContent: 'space-between', 
         },
-        principal: {
-          alignItems: 'center',
-          justifyContent: 'space-between', 
-        },
         loginCadastro: {
           flex: 1,
           paddingTop: '12%',
           flexDirection: 'row',
-          width: '100%'
+          width: '100%',
+          justifyContent: 'center'
         },
         firstPart: {
           justifyContent: 'center', 
@@ -51,9 +48,8 @@ export const Principal = () => {
     const handleOpenLogin = () => setOpenLogin(true)
     
     return (
-    <View style={styles.container}>
       <LinearGradient 
-        style={styles.principal}
+        style={styles.container}
         start={{x:1,y:1.9}}
         end={{x:1,y:0}}
         locations={[.3,0.67]}
@@ -77,6 +73,5 @@ export const Principal = () => {
       <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar}/>
       <Login openLogin={openLogin} handleCloseLogin={handleCloseLogin} handleOpenLogin={handleOpenLogin}/>
       </LinearGradient>
-    </View>
   );
 }
