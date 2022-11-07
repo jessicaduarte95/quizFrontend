@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import  Axios  from 'axios';
+import { Nivel } from '../Niveis/nivel'
 
 export const Login = (props) => {
     const {openLogin, handleCloseLogin, handleOpenLogin} = props;
@@ -113,12 +114,14 @@ export const Login = (props) => {
     const [openAlert, setOpenAlert] = useState(false);
     const handleCloseAlert = () => setOpenAlert(false);
     const handleOpenAlert = () => setOpenAlert(true);
+    const [dadosUsuario, setDadosUsuario] = useState({})
 
     const loginUsuario = async () => {
         await Axios.post(`http://192.168.0.3:5000/login`, {
             loginEmail, loginSenha
         }).then((response) => {
-            if(response.data == true){
+            setDadosUsuario(response.data[1])
+            if(response.data[0] == true){
                 handleCloseLogin()
                 navigation.navigate('Nivel')
             }else if (response.data == false){
@@ -132,6 +135,10 @@ export const Login = (props) => {
         setLoginEmail('')
         setLoginSenha('')
     }
+
+    useEffect (() => {
+        dadosUsuario
+    }, [dadosUsuario])
 
     return(
         <Modal
