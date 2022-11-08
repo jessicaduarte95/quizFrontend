@@ -54,24 +54,24 @@ export const Principal = () => {
         end={{x:1,y:0}}
         locations={[.3,0.67]}
         colors={['#3544A7','#000720']}>
-      <View style={styles.loginCadastro}>
-        <TouchableOpacity onPress={handleOpenLogin}>
-          <Text style={{color: '#D0D1CE', paddingRight: '6%', fontSize: 17}}>Entrar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleOpenCadastrar}>
-          <Text style={{color: '#D0D1CE', fontSize: 17}}>Cadastrar</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.firstPart}>
-        <Text style={styles.title}>Quiz</Text>
-        <Text style={styles.title2}>Universo</Text>
-      </View>
-      <View>
-        <Image source={require('../../img/astronautaImg.png')}/>
-      </View>
-      <StatusBar style="auto"/>
-      <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar}/>
-      <Login openLogin={openLogin} handleCloseLogin={handleCloseLogin} handleOpenLogin={handleOpenLogin}/>
+        <View style={styles.loginCadastro}>
+          <TouchableOpacity onPress={handleOpenLogin}>
+            <Text style={{color: '#D0D1CE', paddingRight: '6%', fontSize: 17}}>Entrar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleOpenCadastrar}>
+            <Text style={{color: '#D0D1CE', fontSize: 17}}>Cadastrar</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.firstPart}>
+          <Text style={styles.title}>Quiz</Text>
+          <Text style={styles.title2}>Universo</Text>
+        </View>
+        <View>
+          <Image source={require('../../img/astronautaImg.png')}/>
+        </View>
+        <StatusBar style="auto"/>
+        <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar}/>
+        <Login openLogin={openLogin} handleCloseLogin={handleCloseLogin} handleOpenLogin={handleOpenLogin}/>
       </LinearGradient>
   );
 }
