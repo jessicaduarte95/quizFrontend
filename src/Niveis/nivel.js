@@ -1,10 +1,12 @@
-import React from "react";
-import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
+import React, { useEffect } from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 export const Nivel = () => {
     const navigation = useNavigation();
+    const route = useRoute('');
+    const dadosUsuario = route.params.dadosUsuario;
 
     const styles = StyleSheet.create({
         container: {
@@ -54,6 +56,10 @@ export const Nivel = () => {
         }
     })
 
+    useEffect(() => {
+        dadosUsuario
+    }, [dadosUsuario])
+
     return(
         <LinearGradient 
         style={styles.container}
@@ -70,7 +76,7 @@ export const Nivel = () => {
                 </TouchableOpacity>
             </View>
             <View style={styles.nomeUsuario}>
-                <Text style={{fontWeight: 'bold', color: '#E5E5E5', fontSize: 30}}>Olá Jéssica!</Text>
+                <Text style={{fontWeight: 'bold', color: '#E5E5E5', fontSize: 30}}>Olá {dadosUsuario.nome}!</Text>
             </View>
             <View style={styles.levels}>
                 <TouchableOpacity style={styles.buttonLevels}>
