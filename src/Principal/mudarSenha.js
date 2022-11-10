@@ -93,7 +93,7 @@ export const MudarSenha = () => {
                 </TouchableOpacity>
             </View>
             <View style={styles.title}>
-                <Text style={{fontWeight: 'bold', color: '#E5E5E5', fontSize: 30}}>Mudar Senha</Text>
+                <Text style={{fontWeight: 'bold', color: '#E5E5E5', fontSize: 30}}>Alterar Senha</Text>
             </View>
             <View style={{padding: '5%'}}>
                 <Text style={{color: '#E5E5E5', fontSize: 20}}>
