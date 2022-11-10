@@ -136,6 +136,7 @@ export const Login = (props) => {
     }
 
     const mudarSenha = () => {
+        handleCloseLogin();
         navigation.navigate('MudarSenha')
     }
 
