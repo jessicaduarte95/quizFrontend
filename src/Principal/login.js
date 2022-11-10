@@ -135,6 +135,10 @@ export const Login = (props) => {
         setLoginSenha('')
     }
 
+    const mudarSenha = () => {
+        navigation.navigate('MudarSenha')
+    }
+
     useEffect (() => {
         dadosUsuario
         console.log("Aba Login: ", dadosUsuario)
@@ -153,7 +157,7 @@ export const Login = (props) => {
                 <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginEmail(text)}/>
                 <TextInput style={styles.input} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginSenha(text)}/>
                 <View style={styles.content}>
-                    <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
+                    <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7} onPress={mudarSenha}>
                         <Text style={styles.actionText}>Esqueci minha senha</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.saveButtom} onPress={loginUsuario} activeOpacity={0.7}>
