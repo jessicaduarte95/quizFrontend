@@ -25,8 +25,9 @@ export const MudarSenha = () => {
         inputContainer: {
             marginTop: '5%',
             width: '100%',
+            flexDirection: 'column',
             alignItems: 'center',
-            padding: 0,
+            marginBottom: '-5%',
         },
         input: {
             backgroundColor: "#000720",
@@ -52,13 +53,13 @@ export const MudarSenha = () => {
         content: {
             flexDirection: 'row',
             justifyContent: 'flex-end',
-            marginRight: '3%'
+            marginRight: '3%',
+            marginBottom: '5%'
         },
         buttom: {
             zIndex: 99,
             backgroundColor: '#000720',
             borderRadius: 6,
-            marginTop: 3,
             marginRight: 8,
             padding: 10,
             borderWidth: 1,
@@ -96,7 +97,7 @@ export const MudarSenha = () => {
                 <Text style={{fontWeight: 'bold', color: '#E5E5E5', fontSize: 30}}>Alterar Senha</Text>
             </View>
             <View style={{padding: '5%'}}>
-                <Text style={{color: '#E5E5E5', fontSize: 20}}>
+                <Text style={{color: '#E5E5E5', fontSize: 20, textAlign: 'justify'}}>
                     Caso queira mudar de senha, basta digitar seu email para que seja enviado um email e a senha possa ser alterada!
                 </Text>
             </View>
@@ -109,7 +110,7 @@ export const MudarSenha = () => {
                 </TouchableOpacity>
             </View>
             <View style={{alignItems: 'center', justifyContent: 'flex-start'}}>
-                <Image style={{height: '70%', width: '100%'}} source={require('../../img/astronautaInteiro.png')}/>
+                <Image style={{height: '68%', width: '100%'}} source={require('../../img/astronautaInteiro.png')}/>
             </View>
         </LinearGradient>
     )
