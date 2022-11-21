@@ -8,15 +8,19 @@ export const Login = (props) => {
     const navigation = useNavigation();
 
     const styles = StyleSheet.create({
+        modalBackGround: {
+            flex: 1,
+            backgroundColor: 'rgba(0,0,0,0.82)',
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
         container: {
+            width: '90%',
             height: 270,
-            marginTop: '40%',
-            marginRight: 14,
-            marginLeft: 14,
             backgroundColor: '#000929',
-            borderRadius: 30,
-            borderWidth: 1,
-            borderColor: 'rgba(50,115,220, 0.3)',
+            borderRadius: 15,
+            borderWidth: 1.5,
+            borderColor: 'rgba(50,115,220, 0.4)',
             shadowColor: 'rgba(50,115,220, 0.9)',
             shadowOffset: {
                 width: 0,
@@ -151,24 +155,26 @@ export const Login = (props) => {
         transparent={true}
         onRequestClose={handleCloseLogin}
         animationType='fade'>
-            <SafeAreaView style={styles.container}>
-                <View style={{padding: '5%'}}>
-                    <Text style={{color: '#E5E5E5', fontSize: 30}}>Entrar</Text>
-                </View>
-                <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginEmail(text)}/>
-                <TextInput style={styles.input} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginSenha(text)}/>
-                <View style={styles.content}>
-                    <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7} onPress={mudarSenha}>
-                        <Text style={styles.actionText}>Esqueci minha senha</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.saveButtom} onPress={loginUsuario} activeOpacity={0.7}>
-                        <Text style={styles.actionText}>Entrar</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
-                        <Text style={styles.actionText} onPress={handleCloseLogin}>Fechar</Text>
-                    </TouchableOpacity>
-                </View>
-            </SafeAreaView>
+            <View style={styles.modalBackGround}>
+                <SafeAreaView style={styles.container}>
+                    <View style={{padding: '5%'}}>
+                        <Text style={{color: '#E5E5E5', fontSize: 30}}>Entrar</Text>
+                    </View>
+                    <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginEmail(text)}/>
+                    <TextInput style={styles.input} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginSenha(text)}/>
+                    <View style={styles.content}>
+                        <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7} onPress={mudarSenha}>
+                            <Text style={styles.actionText}>Esqueci minha senha</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.saveButtom} onPress={loginUsuario} activeOpacity={0.7}>
+                            <Text style={styles.actionText}>Entrar</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
+                            <Text style={styles.actionText} onPress={handleCloseLogin}>Fechar</Text>
+                        </TouchableOpacity>
+                    </View>
+                </SafeAreaView>
+            </View>
             <Modal
              visible={openAlert}
              transparent={true}
