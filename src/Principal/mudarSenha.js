@@ -8,6 +8,7 @@ export const MudarSenha = () => {
     const styles = StyleSheet.create({
         container: {
           flex: 1,
+          backgroundColor: 'red'
         },
         buttonSair: {
             paddingTop: '12%',
@@ -17,13 +18,13 @@ export const MudarSenha = () => {
             width: '100%'
           },
           title: {
-            paddingTop: '3%',
+            paddingTop: '0%',
             flexDirection: 'row',
             justifyContent: 'center',
             width: '100%'
         },
         inputContainer: {
-            marginTop: '5%',
+            marginTop: '2%',
             width: '100%',
             flexDirection: 'column',
             alignItems: 'center',
@@ -54,7 +55,7 @@ export const MudarSenha = () => {
             flexDirection: 'row',
             justifyContent: 'flex-end',
             marginRight: '3%',
-            marginBottom: '5%'
+            marginBottom: '3%'
         },
         buttom: {
             zIndex: 99,
@@ -109,8 +110,8 @@ export const MudarSenha = () => {
                     <Text style={styles.textButton}>Enviar Email</Text>
                 </TouchableOpacity>
             </View>
-            <View style={{alignItems: 'center', justifyContent: 'flex-start'}}>
-                <Image style={{height: '68%', width: '100%'}} source={require('../../img/astronautaInteiro.png')}/>
+            <View style={{alignItems: 'center', justifyContent: 'flex-start', marginBottom: '8%'}}>
+                <Image style={{height: '68%', width: '82%'}} source={require('../../img/astronautaInteiro.png')}/>
             </View>
         </LinearGradient>
     )
