@@ -6,15 +6,19 @@ export const Cadastrar = (props) => {
     const {openCadastrar, handleClose, handleOpenCadastrar} = props; 
 
     const styles = StyleSheet.create({
+        modalBackGround: {
+            flex: 1,
+            backgroundColor: 'rgba(0,0,0,0.82)',
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
         container: {
-            height: 375,
-            marginTop: '20%',
-            marginRight: 14,
-            marginLeft: 14,
+            width: '90%',
+            height: 370,
             backgroundColor: '#000929',
-            borderRadius: 30,
-            borderWidth: 1,
-            borderColor: 'rgba(50,115,220, 0.3)',
+            borderRadius: 15,
+            borderWidth: 1.5,
+            borderColor: 'rgba(50,115,220, 0.4)',
             shadowColor: 'rgba(50,115,220, 0.9)',
             shadowOffset: {
                 width: 0,
@@ -105,14 +109,12 @@ export const Cadastrar = (props) => {
             color: '#E5E5E5'
         },
         containerAlert: {
+            width: '90%',
             height: 230,
-            marginTop: '50%',
-            marginRight: 14,
-            marginLeft: 14,
             backgroundColor: '#000929',
-            borderRadius: 30,
-            borderWidth: 1,
-            borderColor: 'rgba(50,115,220, 0.3)',
+            borderRadius: 15,
+            borderWidth: 1.5,
+            borderColor: 'rgba(50,115,220, 0.4)',
             shadowColor: 'rgba(50,115,220, 0.9)',
             shadowOffset: {
                 width: 0,
@@ -179,45 +181,49 @@ export const Cadastrar = (props) => {
         transparent={true}
         onRequestClose={handleClose}
         animationType='fade'>
-            <SafeAreaView style={styles.container}>
-                <View style={{padding: '5%'}}>
-                    <Text style={{color: '#E5E5E5', fontSize: 30}}>Cadastrar</Text>
-                </View>
-                <TextInput style={styles.input} placeholder="Nome"  placeholderTextColor='#D0D1CE' onChangeText={text => setNome(text)}/>
-                <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE'onChangeText={text => setEmail(text)}/>
-                <TextInput style={styles.inputSenha} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE'onChangeText={text => setSenha(text)}/>
-                <View>
-                    <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE'}}>Sua senha deve ter no mínimo 6 caracteres.</Text>
-                </View>
-                <View style={styles.content}>
-                    <TouchableOpacity style={styles.saveButtom} onPress={cadastroUsuario} activeOpacity={0.7}>
-                        <Text style={styles.actionText}>Salvar</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
-                        <Text style={styles.cancelText} onPress={handleClose}>Fechar</Text>
-                    </TouchableOpacity>
-                </View>
-            </SafeAreaView>
+            <View style={styles.modalBackGround}>
+                <SafeAreaView style={styles.container}>
+                    <View style={{padding: '5%'}}>
+                        <Text style={{color: '#E5E5E5', fontSize: 30}}>Cadastrar</Text>
+                    </View>
+                    <TextInput style={styles.input} placeholder="Nome"  placeholderTextColor='#D0D1CE' onChangeText={text => setNome(text)}/>
+                    <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE'onChangeText={text => setEmail(text)}/>
+                    <TextInput style={styles.inputSenha} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE'onChangeText={text => setSenha(text)}/>
+                    <View>
+                        <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE'}}>Sua senha deve ter no mínimo 6 caracteres.</Text>
+                    </View>
+                    <View style={styles.content}>
+                        <TouchableOpacity style={styles.saveButtom} onPress={cadastroUsuario} activeOpacity={0.7}>
+                            <Text style={styles.actionText}>Salvar</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
+                            <Text style={styles.cancelText} onPress={handleClose}>Fechar</Text>
+                        </TouchableOpacity>
+                    </View>
+                </SafeAreaView>
+            </View>
             <Modal 
             visible={openAlert}
             transparent={true}
             onRequestClose={handleCloseAlert}
             animationType='fade'>
-                <SafeAreaView style={styles.containerAlert}>
-                    <View style={{padding: '5%'}}>
-                        <Text style={{color: '#E5E5E5', fontSize: 30}}>Atenção</Text>
-                    </View>
-                    <View>
-                        <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17}}>
-                            {alertImplemented}
-                        </Text>
-                    </View>
-                    <View style={styles.buttonOk}>
-                        <TouchableOpacity style={styles.alertButtom} onPress={handleCloseAlert} activeOpacity={0.7}>
-                            <Text style={{textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5',  fontSize: 17}}>Ok</Text>
-                        </TouchableOpacity>
-                    </View>
-                </SafeAreaView>
+                <View style={styles.modalBackGround}>
+                    <SafeAreaView style={styles.containerAlert}>
+                        <View style={{padding: '5%'}}>
+                            <Text style={{color: '#E5E5E5', fontSize: 30}}>Atenção</Text>
+                        </View>
+                        <View>
+                            <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17}}>
+                                {alertImplemented}
+                            </Text>
+                        </View>
+                        <View style={styles.buttonOk}>
+                            <TouchableOpacity style={styles.alertButtom} onPress={handleCloseAlert} activeOpacity={0.7}>
+                                <Text style={{textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5',  fontSize: 17}}>Ok</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </SafeAreaView>
+                </View>
             </Modal>
         </Modal>
     )
