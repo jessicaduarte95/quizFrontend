@@ -79,14 +79,12 @@ export const Login = (props) => {
             color: '#E5E5E5'
         },
         containerAlert: {
-            height: 212,
-            marginTop: '50%',
-            marginRight: 14,
-            marginLeft: 14,
+            width: '90%',
+            height: 198,
             backgroundColor: '#000929',
-            borderRadius: 30,
-            borderWidth: 1,
-            borderColor: 'rgba(50,115,220, 0.3)',
+            borderRadius: 15,
+            borderWidth: 1.5,
+            borderColor: 'rgba(50,115,220, 0.4)',
             shadowColor: 'rgba(50,115,220, 0.9)',
             shadowOffset: {
                 width: 0,
@@ -97,18 +95,14 @@ export const Login = (props) => {
             shadowRadius: 4 
         },
         alertButtom: {
-            zIndex: 99,
-            borderRadius: 6,
-            marginTop: 3,
-            marginRight: 8,
-            padding: 10
+            marginRight: '5%',
         },
         buttonOk: {
-            marginVertical: -15,
-            marginLeft: 10,
-            marginRight: 10,
+            height: '15%',
             flexDirection: 'row',
-            justifyContent: 'flex-end'
+            justifyContent: 'flex-end',
+            alignItems: 'flex-end',
+            marginVertical: -11,
         }
     })
 
@@ -180,21 +174,23 @@ export const Login = (props) => {
              transparent={true}
              onRequestClose={handleCloseAlert}
              animationType='fade'>
-                <SafeAreaView style={styles.containerAlert}>
-                    <View style={{padding: '5%'}}>
-                        <Text style={{color: '#E5E5E5', fontSize: 30}}>Atenção</Text>
-                    </View>
-                    <View>
-                        <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17}}>
-                            Seu email e/ou sua senha estão incorretos!
-                        </Text>
-                    </View>
-                    <View style={styles.buttonOk}>
-                        <TouchableOpacity style={styles.alertButtom} onPress={handleCloseAlert} activeOpacity={0.7}>
-                            <Text style={{textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5',  fontSize: 17}}>Ok</Text>
-                        </TouchableOpacity>
-                    </View>
-                </SafeAreaView>
+                <View style={styles.modalBackGround}>
+                    <SafeAreaView style={styles.containerAlert}>
+                        <View style={{padding: '5%'}}>
+                            <Text style={{color: '#E5E5E5', fontSize: 30}}>Atenção</Text>
+                        </View>
+                        <View>
+                            <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17}}>
+                                Seu email e/ou sua senha estão incorretos!
+                            </Text>
+                        </View>
+                        <View style={styles.buttonOk}>
+                            <TouchableOpacity style={styles.alertButtom} onPress={handleCloseAlert} activeOpacity={0.7}>
+                                <Text style={{textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5',  fontSize: 17}}>Ok</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </SafeAreaView>
+                </View>
             </Modal>
         </Modal>
     )
