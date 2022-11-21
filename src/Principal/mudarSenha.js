@@ -34,9 +34,9 @@ export const MudarSenha = () => {
             backgroundColor: "#000720",
             marginBottom: '10%',
             paddingLeft: '6%',
-            paddingRight: '50%',
-            paddingTop: '5%',
-            paddingBottom: '5%',
+            marginLeft: '5%',
+            marginRight: '5%',
+            height: 65,
             borderWidth: 1,
             borderColor: 'rgba(50,115,220, 0.4)',
             shadowColor: 'rgba(50,115,220, 0.9)',
@@ -102,9 +102,9 @@ export const MudarSenha = () => {
                     Caso queira mudar de senha, basta digitar seu email para que seja enviado um email e a senha possa ser alterada!
                 </Text>
             </View>
-            <View style={styles.inputContainer}>
+            {/* <View style={styles.inputContainer}> */}
                 <TextInput style={styles.input} placeholder="Digite seu Email" placeholderTextColor='#D0D1CE'></TextInput>
-            </View>
+            {/* </View> */}
             <View style={styles.content}>
                 <TouchableOpacity style={styles.buttom} activeOpacity={0.7}>
                     <Text style={styles.textButton}>Enviar Email</Text>
