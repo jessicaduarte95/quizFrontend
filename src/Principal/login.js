@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import  Axios  from 'axios';
 
@@ -103,7 +103,16 @@ export const Login = (props) => {
             justifyContent: 'flex-end',
             alignItems: 'flex-end',
             marginVertical: -11,
-        }
+        },
+        containerLoading: {
+            flex: 1,
+            justifyContent: "center"
+          },
+        horizontalLoading: {
+            flexDirection: "row",
+            justifyContent: "space-around",
+            padding: 10
+          }
     })
 
     const [loginEmail, setLoginEmail] = useState('');
@@ -112,8 +121,11 @@ export const Login = (props) => {
     const handleCloseAlert = () => setOpenAlert(false);
     const handleOpenAlert = () => setOpenAlert(true);
     const [dadosUsuario, setDadosUsuario] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [loadingMudarSenha, setLoadingMudarSenha] = useState(false);
 
     const loginUsuario = async () => {
+        setLoading(true);
         await Axios.post(`http://192.168.0.3:5000/login`, {
             loginEmail, loginSenha
         }).then((response) => {
@@ -129,13 +141,16 @@ export const Login = (props) => {
         }).catch((error) => {
             console.log(error)
         })
-        setLoginEmail('')
-        setLoginSenha('')
+        setLoginEmail('');
+        setLoginSenha('');
+        setLoading(false);
     }
 
     const mudarSenha = () => {
+        setLoadingMudarSenha(true);
         handleCloseLogin();
         navigation.navigate('MudarSenha')
+        setLoadingMudarSenha(false);
     }
 
     useEffect (() => {
@@ -157,11 +172,25 @@ export const Login = (props) => {
                     <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginEmail(text)}/>
                     <TextInput style={styles.input} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginSenha(text)}/>
                     <View style={styles.content}>
-                        <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7} onPress={mudarSenha}>
-                            <Text style={styles.actionText}>Esqueci minha senha</Text>
-                        </TouchableOpacity>
+                        {loadingMudarSenha == true ?
+                            <View style={[styles.containerLoading, styles.horizontalLoading]}>
+                                <ActivityIndicator size="small" color="#0000ff" />
+                            </View>
+                            :
+                            <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7} onPress={mudarSenha}>
+                                <Text style={styles.actionText}>Esqueci minha senha</Text>
+                            </TouchableOpacity>
+                        }
                         <TouchableOpacity style={styles.saveButtom} onPress={loginUsuario} activeOpacity={0.7}>
-                            <Text style={styles.actionText}>Entrar</Text>
+                            {loading == true ?
+                            <View style={[styles.containerLoading, styles.horizontalLoading]}>
+                                <ActivityIndicator size="small" color="#0000ff" />
+                            </View>
+                            :
+                            <Text style={styles.actionText}>
+                                Entrar
+                            </Text>
+                            }
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
                             <Text style={styles.actionText} onPress={handleCloseLogin}>Fechar</Text>

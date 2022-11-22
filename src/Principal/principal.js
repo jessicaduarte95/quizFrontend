@@ -42,10 +42,10 @@ export const Principal = () => {
 
     const [openCadastrar, setOpenCadastrar] = useState(false);
     const [openLogin, setOpenLogin] = useState(false);
-    const handleCloseCadastrar = () => setOpenCadastrar(false)
-    const handleOpenCadastrar = () => setOpenCadastrar(true)
-    const handleCloseLogin = () => setOpenLogin(false)
-    const handleOpenLogin = () => setOpenLogin(true)
+    const handleCloseCadastrar = () => setOpenCadastrar(false);
+    const handleOpenCadastrar = () => setOpenCadastrar(true);
+    const handleCloseLogin = () => setOpenLogin(false);
+    const handleOpenLogin = () => setOpenLogin(true);
     
     return (
       <LinearGradient 
