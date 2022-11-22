@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import  Axios  from 'axios';
-import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 
 export const Cadastrar = (props) => {
     const {openCadastrar, handleClose, handleOpenCadastrar} = props; 
@@ -130,6 +130,15 @@ export const Cadastrar = (props) => {
             marginRight: 10,
             flexDirection: 'row',
             justifyContent: 'flex-end'
+        },
+        containerLoading: {
+            flex: 1,
+            justifyContent: "center"
+        },
+        horizontalLoading: {
+            flexDirection: "row",
+            justifyContent: "space-around",
+            padding: 10
         }
     })
 
@@ -140,8 +149,10 @@ export const Cadastrar = (props) => {
     const [openAlert, setOpenAlert] = useState(false);
     const handleCloseAlert = () => setOpenAlert(false);
     const handleOpenAlert = () => setOpenAlert(true);
+    const [loading, setLoading] = useState(false);
 
     const cadastroUsuario = async () => {
+        setLoading(true);
         if (senha.length >= 6 && nome.length > 0 && email.length > 0){
             await Axios.post(`http://192.168.0.3:5000/cadastrar`, {
                 nome, email, senha
@@ -169,6 +180,7 @@ export const Cadastrar = (props) => {
         setNome('');
         setEmail('');
         setSenha('');
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -194,7 +206,13 @@ export const Cadastrar = (props) => {
                     </View>
                     <View style={styles.content}>
                         <TouchableOpacity style={styles.saveButtom} onPress={cadastroUsuario} activeOpacity={0.7}>
-                            <Text style={styles.actionText}>Salvar</Text>
+                            {loading == true ?
+                                <View style={[styles.containerLoading, styles.horizontalLoading]}>
+                                    <ActivityIndicator size="small" color="#0000ff" />
+                                </View>
+                                :
+                                <Text style={styles.actionText}>Salvar</Text>
+                            }
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
                             <Text style={styles.cancelText} onPress={handleClose}>Fechar</Text>

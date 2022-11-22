@@ -107,12 +107,12 @@ export const Login = (props) => {
         containerLoading: {
             flex: 1,
             justifyContent: "center"
-          },
+        },
         horizontalLoading: {
             flexDirection: "row",
             justifyContent: "space-around",
             padding: 10
-          }
+        }
     })
 
     const [loginEmail, setLoginEmail] = useState('');
