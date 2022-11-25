@@ -3,7 +3,7 @@ import  Axios  from 'axios';
 import { ActivityIndicator, StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 
 export const Cadastrar = (props) => {
-    const {openCadastrar, handleClose, handleOpenCadastrar} = props; 
+    const {openCadastrar, handleClose, handleOpenCadastrar, handleOpenCadastroFeito} = props; 
 
     const styles = StyleSheet.create({
         modalBackGround: {
@@ -161,10 +161,11 @@ export const Cadastrar = (props) => {
                 if(response.data == true){
                     handleClose();
                     handleOpenCadastrar();
-                    setAlertImplemented('Esse email já existe! Cadastre outro email ou retaure a sua senha.');
+                    setAlertImplemented('Esse email já existe! Cadastre outro email ou restaure a sua senha.');
                     handleOpenAlert();
                 }else if(response.data == false){
                     handleClose();
+                    handleOpenCadastroFeito()
                 }
             })
             .catch((error) => {
