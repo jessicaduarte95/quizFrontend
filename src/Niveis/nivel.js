@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import Axios from "axios";
 
 export const Nivel = () => {
     const navigation = useNavigation();
@@ -57,6 +58,13 @@ export const Nivel = () => {
     })
 
     useEffect(() => {
+        Axios.get("http://192.168.0.3:5000/obterQuestoes")
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
         dadosUsuario
     }, [dadosUsuario])
 
