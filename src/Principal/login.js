@@ -132,7 +132,6 @@ export const Login = (props) => {
             if(response.data[0] == true){
                 setDadosUsuario(response.data[1])
                 handleCloseLogin()
-                navigation.navigate('Nivel', {dadosUsuario: dadosUsuario})
             }else{
                 handleCloseLogin();
                 handleOpenLogin();
@@ -155,7 +154,9 @@ export const Login = (props) => {
 
     useEffect (() => {
         dadosUsuario
-        console.log("Aba Login: ", dadosUsuario)
+        if(dadosUsuario !== ""){
+            navigation.navigate('Nivel', {dadosUsuario: dadosUsuario})
+        }
     }, [dadosUsuario])
 
     return(
