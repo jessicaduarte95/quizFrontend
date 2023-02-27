@@ -4,7 +4,7 @@ import Axios from "axios";
 
 export const ModalNivel = (props) => {
 
-    const {handleCloseModal, openModalNivel, nivel} = props;
+    const {handleCloseModal, openModalNivel, firstLevel} = props;
 
     const styles = StyleSheet.create({
         modalBackGround: {
@@ -56,22 +56,11 @@ export const ModalNivel = (props) => {
         },
     })    
 
-    const [firstLevel, setFirstLevel] = useState({})
     const [perguntaAtual, setPerguntaAtual] = useState(0)
 
     useEffect(() => {
-
-        Axios.post("http://192.168.0.3:5000/obterPerguntas", {
-            nivel
-        })
-        .then((response) => {
-            setFirstLevel(response.data);
-            console.log(firstLevel[0].pergunta);
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-    }, [nivel])
+        console.log("firstLevel: ", firstLevel);
+    }, [firstLevel])
 
     return (
         <Modal

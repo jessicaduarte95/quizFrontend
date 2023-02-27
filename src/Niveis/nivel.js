@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { ModalNivel } from "./modal";
+import Axios from "axios";
 
 export const Nivel = () => {
     const navigation = useNavigation();
@@ -62,6 +63,7 @@ export const Nivel = () => {
     const handleOpenModal = () => setOpenModalNivel(true);
     const [nivel, setNivel] = useState(false);
     const handleChangeNivel = () => setNivel(0);
+    const [firstLevel, setFirstLevel] = useState({})
 
     const perguntas = () => {
         handleChangeNivel()
@@ -69,6 +71,18 @@ export const Nivel = () => {
     }
 
     useEffect(() => {
+        if(nivel !== false){
+            Axios.post("http://192.168.0.3:5000/obterPerguntas", {
+            nivel
+            })
+            .then((response) => {
+                setFirstLevel(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            console.log("nivel: ", nivel);
+        }
         dadosUsuario
     }, [dadosUsuario, nivel])
 
@@ -115,7 +129,7 @@ export const Nivel = () => {
                 <TouchableOpacity style={styles.buttonLevels} onPress={() => {perguntas(); setNivel(8)}}>
                     <Text style={styles.actionText}>Nível 8</Text>
                 </TouchableOpacity>
-                <ModalNivel openModalNivel={openModalNivel} handleCloseModal={handleCloseModal} nivel={nivel}/>
+                <ModalNivel openModalNivel={openModalNivel} handleCloseModal={handleCloseModal} nivel={nivel} firstLevel={firstLevel}/>
             </View>
         </LinearGradient>
     )
