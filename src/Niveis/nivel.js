@@ -63,7 +63,7 @@ export const Nivel = () => {
     const handleOpenModal = () => setOpenModalNivel(true);
     const [nivel, setNivel] = useState(false);
     const handleChangeNivel = () => setNivel(0);
-    const [firstLevel, setFirstLevel] = useState({})
+    const [firstLevel, setFirstLevel] = useState()
 
     const perguntas = () => {
         handleChangeNivel()

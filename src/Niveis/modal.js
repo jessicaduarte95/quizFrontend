@@ -59,7 +59,7 @@ export const ModalNivel = (props) => {
     const [perguntaAtual, setPerguntaAtual] = useState(0)
 
     useEffect(() => {
-        console.log("firstLevel: ", firstLevel);
+        console.log("firstLevel: ", firstLevel );
     }, [firstLevel])
 
     return (
@@ -71,7 +71,7 @@ export const ModalNivel = (props) => {
            <View style={styles.modalBackGround}>
                <SafeAreaView style={styles.container}>
                    <View style={{paddingLeft: '7%', paddingTop: '7%'}}>
-                       {/* <Text style={{color: '#E5E5E5', fontSize: 22}}>{firstLevel[perguntaAtual].pergunta}</Text> */}
+                       <Text style={{color: '#E5E5E5', fontSize: 22}}>{firstLevel != undefined ? firstLevel[perguntaAtual].pergunta : ""}</Text>
                    </View>
                    <View style={{alignItems: 'flex-end', paddingRight: '8%'}}>
                        <Text style={{color: '#E5E5E5', fontSize: 18}}>Pergunta {perguntaAtual + 1} / 10</Text>
