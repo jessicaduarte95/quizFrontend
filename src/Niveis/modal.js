@@ -60,6 +60,17 @@ export const ModalNivel = (props) => {
 
     useEffect(() => {
         console.log("firstLevel: ", firstLevel );
+        if(firstLevel != undefined){
+            Axios.post("http://192.168.0.3:5000/obterOpcoes", {
+            firstLevel
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
     }, [firstLevel])
 
     return (
