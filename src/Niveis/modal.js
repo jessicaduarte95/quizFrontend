@@ -57,15 +57,17 @@ export const ModalNivel = (props) => {
     })    
 
     const [perguntaAtual, setPerguntaAtual] = useState(0)
+    const [opcoes, setOpcoes] = useState()
 
     useEffect(() => {
-        console.log("firstLevel: ", firstLevel );
+        console.log("opcoes: ", opcoes );
         if(firstLevel != undefined){
             Axios.post("http://192.168.0.3:5000/obterOpcoes", {
             firstLevel
             })
             .then((response) => {
-                console.log(response.data);
+                setOpcoes(response.data);
+                console.log("Opções: ",response.data[0]);
             })
             .catch((error) => {
                 console.log(error);
@@ -89,16 +91,16 @@ export const ModalNivel = (props) => {
                    </View>
                    <View>
                         <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}}>
-                            <Text style={styles.textButton}>Opção 1</Text>
+                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}}>
-                            <Text style={styles.textButton}>Opção 2</Text>
+                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao: ""}</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}}>
-                            <Text style={styles.textButton}>Opção 3</Text>
+                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao: ""}</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}}>
-                            <Text style={styles.textButton}>Opção 4</Text>
+                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao: ""}</Text>
                         </TouchableOpacity>
                    </View>
                    <View style= {{alignItems: 'flex-end', paddingBottom: '5%', paddingRight: '4%'}}>
