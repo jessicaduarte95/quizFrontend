@@ -58,6 +58,7 @@ export const ModalNivel = (props) => {
 
     const [perguntaAtual, setPerguntaAtual] = useState(0)
     const [opcoes, setOpcoes] = useState()
+    const [mudarCor, setMudarCor] = useState(false);
 
     useEffect(() => {
         if(firstLevel != undefined){
@@ -66,12 +67,12 @@ export const ModalNivel = (props) => {
             })
             .then((response) => {
                 setOpcoes(response.data);
-                console.log("Opções: ",response.data[0]);
             })
             .catch((error) => {
                 console.log(error);
             })
         }
+        console.log("Opções: ",opcoes);
     }, [firstLevel, perguntaAtual])
 
     return (
@@ -89,9 +90,20 @@ export const ModalNivel = (props) => {
                        <Text style={{color: '#E5E5E5', fontSize: 18}}>Pergunta {perguntaAtual + 1} / 10</Text>
                    </View>
                    <View>
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}}>
+                        {mudarCor == true ? "":
+                            <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}}  onPress={() => {setMudarCor(true)}}>
+                                <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
+                            </TouchableOpacity>
+                        }
+                        {mudarCor == true && opcoes != undefined && opcoes[0].correta == 1 ?
+                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "green"}}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
                         </TouchableOpacity>
+                        : mudarCor == true && opcoes != undefined && opcoes[0].correta == 0 ?
+                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "red"}}>
+                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
+                        </TouchableOpacity>
+                        :""}
                         <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao: ""}</Text>
                         </TouchableOpacity>
@@ -103,7 +115,7 @@ export const ModalNivel = (props) => {
                         </TouchableOpacity>
                    </View>
                    <View style= {{alignItems: 'flex-end', paddingBottom: '5%', paddingRight: '4%'}}>
-                        <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => setPerguntaAtual(perguntaAtual + 1)}>
+                        <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => {setPerguntaAtual(perguntaAtual + 1); setMudarCor(false)}}>
                             <Text style={styles.textButton}>Próxima Pergunta</Text>
                         </TouchableOpacity>
                     </View>
