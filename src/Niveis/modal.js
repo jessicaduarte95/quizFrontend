@@ -60,10 +60,9 @@ export const ModalNivel = (props) => {
     const [opcoes, setOpcoes] = useState()
 
     useEffect(() => {
-        console.log("opcoes: ", opcoes );
         if(firstLevel != undefined){
             Axios.post("http://192.168.0.3:5000/obterOpcoes", {
-            firstLevel
+            firstLevel, perguntaAtual
             })
             .then((response) => {
                 setOpcoes(response.data);
@@ -73,7 +72,7 @@ export const ModalNivel = (props) => {
                 console.log(error);
             })
         }
-    }, [firstLevel])
+    }, [firstLevel, perguntaAtual])
 
     return (
         <Modal
