@@ -82,7 +82,7 @@ export const ModalNivel = (props) => {
         animationType='fade'>
            <View style={styles.modalBackGround}>
                <SafeAreaView style={styles.container}>
-                   <View style={{paddingLeft: '7%', paddingTop: '7%'}}>
+                   <View style={{paddingLeft: '7%', paddingTop: '7%', paddingRight: '7%'}}>
                        <Text style={{color: '#E5E5E5', fontSize: 22}}>{firstLevel != undefined ? firstLevel[perguntaAtual].pergunta : ""}</Text>
                    </View>
                    <View style={{alignItems: 'flex-end', paddingRight: '8%'}}>
