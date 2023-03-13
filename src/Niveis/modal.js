@@ -58,7 +58,17 @@ export const ModalNivel = (props) => {
 
     const [perguntaAtual, setPerguntaAtual] = useState(0)
     const [opcoes, setOpcoes] = useState()
-    const [mudarCor, setMudarCor] = useState(false);
+    const [mudarCor1, setMudarCor1] = useState(false);
+    const [mudarCor2, setMudarCor2] = useState(false);
+    const [mudarCor3, setMudarCor3] = useState(false);
+    const [mudarCor4, setMudarCor4] = useState(false);
+
+    const change = () => {
+        setMudarCor1(false)
+        setMudarCor2(false)
+        setMudarCor3(false)
+        setMudarCor4(false)
+    }
 
     useEffect(() => {
         if(firstLevel != undefined){
@@ -90,32 +100,65 @@ export const ModalNivel = (props) => {
                        <Text style={{color: '#E5E5E5', fontSize: 18}}>Pergunta {perguntaAtual + 1} / 10</Text>
                    </View>
                    <View>
-                        {mudarCor == true ? "":
-                            <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}}  onPress={() => {setMudarCor(true)}}>
+                        {mudarCor1 == true ? "":
+                            <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}}  onPress={() => {setMudarCor1(true)}}>
                                 <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
                             </TouchableOpacity>
                         }
-                        {mudarCor == true && opcoes != undefined && opcoes[0].correta == 1 ?
+                        {mudarCor1 == true && opcoes != undefined && opcoes[0].correta == 1 ?
                         <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "green"}}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
                         </TouchableOpacity>
-                        : mudarCor == true && opcoes != undefined && opcoes[0].correta == 0 ?
+                        : mudarCor1 == true && opcoes != undefined && opcoes[0].correta == 0 ?
                         <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "red"}}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
                         </TouchableOpacity>
                         :""}
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}}>
+                        {mudarCor2 == true ? "":
+                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}} onPress={() => {setMudarCor2(true)}}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao: ""}</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}}>
+                        }
+                        {mudarCor2 == true && opcoes != undefined && opcoes[1].correta == 1 ?
+                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "green"}}>
+                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao : ""}</Text>
+                        </TouchableOpacity>
+                        : mudarCor2 == true && opcoes != undefined && opcoes[1].correta == 0 ?
+                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "red"}}>
+                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao : ""}</Text>
+                        </TouchableOpacity>
+                        :""}
+                        {mudarCor3 == true ? "":
+                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}} onPress={() => {setMudarCor3(true)}}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao: ""}</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}}>
+                        }
+                        {mudarCor3 == true && opcoes != undefined && opcoes[2].correta == 1 ?
+                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "green"}}>
+                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao : ""}</Text>
+                        </TouchableOpacity>
+                        : mudarCor3 == true && opcoes != undefined && opcoes[2].correta == 0 ?
+                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "red"}}>
+                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao : ""}</Text>
+                        </TouchableOpacity>
+                        :""}
+                        {mudarCor4 == true ? "":
+                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}} onPress={() => {setMudarCor4(true)}}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao: ""}</Text>
                         </TouchableOpacity>
+                        }
+                        {mudarCor4 == true && opcoes != undefined && opcoes[3].correta == 1 ?
+                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "green"}}>
+                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao : ""}</Text>
+                        </TouchableOpacity>
+                        : mudarCor4 == true && opcoes != undefined && opcoes[3].correta == 0 ?
+                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "red"}}>
+                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao : ""}</Text>
+                        </TouchableOpacity>
+                        :""}
                    </View>
                    <View style= {{alignItems: 'flex-end', paddingBottom: '5%', paddingRight: '4%'}}>
-                        <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => {setPerguntaAtual(perguntaAtual + 1); setMudarCor(false)}}>
+                        <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => {setPerguntaAtual(perguntaAtual + 1); change()}}>
                             <Text style={styles.textButton}>Próxima Pergunta</Text>
                         </TouchableOpacity>
                     </View>
