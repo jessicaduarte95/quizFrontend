@@ -48,6 +48,16 @@ export const ModalNivel = (props) => {
             shadowOpacity: 0.28,
             shadowRadius: 4,
         },
+        correctQuestion: {
+            alignItems: 'flex-start', 
+            padding: '4%', 
+            backgroundColor: "green"
+        },
+        wrongQuestion: {
+            alignItems: 'flex-start', 
+            padding: '4%', 
+            backgroundColor: "red"
+        },
         textButton: {
             textAlign: 'center',
             fontWeight: 'bold',
@@ -106,11 +116,11 @@ export const ModalNivel = (props) => {
                             </TouchableOpacity>
                         }
                         {mudarCor1 == true && opcoes != undefined && opcoes[0].correta == 1 ?
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "green"}}>
+                        <TouchableOpacity style={styles.correctQuestion}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
                         </TouchableOpacity>
                         : mudarCor1 == true && opcoes != undefined && opcoes[0].correta == 0 ?
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "red"}}>
+                        <TouchableOpacity style={styles.wrongQuestion}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
                         </TouchableOpacity>
                         :""}
@@ -120,11 +130,11 @@ export const ModalNivel = (props) => {
                         </TouchableOpacity>
                         }
                         {mudarCor2 == true && opcoes != undefined && opcoes[1].correta == 1 ?
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "green"}}>
+                        <TouchableOpacity style={styles.correctQuestion}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao : ""}</Text>
                         </TouchableOpacity>
                         : mudarCor2 == true && opcoes != undefined && opcoes[1].correta == 0 ?
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "red"}}>
+                        <TouchableOpacity style={styles.wrongQuestion}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao : ""}</Text>
                         </TouchableOpacity>
                         :""}
@@ -134,11 +144,11 @@ export const ModalNivel = (props) => {
                         </TouchableOpacity>
                         }
                         {mudarCor3 == true && opcoes != undefined && opcoes[2].correta == 1 ?
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "green"}}>
+                        <TouchableOpacity style={styles.correctQuestion}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao : ""}</Text>
                         </TouchableOpacity>
                         : mudarCor3 == true && opcoes != undefined && opcoes[2].correta == 0 ?
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "red"}}>
+                        <TouchableOpacity style={styles.wrongQuestion}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao : ""}</Text>
                         </TouchableOpacity>
                         :""}
@@ -148,11 +158,11 @@ export const ModalNivel = (props) => {
                         </TouchableOpacity>
                         }
                         {mudarCor4 == true && opcoes != undefined && opcoes[3].correta == 1 ?
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "green"}}>
+                        <TouchableOpacity style={styles.correctQuestion}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao : ""}</Text>
                         </TouchableOpacity>
                         : mudarCor4 == true && opcoes != undefined && opcoes[3].correta == 0 ?
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%', backgroundColor: "red"}}>
+                        <TouchableOpacity style={styles.wrongQuestion}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao : ""}</Text>
                         </TouchableOpacity>
                         :""}
