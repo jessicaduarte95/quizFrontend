@@ -14,8 +14,6 @@ export const ModalNivel = (props) => {
             alignItems: 'center'
         },
         container: {
-            width: '90%',
-            height: '60%',
             justifyContent: 'space-around',
             backgroundColor: '#000929',
             borderRadius: 15,
@@ -30,14 +28,34 @@ export const ModalNivel = (props) => {
             shadowOpacity: 0.28,
             shadowRadius: 4 
         },
-        buttom: {
+        containerQuestion: {
+            padding: 25, 
+            paddingBottom: 10
+        },
+        question: {
+            color: '#E5E5E5', 
+            fontSize: 22
+        },
+        containerOptions: {
+            alignItems: "center"
+        },
+        containerNumberQuestion: {
+            alignItems: 'flex-end', 
+            padding: 25, 
+            paddingTop: 0
+        },
+        numberQuestionText: {
+            color: '#E5E5E5', 
+            fontSize: 18
+        },
+        stylesOptions: {
             zIndex: 99,
             backgroundColor: '#000720',
             borderRadius: 6,
             marginRight: 8,
             padding: 10,
             borderWidth: 1,
-            width: '50%',
+            width: 300,
             borderColor: 'rgba(50,115,220, 0.4)',
             shadowColor: 'rgba(50,115,220, 0.9)',
             shadowOffset: {
@@ -47,15 +65,51 @@ export const ModalNivel = (props) => {
             elevation: 5,
             shadowOpacity: 0.28,
             shadowRadius: 4,
+            alignItems: 'center', 
+            padding: 13,
+            marginBottom: 10
         },
         correctQuestion: {
-            alignItems: 'flex-start', 
-            padding: '4%', 
+            zIndex: 99,
+            backgroundColor: '#000720',
+            borderRadius: 6,
+            marginRight: 8,
+            padding: 10,
+            borderWidth: 1,
+            width: 300,
+            borderColor: 'rgba(50,115,220, 0.4)',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            elevation: 5,
+            shadowOpacity: 0.28,
+            shadowRadius: 4,
+            alignItems: 'center', 
+            padding: 13,
+            marginBottom: 10,
             backgroundColor: "green"
         },
-        wrongQuestion: {
-            alignItems: 'flex-start', 
-            padding: '4%', 
+        wrongQuestion: {zIndex: 99,
+            backgroundColor: '#000720',
+            borderRadius: 6,
+            marginRight: 8,
+            padding: 10,
+            borderWidth: 1,
+            width: 300,
+            borderColor: 'rgba(50,115,220, 0.4)',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            elevation: 5,
+            shadowOpacity: 0.28,
+            shadowRadius: 4,
+            alignItems: 'center', 
+            padding: 13,
+            marginBottom: 10,
             backgroundColor: "red"
         },
         textButton: {
@@ -63,6 +117,29 @@ export const ModalNivel = (props) => {
             fontWeight: 'bold',
             color: '#E5E5E5',
             fontSize: 17
+        },
+        conatinerNextQuestion: {
+            alignItems: 'flex-end', 
+            padding: 20, 
+            paddingRight: 15
+        },
+        buttom: {
+            zIndex: 99,
+            backgroundColor: '#000720',
+            borderRadius: 6,
+            marginRight: 8,
+            padding: 10,
+            borderWidth: 1,
+            width: 210,
+            borderColor: 'rgba(50,115,220, 0.4)',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            elevation: 5,
+            shadowOpacity: 0.28,
+            shadowRadius: 4,
         },
     })    
 
@@ -103,18 +180,19 @@ export const ModalNivel = (props) => {
         animationType='fade'>
            <View style={styles.modalBackGround}>
                <SafeAreaView style={styles.container}>
-                   <View style={{paddingLeft: '7%', paddingTop: '7%', paddingRight: '7%'}}>
-                       <Text style={{color: '#E5E5E5', fontSize: 22}}>{firstLevel != undefined ? firstLevel[perguntaAtual].pergunta : ""}</Text>
+                   <View style={styles.containerQuestion}>
+                       <Text style={styles.question}>{firstLevel != undefined ? firstLevel[perguntaAtual].pergunta : ""}</Text>
                    </View>
-                   <View style={{alignItems: 'flex-end', paddingRight: '8%'}}>
-                       <Text style={{color: '#E5E5E5', fontSize: 18}}>Pergunta {perguntaAtual + 1} / 10</Text>
+                   <View style={styles.containerNumberQuestion}>
+                       <Text style={styles.numberQuestionText}>Pergunta {perguntaAtual + 1} / 10</Text>
                    </View>
-                   <View>
+                   <View style={styles.containerOptions}>
                         {mudarCor1 == true ? "":
-                            <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}}  onPress={() => {setMudarCor1(true)}}>
+                            <TouchableOpacity style={styles.stylesOptions}  onPress={() => {setMudarCor1(true)}}>
                                 <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
                             </TouchableOpacity>
                         }
+
                         {mudarCor1 == true && opcoes != undefined && opcoes[0].correta == 1 ?
                         <TouchableOpacity style={styles.correctQuestion}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
@@ -124,11 +202,13 @@ export const ModalNivel = (props) => {
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
                         </TouchableOpacity>
                         :""}
+
                         {mudarCor2 == true ? "":
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}} onPress={() => {setMudarCor2(true)}}>
+                        <TouchableOpacity style={styles.stylesOptions} onPress={() => {setMudarCor2(true)}}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao: ""}</Text>
                         </TouchableOpacity>
                         }
+                        
                         {mudarCor2 == true && opcoes != undefined && opcoes[1].correta == 1 ?
                         <TouchableOpacity style={styles.correctQuestion}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao : ""}</Text>
@@ -139,7 +219,7 @@ export const ModalNivel = (props) => {
                         </TouchableOpacity>
                         :""}
                         {mudarCor3 == true ? "":
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}} onPress={() => {setMudarCor3(true)}}>
+                        <TouchableOpacity style={styles.stylesOptions} onPress={() => {setMudarCor3(true)}}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao: ""}</Text>
                         </TouchableOpacity>
                         }
@@ -153,7 +233,7 @@ export const ModalNivel = (props) => {
                         </TouchableOpacity>
                         :""}
                         {mudarCor4 == true ? "":
-                        <TouchableOpacity style={{alignItems: 'flex-start', padding: '4%'}} onPress={() => {setMudarCor4(true)}}>
+                        <TouchableOpacity style={styles.stylesOptions} onPress={() => {setMudarCor4(true)}}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao: ""}</Text>
                         </TouchableOpacity>
                         }
@@ -167,7 +247,7 @@ export const ModalNivel = (props) => {
                         </TouchableOpacity>
                         :""}
                    </View>
-                   <View style= {{alignItems: 'flex-end', paddingBottom: '5%', paddingRight: '4%'}}>
+                   <View style= {styles.conatinerNextQuestion}>
                         <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => {setPerguntaAtual(perguntaAtual + 1); change()}}>
                             <Text style={styles.textButton}>Próxima Pergunta</Text>
                         </TouchableOpacity>
