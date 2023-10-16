@@ -21,6 +21,29 @@ export const Nivel = () => {
             justifyContent: 'flex-end',
             width: '100%'
         },
+        buttonAjuda: {
+            color: '#D0D1CE',
+            paddingRight: 15,
+            fontSize: 17
+        },
+        buttonSair: {
+            color: '#D0D1CE',
+            paddingRight: 25,
+            fontSize: 17
+        },
+        nomeUsuario: {
+            paddingTop: 15,
+            marginBottom: 15,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            paddingLeft: 35,
+            width: '100%'
+        },
+        nomeText: {
+            fontWeight: 'bold',
+            color: '#E5E5E5',
+            fontSize: 30
+        },
         levels: {
             flexDirection: 'column',
             justifyContent: 'center',
@@ -53,14 +76,6 @@ export const Nivel = () => {
         },
         scroll: {
             width: 270
-        },
-        nomeUsuario: {
-            paddingTop: 15,
-            marginBottom: 15,
-            flexDirection: 'row',
-            justifyContent: 'center',
-            paddingLeft: 35,
-            width: '100%'
         }
     })
 
@@ -101,14 +116,14 @@ export const Nivel = () => {
             colors={['#3544A7', '#000720']}>
             <View style={styles.buttonSairAjuda}>
                 <TouchableOpacity>
-                    <Text style={{ color: '#D0D1CE', paddingRight: '3%', fontSize: 17 }}>Ajuda</Text>
+                    <Text style={styles.buttonAjuda}>Ajuda</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate('Principal')}>
-                    <Text style={{ color: '#D0D1CE', paddingRight: '6%', fontSize: 17 }}>Sair</Text>
+                    <Text style={styles.buttonSair}>Sair</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.nomeUsuario}>
-                <Text style={{ fontWeight: 'bold', color: '#E5E5E5', fontSize: 30 }}>Olá {dadosUsuario.nome}!</Text>
+                <Text style={styles.nomeText}>Olá {dadosUsuario.nome}!</Text>
             </View>
             <ScrollView style={styles.scroll}>
                 <View style={styles.levels}>
