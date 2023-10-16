@@ -123,7 +123,7 @@ export const Nivel = () => {
             locations={[.3, 0.67]}
             colors={['#3544A7', '#000720']}>
             <View style={styles.buttonSairAjuda}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Admin')}>
                     <Text style={styles.buttonAdmin}>Admin</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
