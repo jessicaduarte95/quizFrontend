@@ -21,6 +21,14 @@ export const Nivel = () => {
             justifyContent: 'flex-end',
             width: '100%'
         },
+        buttonAdmin: {
+            color: '#D0D1CE',
+            paddingRight: 15,
+            fontSize: 17,
+            display: 'flex',
+            alignItems: 'flex-start',
+            width: 270
+        },
         buttonAjuda: {
             color: '#D0D1CE',
             paddingRight: 15,
@@ -115,6 +123,9 @@ export const Nivel = () => {
             locations={[.3, 0.67]}
             colors={['#3544A7', '#000720']}>
             <View style={styles.buttonSairAjuda}>
+                <TouchableOpacity>
+                    <Text style={styles.buttonAdmin}>Admin</Text>
+                </TouchableOpacity>
                 <TouchableOpacity>
                     <Text style={styles.buttonAjuda}>Ajuda</Text>
                 </TouchableOpacity>
