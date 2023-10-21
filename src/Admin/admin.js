@@ -75,6 +75,19 @@ export const Admin = () => {
             borderColor: 'rgba(50,115,220, 0.4)',
             shadowRadius: 4
         },
+        containerconfigOptions: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: 40,
+            marginRight: 15,
+            marginLeft: 15,
+            height: 500,
+            borderRadius: 15,
+            borderWidth: 1.5,
+            borderColor: 'rgba(50,115,220, 0.4)',
+            shadowRadius: 4
+        },
         containerButtonQuestion: {
             width: '95%',
             marginTop: 12,
@@ -116,9 +129,8 @@ export const Admin = () => {
         },
         input: {
             backgroundColor: "#000720",
-            marginBottom: 20,
-            marginLeft: 15,
-            marginRight: 15,
+            marginBottom: 10,
+            marginTop: 15,
             paddingLeft: 8,
             height: 42,
             borderWidth: 1,
@@ -131,7 +143,32 @@ export const Admin = () => {
             elevation: 5,
             shadowOpacity: 0.28,
             shadowRadius: 4,
-            color: '#D0D1CE'
+            color: '#D0D1CE',
+            width: "90%"
+        },
+        containerOptions: {
+            width: "100%",
+            flexDirection: "row",
+            justifyContent: "space-around"
+        },
+        inputOptions: {
+            backgroundColor: "#000720",
+            marginBottom: 10,
+            marginTop: 15,
+            paddingLeft: 8,
+            height: 42,
+            borderWidth: 1,
+            borderColor: 'rgba(50,115,220, 0.4)',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            elevation: 5,
+            shadowOpacity: 0.28,
+            shadowRadius: 4,
+            color: '#D0D1CE',
+            width: "40%"
         },
     })
 
@@ -191,20 +228,25 @@ export const Admin = () => {
                             </View>
                         </View>
                         :
-                        <View>
+                        <View style={styles.containerconfigOptions}>
+                            <Text style={styles.configText}>Configuração das Opções</Text>
                             <TextInput style={styles.input} placeholder="Nível" placeholderTextColor='#D0D1CE' />
                             <TextInput style={styles.input} placeholder="Questão" placeholderTextColor='#D0D1CE' />
-                            <View>
-                                <TextInput style={styles.input} placeholder="Opção1" placeholderTextColor='#D0D1CE' />
+                            <View style={styles.containerOptions}>
+                                <TextInput style={styles.inputOptions} placeholder="Opção1" placeholderTextColor='#D0D1CE' />
+                                <TextInput style={styles.inputOptions} placeholder="Teste" placeholderTextColor='#D0D1CE' />
                             </View>
-                            <View>
-                                <TextInput style={styles.input} placeholder="Opção2" placeholderTextColor='#D0D1CE' />
+                            <View style={styles.containerOptions}>
+                                <TextInput style={styles.inputOptions} placeholder="Opção2" placeholderTextColor='#D0D1CE' />
+                                <TextInput style={styles.inputOptions} placeholder="Teste" placeholderTextColor='#D0D1CE' />
                             </View>
-                            <View>
-                                <TextInput style={styles.input} placeholder="Opção3" placeholderTextColor='#D0D1CE' />
+                            <View style={styles.containerOptions}>
+                                <TextInput style={styles.inputOptions} placeholder="Opção3" placeholderTextColor='#D0D1CE' />
+                                <TextInput style={styles.inputOptions} placeholder="Teste" placeholderTextColor='#D0D1CE' />
                             </View>
-                            <View>
-                                <TextInput style={styles.input} placeholder="Opção4" placeholderTextColor='#D0D1CE' />
+                            <View style={styles.containerOptions}>
+                                <TextInput style={styles.inputOptions} placeholder="Opção4" placeholderTextColor='#D0D1CE' />
+                                <TextInput style={styles.inputOptions} placeholder="Teste" placeholderTextColor='#D0D1CE' />
                             </View>
                         </View>
                 }
