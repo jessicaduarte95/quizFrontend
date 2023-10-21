@@ -177,8 +177,8 @@ export const Admin = () => {
                     configQuestion ?
                         <View style={styles.containerconfigText}>
                             <Text style={styles.configText}>Configuração das Questões</Text>
-                            <TextInput style={styles.configLevelQuestion} placeholder="Nível" placeholderTextColor='#D0D1CE' onChangeText={text => setNivel(text)} />
-                            <TextInput style={styles.configLevelQuestion} placeholder="Pergunta" placeholderTextColor='#D0D1CE' onChangeText={text => setPergunta(text)} />
+                            <TextInput style={styles.configLevelQuestion} placeholder="Nível" placeholderTextColor='#D0D1CE' value={nivel} onChangeText={text => setNivel(text)} />
+                            <TextInput style={styles.configLevelQuestion} placeholder="Pergunta" placeholderTextColor='#D0D1CE' value={pergunta} onChangeText={text => setPergunta(text)} />
                             <View style={styles.containerButtonQuestion}>
                                 <TouchableOpacity style={styles.buttonQuestionOptions} onPress={submit}>
                                     <Text style={styles.textButtonQuestionSave}>Salvar Configuração</Text>
