@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import Axios from 'axios';
 
 export const Admin = () => {
     const navigation = useNavigation();
@@ -72,13 +73,13 @@ export const Admin = () => {
             borderRadius: 15,
             borderWidth: 1.5,
             borderColor: 'rgba(50,115,220, 0.4)',
-            shadowRadius: 4 
+            shadowRadius: 4
         },
         containerButtonQuestion: {
-            width: '95%', 
-            marginTop: 12, 
-            display: 'flex', 
-            alignItems: 'flex-end', 
+            width: '95%',
+            marginTop: 12,
+            display: 'flex',
+            alignItems: 'flex-end',
             justifyContent: 'flex-end'
         },
         configText: {
@@ -135,6 +136,18 @@ export const Admin = () => {
     })
 
     const [configQuestion, setConfigQuestion] = useState(true);
+    const [nivel, setNivel] = useState('');
+    const [pergunta, setPergunta] = useState('');
+
+    const submit = async () => {
+        await Axios.post(`http://192.168.0.3:5000/insertQuestion`, {
+            nivel, pergunta
+        }).then((response) => {
+            console.log("Response: ", response);
+            setNivel('')
+            setPergunta('')
+        }).catch((error) => console.log("Erro: ", error));
+    }
 
     return (
         <LinearGradient
@@ -164,10 +177,10 @@ export const Admin = () => {
                     configQuestion ?
                         <View style={styles.containerconfigText}>
                             <Text style={styles.configText}>Configuração das Questões</Text>
-                            <TextInput style={styles.configLevelQuestion} placeholder="Nível" placeholderTextColor='#D0D1CE' />
-                            <TextInput style={styles.configLevelQuestion} placeholder="Pergunta" placeholderTextColor='#D0D1CE' />
+                            <TextInput style={styles.configLevelQuestion} placeholder="Nível" placeholderTextColor='#D0D1CE' onChangeText={text => setNivel(text)} />
+                            <TextInput style={styles.configLevelQuestion} placeholder="Pergunta" placeholderTextColor='#D0D1CE' onChangeText={text => setPergunta(text)} />
                             <View style={styles.containerButtonQuestion}>
-                                <TouchableOpacity style={styles.buttonQuestionOptions}>
+                                <TouchableOpacity style={styles.buttonQuestionOptions} onPress={submit}>
                                     <Text style={styles.textButtonQuestionSave}>Salvar Configuração</Text>
                                 </TouchableOpacity>
                             </View>
