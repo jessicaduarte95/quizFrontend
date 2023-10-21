@@ -68,7 +68,18 @@ export const Admin = () => {
             marginTop: 120,
             marginRight: 15,
             marginLeft: 15,
-            height: 300
+            height: 300,
+            borderRadius: 15,
+            borderWidth: 1.5,
+            borderColor: 'rgba(50,115,220, 0.4)',
+            shadowRadius: 4 
+        },
+        containerButtonQuestion: {
+            width: '95%', 
+            marginTop: 12, 
+            display: 'flex', 
+            alignItems: 'flex-end', 
+            justifyContent: 'flex-end'
         },
         configText: {
             color: '#DADADA',
@@ -155,7 +166,7 @@ export const Admin = () => {
                             <Text style={styles.configText}>Configuração das Questões</Text>
                             <TextInput style={styles.configLevelQuestion} placeholder="Nível" placeholderTextColor='#D0D1CE' />
                             <TextInput style={styles.configLevelQuestion} placeholder="Pergunta" placeholderTextColor='#D0D1CE' />
-                            <View style={{ width: '85%', marginTop: 12, display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end'}}>
+                            <View style={styles.containerButtonQuestion}>
                                 <TouchableOpacity style={styles.buttonQuestionOptions}>
                                     <Text style={styles.textButtonQuestionSave}>Salvar Configuração</Text>
                                 </TouchableOpacity>
