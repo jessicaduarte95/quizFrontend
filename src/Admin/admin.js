@@ -69,7 +69,7 @@ export const Admin = () => {
             marginTop: 120,
             marginRight: 15,
             marginLeft: 15,
-            height: 300,
+            height: 360,
             borderRadius: 15,
             borderWidth: 1.5,
             borderColor: 'rgba(50,115,220, 0.4)',
@@ -173,15 +173,17 @@ export const Admin = () => {
     })
 
     const [configQuestion, setConfigQuestion] = useState(true);
+    const [id, setId] = useState('');
     const [nivel, setNivel] = useState('');
     const [pergunta, setPergunta] = useState('');
     const [notification, setNotification] = useState(false);
 
     const submit = async () => {
         await Axios.post(`http://192.168.0.3:5000/insertQuestion`, {
-            nivel, pergunta
+            id, nivel, pergunta
         }).then(() => {
             setNotification(true)
+            setId('')
             setNivel('')
             setPergunta('')
             setTimeout(() => setNotification(false), 2000)
@@ -216,6 +218,7 @@ export const Admin = () => {
                     configQuestion ?
                         <View style={styles.containerconfigText}>
                             <Text style={styles.configText}>Configuração das Questões</Text>
+                            <TextInput style={styles.configLevelQuestion} keyboardType="numeric" placeholder="Id" placeholderTextColor='#D0D1CE' value={id} onChangeText={text => setId(text)} />
                             <TextInput style={styles.configLevelQuestion} keyboardType="numeric" placeholder="Nível" placeholderTextColor='#D0D1CE' value={nivel} onChangeText={text => setNivel(text)} />
                             <TextInput style={styles.configLevelQuestion} placeholder="Pergunta" placeholderTextColor='#D0D1CE' value={pergunta} onChangeText={text => setPergunta(text)} />
                             <View style={styles.containerButtonQuestion}>
