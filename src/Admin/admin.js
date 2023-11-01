@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity, ScrollView, TextInput } from 
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Axios from 'axios';
+import SelectDropdown from 'react-native-select-dropdown'
 
 export const Admin = () => {
     const navigation = useNavigation();
@@ -11,8 +12,7 @@ export const Admin = () => {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            alignItems: 'center',
-            // justifyContent: 'space-between',
+            alignItems: 'center'
         },
         containerButtonSair: {
             flexDirection: 'row',
@@ -170,6 +170,37 @@ export const Admin = () => {
             color: '#D0D1CE',
             width: "40%"
         },
+        select: {
+            width: '40%',
+            height: 42,
+            marginTop: 15,
+            borderWidth: 1,
+            borderColor: 'rgba(50,115,220, 0.4)',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            elevation: 5,
+            shadowOpacity: 0.28,
+            shadowRadius: 4,
+            backgroundColor: "#000720",
+            color: '#D0D1CE'
+        },
+        selectOptions: {
+            borderWidth: 1,
+            borderColor: 'rgba(50,115,220, 0.4)',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            elevation: 5,
+            shadowOpacity: 0.28,
+            shadowRadius: 4,
+            backgroundColor: "#000720",
+            color: '#D0D1CE',
+        }
     })
 
     const [configQuestion, setConfigQuestion] = useState(true);
@@ -177,6 +208,8 @@ export const Admin = () => {
     const [nivel, setNivel] = useState('');
     const [pergunta, setPergunta] = useState('');
     const [notification, setNotification] = useState(false);
+    const [isCorrect, setisCorrect] = useState(0);
+    const optionsSelect = ['Não', 'Sim'];
 
     const submit = async () => {
         await Axios.post(`http://192.168.0.3:5000/insertQuestion`, {
@@ -226,7 +259,7 @@ export const Admin = () => {
                                     <Text style={styles.textButtonQuestionSave}>Salvar Configuração</Text>
                                 </TouchableOpacity>
                                 {
-                                    notification ? <Text style={{color: 'green', marginRight: 10}}>OK</Text> : ''
+                                    notification ? <Text style={{ color: 'green', marginRight: 10 }}>OK</Text> : ''
                                 }
                             </View>
                         </View>
@@ -237,9 +270,20 @@ export const Admin = () => {
                             <TextInput style={styles.input} placeholder="Questão" placeholderTextColor='#D0D1CE' />
                             <View style={styles.containerOptions}>
                                 <TextInput style={styles.inputOptions} placeholder="Opção1" placeholderTextColor='#D0D1CE' />
-                                <TextInput style={styles.inputOptions} placeholder="Teste" placeholderTextColor='#D0D1CE' />
+                                <SelectDropdown
+                                    data={optionsSelect}
+                                    buttonStyle={styles.select}
+                                    defaultButtonText="Correta"
+                                    rowStyle={styles.selectOptions}
+                                    buttonTextStyle={{color: '#D0D1CE'}}
+                                    rowTextStyle={{color: '#D0D1CE'}}
+                                    onSelect={(selectedItem, index) => {
+                                        console.log(selectedItem, index)
+                                        setisCorrect(index)
+                                    }} />
+                                {/* <RNPickerSelect value={isCorrect} items={optionsSelect}/> */}
                             </View>
-                            <View style={styles.containerOptions}>
+                            {/* <View style={styles.containerOptions}>
                                 <TextInput style={styles.inputOptions} placeholder="Opção2" placeholderTextColor='#D0D1CE' />
                                 <TextInput style={styles.inputOptions} placeholder="Teste" placeholderTextColor='#D0D1CE' />
                             </View>
@@ -250,7 +294,7 @@ export const Admin = () => {
                             <View style={styles.containerOptions}>
                                 <TextInput style={styles.inputOptions} placeholder="Opção4" placeholderTextColor='#D0D1CE' />
                                 <TextInput style={styles.inputOptions} placeholder="Teste" placeholderTextColor='#D0D1CE' />
-                            </View>
+                            </View> */}
                         </View>
                 }
             </ScrollView>
