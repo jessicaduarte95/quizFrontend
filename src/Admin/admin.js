@@ -82,7 +82,7 @@ export const Admin = () => {
             marginTop: 40,
             marginRight: 15,
             marginLeft: 15,
-            height: 500,
+            height: 530,
             borderRadius: 15,
             borderWidth: 1.5,
             borderColor: 'rgba(50,115,220, 0.4)',
@@ -206,6 +206,8 @@ export const Admin = () => {
     const [configQuestion, setConfigQuestion] = useState(true);
     const [id, setId] = useState('');
     const [nivel, setNivel] = useState('');
+    const [nivelOptions, setNivelOptions] = useState('');
+    const [questionOptions, setQuestionOptions] = useState('');
     const [pergunta, setPergunta] = useState('');
     const [notification, setNotification] = useState(false);
     const [options, setOptions] = useState([
@@ -216,7 +218,7 @@ export const Admin = () => {
     ]);
     const optionsSelect = ['Não', 'Sim'];
 
-    const submit = async () => {
+    const submitConfigurationQuestion = async () => {
         await Axios.post(`http://192.168.0.3:5000/insertQuestion`, {
             id, nivel, pergunta
         }).then(() => {
@@ -226,6 +228,10 @@ export const Admin = () => {
             setPergunta('')
             setTimeout(() => setNotification(false), 2000)
         }).catch((error) => console.log("Erro: ", error));
+    }
+
+    const submitConfigurationOptions = async () => {
+        console.log("Teste", nivelOptions, questionOptions, options)
     }
 
     const changeOption1 = (data) => {
@@ -288,7 +294,7 @@ export const Admin = () => {
                             <TextInput style={styles.configLevelQuestion} keyboardType="numeric" placeholder="Nível" placeholderTextColor='#D0D1CE' value={nivel} onChangeText={text => setNivel(text)} />
                             <TextInput style={styles.configLevelQuestion} placeholder="Pergunta" placeholderTextColor='#D0D1CE' value={pergunta} onChangeText={text => setPergunta(text)} />
                             <View style={styles.containerButtonQuestion}>
-                                <TouchableOpacity style={styles.buttonQuestionOptions} onPress={submit}>
+                                <TouchableOpacity style={styles.buttonQuestionOptions} onPress={submitConfigurationQuestion}>
                                     <Text style={styles.textButtonQuestionSave}>Salvar Configuração</Text>
                                 </TouchableOpacity>
                                 {
@@ -299,8 +305,8 @@ export const Admin = () => {
                         :
                         <View style={styles.containerconfigOptions}>
                             <Text style={styles.configText}>Configuração das Opções</Text>
-                            <TextInput style={styles.input} placeholder="Nível" placeholderTextColor='#D0D1CE' />
-                            <TextInput style={styles.input} placeholder="Questão" placeholderTextColor='#D0D1CE' />
+                            <TextInput style={styles.input} placeholder="Nível" placeholderTextColor='#D0D1CE' value={nivelOptions} onChangeText={text => setNivelOptions(text)} />
+                            <TextInput style={styles.input} placeholder="Questão" placeholderTextColor='#D0D1CE' value={questionOptions} onChangeText={text => setQuestionOptions(text)} />
                             <View style={styles.containerOptions}>
                                 <TextInput style={styles.inputOptions} value={options[0].option1} placeholder="Opção1" placeholderTextColor='#D0D1CE' onChangeText={(e) => changeOption1(e)} />
                                 <SelectDropdown
@@ -360,6 +366,11 @@ export const Admin = () => {
                                         newArray[3].correct4 = index
                                         setOptions(newArray)
                                     }} />
+                            </View>
+                            <View style={styles.containerButtonQuestion}>
+                                <TouchableOpacity style={styles.buttonQuestionOptions} onPress={submitConfigurationOptions}>
+                                    <Text style={styles.textButtonQuestionSave}>Salvar Configuração</Text>
+                                </TouchableOpacity>
                             </View>
                         </View>
                 }
