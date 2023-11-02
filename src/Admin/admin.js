@@ -208,7 +208,12 @@ export const Admin = () => {
     const [nivel, setNivel] = useState('');
     const [pergunta, setPergunta] = useState('');
     const [notification, setNotification] = useState(false);
-    const [isCorrect, setisCorrect] = useState(0);
+    const [options, setOptions] = useState([
+        { option1: '', correct1: 0 },
+        { option2: '', correct2: 0 },
+        { option3: '', correct3: 0 },
+        { option4: '', correct4: 0 }
+    ]);
     const optionsSelect = ['Não', 'Sim'];
 
     const submit = async () => {
@@ -222,6 +227,34 @@ export const Admin = () => {
             setTimeout(() => setNotification(false), 2000)
         }).catch((error) => console.log("Erro: ", error));
     }
+
+    const changeOption1 = (data) => {
+        let newArray = [...options];
+        newArray[0].option1 = data
+        setOptions(newArray)
+    }
+
+    const changeOption2 = (data) => {
+        let newArray = [...options];
+        newArray[1].option2 = data
+        setOptions(newArray)
+    }
+
+    const changeOption3 = (data) => {
+        let newArray = [...options];
+        newArray[2].option3 = data
+        setOptions(newArray)
+    }
+
+    const changeOption4 = (data) => {
+        let newArray = [...options];
+        newArray[3].option4 = data
+        setOptions(newArray)
+    }
+
+
+    useEffect(() => {
+    }, [options])
 
     return (
         <LinearGradient
@@ -269,32 +302,65 @@ export const Admin = () => {
                             <TextInput style={styles.input} placeholder="Nível" placeholderTextColor='#D0D1CE' />
                             <TextInput style={styles.input} placeholder="Questão" placeholderTextColor='#D0D1CE' />
                             <View style={styles.containerOptions}>
-                                <TextInput style={styles.inputOptions} placeholder="Opção1" placeholderTextColor='#D0D1CE' />
+                                <TextInput style={styles.inputOptions} value={options[0].option1} placeholder="Opção1" placeholderTextColor='#D0D1CE' onChangeText={(e) => changeOption1(e)} />
                                 <SelectDropdown
                                     data={optionsSelect}
                                     buttonStyle={styles.select}
                                     defaultButtonText="Correta"
                                     rowStyle={styles.selectOptions}
-                                    buttonTextStyle={{color: '#D0D1CE'}}
-                                    rowTextStyle={{color: '#D0D1CE'}}
-                                    onSelect={(selectedItem, index) => {
-                                        console.log(selectedItem, index)
-                                        setisCorrect(index)
+                                    buttonTextStyle={{ color: '#D0D1CE' }}
+                                    rowTextStyle={{ color: '#D0D1CE' }}
+                                    onSelect={(_, index) => {
+                                        let newArray = [...options];
+                                        newArray[0].correct1 = index
+                                        setOptions(newArray)
                                     }} />
-                                {/* <RNPickerSelect value={isCorrect} items={optionsSelect}/> */}
-                            </View>
-                            {/* <View style={styles.containerOptions}>
-                                <TextInput style={styles.inputOptions} placeholder="Opção2" placeholderTextColor='#D0D1CE' />
-                                <TextInput style={styles.inputOptions} placeholder="Teste" placeholderTextColor='#D0D1CE' />
                             </View>
                             <View style={styles.containerOptions}>
-                                <TextInput style={styles.inputOptions} placeholder="Opção3" placeholderTextColor='#D0D1CE' />
-                                <TextInput style={styles.inputOptions} placeholder="Teste" placeholderTextColor='#D0D1CE' />
+                                <TextInput style={styles.inputOptions} value={options[1].option2} placeholder="Opção2" placeholderTextColor='#D0D1CE' onChangeText={(e) => changeOption2(e)} />
+                                <SelectDropdown
+                                    data={optionsSelect}
+                                    buttonStyle={styles.select}
+                                    defaultButtonText="Correta"
+                                    rowStyle={styles.selectOptions}
+                                    buttonTextStyle={{ color: '#D0D1CE' }}
+                                    rowTextStyle={{ color: '#D0D1CE' }}
+                                    onSelect={(_, index) => {
+                                        let newArray = [...options];
+                                        newArray[1].correct2 = index
+                                        setOptions(newArray)
+                                    }} />
                             </View>
                             <View style={styles.containerOptions}>
-                                <TextInput style={styles.inputOptions} placeholder="Opção4" placeholderTextColor='#D0D1CE' />
-                                <TextInput style={styles.inputOptions} placeholder="Teste" placeholderTextColor='#D0D1CE' />
-                            </View> */}
+                                <TextInput style={styles.inputOptions} value={options[2].option3} placeholder="Opção3" placeholderTextColor='#D0D1CE' onChangeText={(e) => changeOption3(e)} />
+                                <SelectDropdown
+                                    data={optionsSelect}
+                                    buttonStyle={styles.select}
+                                    defaultButtonText="Correta"
+                                    rowStyle={styles.selectOptions}
+                                    buttonTextStyle={{ color: '#D0D1CE' }}
+                                    rowTextStyle={{ color: '#D0D1CE' }}
+                                    onSelect={(_, index) => {
+                                        let newArray = [...options];
+                                        newArray[2].correct3 = index
+                                        setOptions(newArray)
+                                    }} />
+                            </View>
+                            <View style={styles.containerOptions}>
+                                <TextInput style={styles.inputOptions} value={options[3].option4} placeholder="Opção4" placeholderTextColor='#D0D1CE' onChangeText={(e) => changeOption4(e)} />
+                                <SelectDropdown
+                                    data={optionsSelect}
+                                    buttonStyle={styles.select}
+                                    defaultButtonText="Correta"
+                                    rowStyle={styles.selectOptions}
+                                    buttonTextStyle={{ color: '#D0D1CE' }}
+                                    rowTextStyle={{ color: '#D0D1CE' }}
+                                    onSelect={(_, index) => {
+                                        let newArray = [...options];
+                                        newArray[3].correct4 = index
+                                        setOptions(newArray)
+                                    }} />
+                            </View>
                         </View>
                 }
             </ScrollView>
