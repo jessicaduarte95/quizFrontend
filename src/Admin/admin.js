@@ -231,7 +231,21 @@ export const Admin = () => {
     }
 
     const submitConfigurationOptions = async () => {
-        console.log("Teste", nivelOptions, questionOptions, options)
+        await Axios.post(`http://192.168.0.3:5000/insertOptions`, {
+            nivelOptions, questionOptions, options
+        }).then(() => {
+            setNotification(true)
+            setOptions([
+                { option1: '', correct1: 0 },
+                { option2: '', correct2: 0 },
+                { option3: '', correct3: 0 },
+                { option4: '', correct4: 0 }
+            ])
+            setNivelOptions('')
+            setQuestionOptions('')
+            setTimeout(() => setNotification(false), 2000)
+        }).catch((error) => console.log("Erro: ", error));
+
     }
 
     const changeOption1 = (data) => {
@@ -371,6 +385,9 @@ export const Admin = () => {
                                 <TouchableOpacity style={styles.buttonQuestionOptions} onPress={submitConfigurationOptions}>
                                     <Text style={styles.textButtonQuestionSave}>Salvar Configuração</Text>
                                 </TouchableOpacity>
+                                {
+                                    notification ? <Text style={{ color: 'green', marginRight: 10 }}>OK</Text> : ''
+                                }
                             </View>
                         </View>
                 }
