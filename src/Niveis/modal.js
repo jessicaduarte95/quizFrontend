@@ -166,7 +166,7 @@ export const ModalNivel = (props) => {
                 setOpcoes(response.data);
             })
             .catch((error) => {
-                // console.log(error);
+                console.log(error);
             })
         }
         
