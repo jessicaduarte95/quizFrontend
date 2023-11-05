@@ -169,7 +169,7 @@ export const ModalNivel = (props) => {
                 console.log(error);
             })
         }
-        console.log("Opções: ",opcoes);
+        
     }, [firstLevel, perguntaAtual])
 
     return (
