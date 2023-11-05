@@ -14,7 +14,6 @@ export const ModalNivel = (props) => {
             alignItems: 'center'
         },
         container: {
-            justifyContent: 'space-around',
             backgroundColor: '#000929',
             borderRadius: 15,
             borderWidth: 1.5,
@@ -26,7 +25,8 @@ export const ModalNivel = (props) => {
             },
             elevation: 5,
             shadowOpacity: 0.28,
-            shadowRadius: 4 
+            shadowRadius: 4,
+            width: 375
         },
         containerQuestion: {
             padding: 25, 
