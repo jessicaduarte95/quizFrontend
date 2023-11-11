@@ -1,4 +1,4 @@
-import { Principal } from './src/Principal/principal';
+// import { Principal } from './src/Principal/principal.jsx';
 import { NavigationContainer } from '@react-navigation/native';
 import Routes from './routes';
 
