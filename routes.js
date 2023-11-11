@@ -27,7 +27,7 @@ export default function Routes() {
         }}
         name="MudarSenha"
         component={MudarSenha} />
-        <Stack.Screen
+      <Stack.Screen
         options={{
           ...TransitionPresets.ModalSlideFromBottomIOS,
         }}
