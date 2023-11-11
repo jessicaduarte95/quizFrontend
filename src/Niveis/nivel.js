@@ -110,7 +110,6 @@ export const Nivel = () => {
                 .catch((error) => {
                     console.log(error);
                 })
-            console.log("nivel: ", nivel);
         }
         dadosUsuario
     }, [dadosUsuario, nivel])
@@ -141,28 +140,33 @@ export const Nivel = () => {
                     <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(1) }}>
                         <Text style={styles.actionText}>Nível 1</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(2) }}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(2) }} disabled={true}>
                         <Text style={styles.actionText}>Nível 2</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(3) }}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(3) }} disabled={true}>
                         <Text style={styles.actionText}>Nível 3</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(4) }}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(4) }} disabled={true}>
                         <Text style={styles.actionText}>Nível 4</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(5) }}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(5) }} disabled={true}>
                         <Text style={styles.actionText}>Nível 5</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(6) }}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(6) }} disabled={true}>
                         <Text style={styles.actionText}>Nível 6</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(7) }}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(7) }} disabled={true}>
                         <Text style={styles.actionText}>Nível 7</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(8) }}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(8) }} disabled={true}>
                         <Text style={styles.actionText}>Nível 8</Text>
                     </TouchableOpacity>
-                    <ModalNivel openModalNivel={openModalNivel} handleCloseModal={handleCloseModal} nivel={nivel} firstLevel={firstLevel} />
+                    <ModalNivel
+                        openModalNivel={openModalNivel}
+                        handleCloseModal={handleCloseModal}
+                        nivel={nivel}
+                        firstLevel={firstLevel}
+                    />
                 </View>
             </ScrollView>
             <View>
