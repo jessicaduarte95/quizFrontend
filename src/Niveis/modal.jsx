@@ -270,11 +270,19 @@ export const ModalNivel = (props) => {
                         </TouchableOpacity>
                         :""}
                    </View>
+                   {perguntaAtual == 9 ?
+                   <View style= {styles.conatinerNextQuestion}>
+                        <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => {setDisabled(false); change(); handleCloseModal()}}>
+                            <Text style={styles.textButton}>Fechar</Text>
+                        </TouchableOpacity>
+                    </View>
+                    :
                    <View style= {styles.conatinerNextQuestion}>
                         <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => {setPerguntaAtual(perguntaAtual + 1); setDisabled(false); change()}}>
                             <Text style={styles.textButton}>Próxima Pergunta</Text>
                         </TouchableOpacity>
                     </View>
+                    }
                </SafeAreaView>
            </View>
        </Modal>
