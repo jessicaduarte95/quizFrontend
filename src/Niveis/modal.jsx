@@ -180,6 +180,14 @@ export const ModalNivel = (props) => {
         }
     }
 
+    const handlePontosNivel = () => {
+        Axios.post("http://192.168.0.3:5000/cadastrarPontos", {
+            points
+        })
+        .then(() => {})
+        .catch((error) => {console.log(error);})
+    }
+
     useEffect(() => {
         if(firstLevel != undefined){
             Axios.post("http://192.168.0.3:5000/obterOpcoes", {
@@ -278,7 +286,7 @@ export const ModalNivel = (props) => {
                     </View>
                     :
                    <View style= {styles.conatinerNextQuestion}>
-                        <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => {setPerguntaAtual(perguntaAtual + 1); setDisabled(false); change()}}>
+                        <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => {setPerguntaAtual(perguntaAtual + 1); setDisabled(false); change(); handlePontosNivel()}}>
                             <Text style={styles.textButton}>Próxima Pergunta</Text>
                         </TouchableOpacity>
                     </View>
