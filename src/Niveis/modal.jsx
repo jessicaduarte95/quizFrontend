@@ -150,12 +150,34 @@ export const ModalNivel = (props) => {
     const [mudarCor3, setMudarCor3] = useState(false);
     const [mudarCor4, setMudarCor4] = useState(false);
     const [disabled, setDisabled] = useState(false);
+    const [points, setPoints] = useState(0);
 
     const change = () => {
         setMudarCor1(false);
         setMudarCor2(false);
         setMudarCor3(false);
         setMudarCor4(false);
+    }
+
+    const countPointOption1 = () => {
+        if(opcoes[0].correta == 1){
+            setPoints(points + 1)
+        }
+    }
+    const countPointOption2 = () => {
+        if(opcoes[1].correta == 1){
+            setPoints(points + 1)
+        }
+    }
+    const countPointOption3 = () => {
+        if(opcoes[2].correta == 1){
+            setPoints(points + 1)
+        }
+    }
+    const countPointOption4 = () => {
+        if(opcoes[3].correta == 1){
+            setPoints(points + 1)
+        }
     }
 
     useEffect(() => {
@@ -189,7 +211,7 @@ export const ModalNivel = (props) => {
                    </View>
                    <View style={styles.containerOptions}>
                         {mudarCor1 == true ? "":
-                            <TouchableOpacity style={styles.stylesOptions}  onPress={() => {setMudarCor1(true); setDisabled(true)}} disabled={disabled}>
+                            <TouchableOpacity style={styles.stylesOptions}  onPress={() => {setMudarCor1(true); setDisabled(true); countPointOption1()}} disabled={disabled}>
                                 <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
                             </TouchableOpacity>
                         }
@@ -205,7 +227,7 @@ export const ModalNivel = (props) => {
                         :""}
 
                         {mudarCor2 == true ? "":
-                        <TouchableOpacity style={styles.stylesOptions} onPress={() => {setMudarCor2(true); setDisabled(true)}} disabled={disabled}>
+                        <TouchableOpacity style={styles.stylesOptions} onPress={() => {setMudarCor2(true); setDisabled(true); countPointOption2()}} disabled={disabled}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao: ""}</Text>
                         </TouchableOpacity>
                         }
@@ -220,7 +242,7 @@ export const ModalNivel = (props) => {
                         </TouchableOpacity>
                         :""}
                         {mudarCor3 == true ? "":
-                        <TouchableOpacity style={styles.stylesOptions} onPress={() => {setMudarCor3(true); setDisabled(true)}} disabled={disabled}>
+                        <TouchableOpacity style={styles.stylesOptions} onPress={() => {setMudarCor3(true); setDisabled(true); countPointOption3()}} disabled={disabled}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao: ""}</Text>
                         </TouchableOpacity>
                         }
@@ -234,7 +256,7 @@ export const ModalNivel = (props) => {
                         </TouchableOpacity>
                         :""}
                         {mudarCor4 == true ? "":
-                        <TouchableOpacity style={styles.stylesOptions} onPress={() => {setMudarCor4(true); setDisabled(true)}} disabled={disabled}>
+                        <TouchableOpacity style={styles.stylesOptions} onPress={() => {setMudarCor4(true); setDisabled(true); countPointOption4()}} disabled={disabled}>
                             <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao: ""}</Text>
                         </TouchableOpacity>
                         }
