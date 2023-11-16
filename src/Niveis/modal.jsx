@@ -4,7 +4,7 @@ import Axios from "axios";
 
 export const ModalNivel = (props) => {
 
-    const {handleCloseModal, openModalNivel, firstLevel} = props;
+    const {handleCloseModal, openModalNivel, firstLevel, dadosUsuario} = props;
 
     const styles = StyleSheet.create({
         modalBackGround: {
@@ -182,7 +182,9 @@ export const ModalNivel = (props) => {
 
     const handlePontosNivel = () => {
         Axios.post("http://192.168.0.3:5000/cadastrarPontos", {
-            points
+            pontos: points,
+            id: dadosUsuario.id,
+            nivel: firstLevel[0].nivel
         })
         .then(() => {})
         .catch((error) => {console.log(error);})
