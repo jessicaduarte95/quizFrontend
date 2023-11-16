@@ -166,6 +166,7 @@ export const Nivel = () => {
                         handleCloseModal={handleCloseModal}
                         nivel={nivel}
                         firstLevel={firstLevel}
+                        dadosUsuario={dadosUsuario}
                     />
                 </View>
             </ScrollView>
