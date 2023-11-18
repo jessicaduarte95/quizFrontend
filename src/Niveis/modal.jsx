@@ -4,7 +4,7 @@ import Axios from "axios";
 
 export const ModalNivel = (props) => {
 
-    const {handleCloseModal, openModalNivel, firstLevel, dadosUsuario} = props;
+    const {handleCloseModal, openModalNivel, level, dadosUsuario} = props;
 
     const styles = StyleSheet.create({
         modalBackGround: {
@@ -184,16 +184,16 @@ export const ModalNivel = (props) => {
         Axios.post("http://192.168.0.3:5000/cadastrarPontos", {
             pontos: points,
             id: dadosUsuario.id,
-            nivel: firstLevel[0].nivel
+            nivel: level[0].nivel
         })
         .then(() => {})
         .catch((error) => {console.log(error);})
     }
 
     useEffect(() => {
-        if(firstLevel != undefined){
+        if(level != undefined){
             Axios.post("http://192.168.0.3:5000/obterOpcoes", {
-            firstLevel, perguntaAtual
+            level, perguntaAtual
             })
             .then((response) => {
                 setOpcoes(response.data);
@@ -203,7 +203,7 @@ export const ModalNivel = (props) => {
             })
         }
         
-    }, [firstLevel, perguntaAtual])
+    }, [level, perguntaAtual])
 
     return (
         <Modal
@@ -214,7 +214,7 @@ export const ModalNivel = (props) => {
            <View style={styles.modalBackGround}>
                <SafeAreaView style={styles.container}>
                    <View style={styles.containerQuestion}>
-                       <Text style={styles.question}>{firstLevel != undefined ? firstLevel[perguntaAtual].pergunta : ""}</Text>
+                       <Text style={styles.question}>{level != undefined ? level[perguntaAtual].pergunta : ""}</Text>
                    </View>
                    <View style={styles.containerNumberQuestion}>
                        <Text style={styles.numberQuestionText}>Pergunta {perguntaAtual + 1} / 10</Text>
@@ -282,7 +282,7 @@ export const ModalNivel = (props) => {
                    </View>
                    {perguntaAtual == 9 ?
                    <View style= {styles.conatinerNextQuestion}>
-                        <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => {setDisabled(false); change(); handleCloseModal()}}>
+                        <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => {setDisabled(false); change(); handleCloseModal(); handlePontosNivel()}}>
                             <Text style={styles.textButton}>Fechar</Text>
                         </TouchableOpacity>
                     </View>
