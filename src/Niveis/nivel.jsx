@@ -92,7 +92,7 @@ export const Nivel = () => {
     const handleOpenModal = () => setOpenModalNivel(true);
     const [nivel, setNivel] = useState(false);
     const handleChangeNivel = () => setNivel(0);
-    const [firstLevel, setFirstLevel] = useState()
+    const [level, setLevel] = useState()
 
     const perguntas = () => {
         handleChangeNivel()
@@ -105,7 +105,7 @@ export const Nivel = () => {
                 nivel
             })
                 .then((response) => {
-                    setFirstLevel(response.data);
+                    setLevel(response.data);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -140,7 +140,7 @@ export const Nivel = () => {
                     <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(1) }}>
                         <Text style={styles.actionText}>Nível 1</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(2) }} disabled={true}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(2) }}>
                         <Text style={styles.actionText}>Nível 2</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(3) }} disabled={true}>
@@ -165,7 +165,7 @@ export const Nivel = () => {
                         openModalNivel={openModalNivel}
                         handleCloseModal={handleCloseModal}
                         nivel={nivel}
-                        firstLevel={firstLevel}
+                        level={level}
                         dadosUsuario={dadosUsuario}
                     />
                 </View>
