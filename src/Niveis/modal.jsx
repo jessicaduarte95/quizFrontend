@@ -204,6 +204,7 @@ export const ModalNivel = (props) => {
         }
         
     }, [level, perguntaAtual])
+    
 
     return (
         <Modal
