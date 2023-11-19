@@ -192,6 +192,7 @@ export const ModalNivel = (props) => {
     }
 
     const handleChangeLevel = () => {
+        
         Axios.post("http://192.168.0.3:5000/habilitarNivel", {
             pontos: points,
             id: dadosUsuario.id,
