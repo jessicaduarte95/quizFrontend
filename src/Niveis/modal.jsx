@@ -4,7 +4,7 @@ import Axios from "axios";
 
 export const ModalNivel = (props) => {
 
-    const {handleCloseModal, openModalNivel, level, dadosUsuario} = props;
+    const { handleCloseModal, openModalNivel, level, dadosUsuario } = props;
 
     const styles = StyleSheet.create({
         modalBackGround: {
@@ -29,23 +29,23 @@ export const ModalNivel = (props) => {
             width: 375
         },
         containerQuestion: {
-            padding: 25, 
+            padding: 25,
             paddingBottom: 10
         },
         question: {
-            color: '#E5E5E5', 
+            color: '#E5E5E5',
             fontSize: 22
         },
         containerOptions: {
             alignItems: "center"
         },
         containerNumberQuestion: {
-            alignItems: 'flex-end', 
-            padding: 25, 
+            alignItems: 'flex-end',
+            padding: 25,
             paddingTop: 0
         },
         numberQuestionText: {
-            color: '#E5E5E5', 
+            color: '#E5E5E5',
             fontSize: 18
         },
         stylesOptions: {
@@ -65,7 +65,7 @@ export const ModalNivel = (props) => {
             elevation: 5,
             shadowOpacity: 0.28,
             shadowRadius: 4,
-            alignItems: 'center', 
+            alignItems: 'center',
             padding: 13,
             marginBottom: 10
         },
@@ -86,12 +86,13 @@ export const ModalNivel = (props) => {
             elevation: 5,
             shadowOpacity: 0.28,
             shadowRadius: 4,
-            alignItems: 'center', 
+            alignItems: 'center',
             padding: 13,
             marginBottom: 10,
             backgroundColor: "green"
         },
-        wrongQuestion: {zIndex: 99,
+        wrongQuestion: {
+            zIndex: 99,
             backgroundColor: '#000720',
             borderRadius: 6,
             marginRight: 8,
@@ -107,7 +108,7 @@ export const ModalNivel = (props) => {
             elevation: 5,
             shadowOpacity: 0.28,
             shadowRadius: 4,
-            alignItems: 'center', 
+            alignItems: 'center',
             padding: 13,
             marginBottom: 10,
             backgroundColor: "red"
@@ -119,8 +120,8 @@ export const ModalNivel = (props) => {
             fontSize: 17
         },
         conatinerNextQuestion: {
-            alignItems: 'flex-end', 
-            padding: 20, 
+            alignItems: 'flex-end',
+            padding: 20,
             paddingRight: 15
         },
         buttom: {
@@ -141,7 +142,7 @@ export const ModalNivel = (props) => {
             shadowOpacity: 0.28,
             shadowRadius: 4,
         },
-    })    
+    })
 
     const [perguntaAtual, setPerguntaAtual] = useState(0)
     const [opcoes, setOpcoes] = useState()
@@ -160,22 +161,22 @@ export const ModalNivel = (props) => {
     }
 
     const countPointOption1 = () => {
-        if(opcoes[0].correta == 1){
+        if (opcoes[0].correta == 1) {
             setPoints(points + 1)
         }
     }
     const countPointOption2 = () => {
-        if(opcoes[1].correta == 1){
+        if (opcoes[1].correta == 1) {
             setPoints(points + 1)
         }
     }
     const countPointOption3 = () => {
-        if(opcoes[2].correta == 1){
+        if (opcoes[2].correta == 1) {
             setPoints(points + 1)
         }
     }
     const countPointOption4 = () => {
-        if(opcoes[3].correta == 1){
+        if (opcoes[3].correta == 1) {
             setPoints(points + 1)
         }
     }
@@ -186,116 +187,127 @@ export const ModalNivel = (props) => {
             id: dadosUsuario.id,
             nivel: level[0].nivel
         })
-        .then(() => {})
-        .catch((error) => {console.log(error);})
+            .then(() => { })
+            .catch((error) => { console.log(error); })
+    }
+
+    const handleChangeLevel = () => {
+        
+        Axios.post("http://192.168.0.3:5000/habilitarNivel", {
+            pontos: points,
+            id: dadosUsuario.id,
+            nivel: level[0].nivel
+        })
+            .then(() => { })
+            .catch((error) => { console.log(error); })
     }
 
     useEffect(() => {
-        if(level != undefined){
+        if (level != undefined) {
             Axios.post("http://192.168.0.3:5000/obterOpcoes", {
-            level, perguntaAtual
+                level, perguntaAtual
             })
-            .then((response) => {
-                setOpcoes(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+                .then((response) => {
+                    setOpcoes(response.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
         }
-        
+
     }, [level, perguntaAtual])
-    
+
 
     return (
         <Modal
-        visible={openModalNivel}
-        transparent={true}
-        onRequestClose={handleCloseModal}
-        animationType='fade'>
-           <View style={styles.modalBackGround}>
-               <SafeAreaView style={styles.container}>
-                   <View style={styles.containerQuestion}>
-                       <Text style={styles.question}>{level != undefined ? level[perguntaAtual].pergunta : ""}</Text>
-                   </View>
-                   <View style={styles.containerNumberQuestion}>
-                       <Text style={styles.numberQuestionText}>Pergunta {perguntaAtual + 1} / 10</Text>
-                   </View>
-                   <View style={styles.containerOptions}>
-                        {mudarCor1 == true ? "":
-                            <TouchableOpacity style={styles.stylesOptions}  onPress={() => {setMudarCor1(true); setDisabled(true); countPointOption1()}} disabled={disabled}>
+            visible={openModalNivel}
+            transparent={true}
+            onRequestClose={handleCloseModal}
+            animationType='fade'>
+            <View style={styles.modalBackGround}>
+                <SafeAreaView style={styles.container}>
+                    <View style={styles.containerQuestion}>
+                        <Text style={styles.question}>{level != undefined ? level[perguntaAtual].pergunta : ""}</Text>
+                    </View>
+                    <View style={styles.containerNumberQuestion}>
+                        <Text style={styles.numberQuestionText}>Pergunta {perguntaAtual + 1} / 10</Text>
+                    </View>
+                    <View style={styles.containerOptions}>
+                        {mudarCor1 == true ? "" :
+                            <TouchableOpacity style={styles.stylesOptions} onPress={() => { setMudarCor1(true); setDisabled(true); countPointOption1() }} disabled={disabled}>
                                 <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
                             </TouchableOpacity>
                         }
 
                         {mudarCor1 == true && opcoes != undefined && opcoes[0].correta == 1 ?
-                        <TouchableOpacity style={styles.correctQuestion} onPress={() => {setDisabled(true)}} disabled={disabled}>
-                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
-                        </TouchableOpacity>
-                        : mudarCor1 == true && opcoes != undefined && opcoes[0].correta == 0 ?
-                        <TouchableOpacity style={styles.wrongQuestion} onPress={() => {setDisabled(true)}} disabled={disabled}>
-                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
-                        </TouchableOpacity>
-                        :""}
+                            <TouchableOpacity style={styles.correctQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
+                                <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
+                            </TouchableOpacity>
+                            : mudarCor1 == true && opcoes != undefined && opcoes[0].correta == 0 ?
+                                <TouchableOpacity style={styles.wrongQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
+                                    <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
+                                </TouchableOpacity>
+                                : ""}
 
-                        {mudarCor2 == true ? "":
-                        <TouchableOpacity style={styles.stylesOptions} onPress={() => {setMudarCor2(true); setDisabled(true); countPointOption2()}} disabled={disabled}>
-                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao: ""}</Text>
-                        </TouchableOpacity>
+                        {mudarCor2 == true ? "" :
+                            <TouchableOpacity style={styles.stylesOptions} onPress={() => { setMudarCor2(true); setDisabled(true); countPointOption2() }} disabled={disabled}>
+                                <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao : ""}</Text>
+                            </TouchableOpacity>
                         }
-                        
+
                         {mudarCor2 == true && opcoes != undefined && opcoes[1].correta == 1 ?
-                        <TouchableOpacity style={styles.correctQuestion} onPress={() => {setDisabled(true)}} disabled={disabled}>
-                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao : ""}</Text>
-                        </TouchableOpacity>
-                        : mudarCor2 == true && opcoes != undefined && opcoes[1].correta == 0 ?
-                        <TouchableOpacity style={styles.wrongQuestion} onPress={() => {setDisabled(true)}} disabled={disabled}>
-                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao : ""}</Text>
-                        </TouchableOpacity>
-                        :""}
-                        {mudarCor3 == true ? "":
-                        <TouchableOpacity style={styles.stylesOptions} onPress={() => {setMudarCor3(true); setDisabled(true); countPointOption3()}} disabled={disabled}>
-                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao: ""}</Text>
-                        </TouchableOpacity>
+                            <TouchableOpacity style={styles.correctQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
+                                <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao : ""}</Text>
+                            </TouchableOpacity>
+                            : mudarCor2 == true && opcoes != undefined && opcoes[1].correta == 0 ?
+                                <TouchableOpacity style={styles.wrongQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
+                                    <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].opcao : ""}</Text>
+                                </TouchableOpacity>
+                                : ""}
+                        {mudarCor3 == true ? "" :
+                            <TouchableOpacity style={styles.stylesOptions} onPress={() => { setMudarCor3(true); setDisabled(true); countPointOption3() }} disabled={disabled}>
+                                <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao : ""}</Text>
+                            </TouchableOpacity>
                         }
                         {mudarCor3 == true && opcoes != undefined && opcoes[2].correta == 1 ?
-                        <TouchableOpacity style={styles.correctQuestion} onPress={() => {setDisabled(true)}} disabled={disabled}>
-                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao : ""}</Text>
-                        </TouchableOpacity>
-                        : mudarCor3 == true && opcoes != undefined && opcoes[2].correta == 0 ?
-                        <TouchableOpacity style={styles.wrongQuestion} onPress={() => {setDisabled(true)}} disabled={disabled}>
-                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao : ""}</Text>
-                        </TouchableOpacity>
-                        :""}
-                        {mudarCor4 == true ? "":
-                        <TouchableOpacity style={styles.stylesOptions} onPress={() => {setMudarCor4(true); setDisabled(true); countPointOption4()}} disabled={disabled}>
-                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao: ""}</Text>
-                        </TouchableOpacity>
+                            <TouchableOpacity style={styles.correctQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
+                                <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao : ""}</Text>
+                            </TouchableOpacity>
+                            : mudarCor3 == true && opcoes != undefined && opcoes[2].correta == 0 ?
+                                <TouchableOpacity style={styles.wrongQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
+                                    <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].opcao : ""}</Text>
+                                </TouchableOpacity>
+                                : ""}
+                        {mudarCor4 == true ? "" :
+                            <TouchableOpacity style={styles.stylesOptions} onPress={() => { setMudarCor4(true); setDisabled(true); countPointOption4() }} disabled={disabled}>
+                                <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao : ""}</Text>
+                            </TouchableOpacity>
                         }
                         {mudarCor4 == true && opcoes != undefined && opcoes[3].correta == 1 ?
-                        <TouchableOpacity style={styles.correctQuestion} onPress={() => {setDisabled(true)}} disabled={disabled}>
-                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao : ""}</Text>
-                        </TouchableOpacity>
-                        : mudarCor4 == true && opcoes != undefined && opcoes[3].correta == 0 ?
-                        <TouchableOpacity style={styles.wrongQuestion} onPress={() => {setDisabled(true)}} disabled={disabled}>
-                            <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao : ""}</Text>
-                        </TouchableOpacity>
-                        :""}
-                   </View>
-                   {perguntaAtual == 9 ?
-                   <View style= {styles.conatinerNextQuestion}>
-                        <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => {setDisabled(false); change(); handleCloseModal(); handlePontosNivel(); setPerguntaAtual(0); setPoints(0)}}>
-                            <Text style={styles.textButton}>Fechar</Text>
-                        </TouchableOpacity>
+                            <TouchableOpacity style={styles.correctQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
+                                <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao : ""}</Text>
+                            </TouchableOpacity>
+                            : mudarCor4 == true && opcoes != undefined && opcoes[3].correta == 0 ?
+                                <TouchableOpacity style={styles.wrongQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
+                                    <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao : ""}</Text>
+                                </TouchableOpacity>
+                                : ""}
                     </View>
-                    :
-                   <View style= {styles.conatinerNextQuestion}>
-                        <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => {setPerguntaAtual(perguntaAtual + 1); setDisabled(false); change(); handlePontosNivel()}}>
-                            <Text style={styles.textButton}>Próxima Pergunta</Text>
-                        </TouchableOpacity>
-                    </View>
+                    {perguntaAtual == 9 ?
+                        <View style={styles.conatinerNextQuestion}>
+                            <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => { handleChangeLevel(), setDisabled(false); change(); handleCloseModal(); handlePontosNivel(); setPerguntaAtual(0); setPoints(0); }}>
+                                <Text style={styles.textButton}>Fechar</Text>
+                            </TouchableOpacity>
+                        </View>
+                        :
+                        <View style={styles.conatinerNextQuestion}>
+                            <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => { setPerguntaAtual(perguntaAtual + 1); setDisabled(false); change(); handlePontosNivel() }}>
+                                <Text style={styles.textButton}>Próxima Pergunta</Text>
+                            </TouchableOpacity>
+                        </View>
                     }
-               </SafeAreaView>
-           </View>
-       </Modal>
+                </SafeAreaView>
+            </View>
+        </Modal>
     )
 }
