@@ -93,6 +93,11 @@ export const Nivel = () => {
     const [nivel, setNivel] = useState(false);
     const handleChangeNivel = () => setNivel(0);
     const [level, setLevel] = useState()
+    const [disabled, setDisabled] = useState({
+        nivel2: true, nivel3: true, nivel4: true, 
+        nivel5: true, nivel6: true, nivel7: true, 
+        nivel8: true
+    })
 
     const perguntas = () => {
         handleChangeNivel()
@@ -143,22 +148,22 @@ export const Nivel = () => {
                     <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(2) }}>
                         <Text style={styles.actionText}>Nível 2</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(3) }} disabled={true}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(3) }} disabled={disabled.nivel3}>
                         <Text style={styles.actionText}>Nível 3</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(4) }} disabled={true}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(4) }} disabled={disabled.nivel4}>
                         <Text style={styles.actionText}>Nível 4</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(5) }} disabled={true}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(5) }} disabled={disabled.nivel5}>
                         <Text style={styles.actionText}>Nível 5</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(6) }} disabled={true}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(6) }} disabled={disabled.nivel6}>
                         <Text style={styles.actionText}>Nível 6</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(7) }} disabled={true}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(7) }} disabled={disabled.nivel7}>
                         <Text style={styles.actionText}>Nível 7</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(8) }} disabled={true}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(8) }} disabled={disabled.nivel8}>
                         <Text style={styles.actionText}>Nível 8</Text>
                     </TouchableOpacity>
                     <ModalNivel
