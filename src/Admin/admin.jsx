@@ -15,6 +15,7 @@ export const Admin = () => {
             alignItems: 'center'
         },
         containerButtonSair: {
+            paddingTop: 12,
             flexDirection: 'row',
             justifyContent: 'flex-end',
             width: '100%'

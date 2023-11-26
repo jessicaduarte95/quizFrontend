@@ -16,7 +16,7 @@ export const Nivel = () => {
             alignItems: 'center',
         },
         buttonSairAjuda: {
-            paddingTop: 35,
+            paddingTop: 42,
             flexDirection: 'row',
             justifyContent: 'flex-end',
             width: '100%'
