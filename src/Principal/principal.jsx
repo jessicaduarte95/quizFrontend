@@ -20,7 +20,7 @@ export const Principal = () => {
         },
         loginCadastro: {
           flex: 1,
-          paddingTop: '12%',
+          paddingTop: 54,
           flexDirection: 'row',
           width: '100%',
           justifyContent: 'center'
