@@ -94,14 +94,25 @@ export const Nivel = () => {
     const handleChangeNivel = () => setNivel(0);
     const [level, setLevel] = useState()
     const [disabled, setDisabled] = useState({
-        nivel2: true, nivel3: true, nivel4: true, 
-        nivel5: true, nivel6: true, nivel7: true, 
+        nivel2: true, nivel3: true, nivel4: true,
+        nivel5: true, nivel6: true, nivel7: true,
         nivel8: true
     })
 
     const perguntas = () => {
         handleChangeNivel()
         handleOpenModal()
+    }
+
+    const getEnableLevel = () => {
+        let id = dadosUsuario.id
+        Axios.get(`http://192.168.0.3:5000/habilitarNivel/${id}`)
+            .then((response) => {
+                console.log("Response: ", response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     useEffect(() => {
@@ -118,6 +129,12 @@ export const Nivel = () => {
         }
         dadosUsuario
     }, [dadosUsuario, nivel])
+
+    useEffect(() => {
+        if(dadosUsuario.id){
+            getEnableLevel()
+        }
+    }, [])
 
     return (
         <LinearGradient
