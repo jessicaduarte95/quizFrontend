@@ -191,15 +191,22 @@ export const ModalNivel = (props) => {
             .catch((error) => { console.log(error); })
     }
 
-    const handleChangeLevel = () => {
-        
-        Axios.post("http://192.168.0.3:5000/habilitarNivel", {
+    const handleChangeLevel = async () => {
+
+        await Axios.post("http://192.168.0.3:5000/habilitarNivel", {
             pontos: points,
             id: dadosUsuario.id,
             nivel: level[0].nivel
         })
-            .then(() => { })
+            .then(() => {})
             .catch((error) => { console.log(error); })
+
+        setDisabled(false);
+        change();
+        handleCloseModal();
+        handlePontosNivel();
+        setPerguntaAtual(0);
+        setPoints(0);
     }
 
     useEffect(() => {
@@ -295,7 +302,7 @@ export const ModalNivel = (props) => {
                     </View>
                     {perguntaAtual == 9 ?
                         <View style={styles.conatinerNextQuestion}>
-                            <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => { handleChangeLevel(), setDisabled(false); change(); handleCloseModal(); handlePontosNivel(); setPerguntaAtual(0); setPoints(0); }}>
+                            <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => { handleChangeLevel() }}>
                                 <Text style={styles.textButton}>Fechar</Text>
                             </TouchableOpacity>
                         </View>
