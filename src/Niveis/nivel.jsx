@@ -109,6 +109,22 @@ export const Nivel = () => {
         Axios.get(`http://192.168.0.3:5000/habilitarNivel/${id}`)
             .then((response) => {
                 console.log("Response: ", response.data);
+                let dados = response.data  
+                dados.forEach(function(object) {
+                    if (object.nivel == 2){
+                        setDisabled(prevState => ({
+                            ...prevState,
+                            nivel2: false
+                        }))
+                    }else if(object.nivel == 3){
+                        setDisabled(prevState => ({
+                            ...prevState,
+                            nivel3: false
+                        }))
+                    }
+                })
+
+                console.log('disabled', disabled)
             })
             .catch((error) => {
                 console.log(error);

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 import Axios from "axios";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const ModalNivel = (props) => {
 
@@ -30,7 +31,14 @@ export const ModalNivel = (props) => {
         },
         containerQuestion: {
             padding: 25,
+            paddingTop: 0,
             paddingBottom: 10
+        },
+        closeButtom: {
+            display: 'flex', 
+            alignItems: 'flex-end', 
+            paddingRight: 8, 
+            paddingTop: 8
         },
         question: {
             color: '#E5E5E5',
@@ -233,6 +241,11 @@ export const ModalNivel = (props) => {
             animationType='fade'>
             <View style={styles.modalBackGround}>
                 <SafeAreaView style={styles.container}>
+                    <View style={styles.closeButtom}>
+                        <TouchableOpacity  onPress={handleCloseModal}>
+                            <Icon name="close" size={27} color="#3273DC" />
+                        </TouchableOpacity>
+                    </View>
                     <View style={styles.containerQuestion}>
                         <Text style={styles.question}>{level != undefined ? level[perguntaAtual].pergunta : ""}</Text>
                     </View>
