@@ -23,6 +23,7 @@ export const Nivel = () => {
         },
         buttonAdmin: {
             color: '#D0D1CE',
+            paddingLeft: 10,
             paddingRight: 15,
             fontSize: 17,
             display: 'flex',
@@ -121,6 +122,11 @@ export const Nivel = () => {
                             ...prevState,
                             nivel3: false
                         }))
+                    }else if(object.nivel == 4){
+                        setDisabled(prevState => ({
+                            ...prevState,
+                            nivel4: false
+                        }))
                     }
                 })
 
@@ -160,9 +166,11 @@ export const Nivel = () => {
             locations={[.3, 0.67]}
             colors={['#3544A7', '#000720']}>
             <View style={styles.buttonSairAjuda}>
+                {dadosUsuario.id == 1 ?
                 <TouchableOpacity onPress={() => navigation.navigate('Admin')}>
                     <Text style={styles.buttonAdmin}>Admin</Text>
                 </TouchableOpacity>
+                :''}
                 <TouchableOpacity>
                     <Text style={styles.buttonAjuda}>Ajuda</Text>
                 </TouchableOpacity>
@@ -178,7 +186,7 @@ export const Nivel = () => {
                     <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(1) }}>
                         <Text style={styles.actionText}>Nível 1</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(2) }}>
+                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(2) }} disabled={disabled.nivel2}>
                         <Text style={styles.actionText}>Nível 2</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(3) }} disabled={disabled.nivel3}>
