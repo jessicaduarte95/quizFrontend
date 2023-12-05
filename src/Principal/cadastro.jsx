@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import  Axios  from 'axios';
-import { ActivityIndicator, StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
+import Axios from 'axios';
+import { ActivityIndicator, StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput, Platform, KeyboardAvoidingView } from 'react-native';
 
 export const Cadastrar = (props) => {
-    const {openCadastrar, handleClose, handleOpenCadastrar, handleOpenCadastroFeito} = props; 
+    const { openCadastrar, handleClose, handleOpenCadastrar, handleOpenCadastroFeito } = props;
 
     const styles = StyleSheet.create({
         modalBackGround: {
@@ -26,7 +26,7 @@ export const Cadastrar = (props) => {
             },
             elevation: 5,
             shadowOpacity: 0.28,
-            shadowRadius: 4 
+            shadowRadius: 4
         },
         content: {
             marginVertical: -15,
@@ -89,7 +89,7 @@ export const Cadastrar = (props) => {
             },
             elevation: 5,
             shadowOpacity: 0.28,
-            shadowRadius: 4 
+            shadowRadius: 4
         },
         alertButtom: {
             zIndex: 99,
@@ -122,7 +122,7 @@ export const Cadastrar = (props) => {
             },
             elevation: 5,
             shadowOpacity: 0.28,
-            shadowRadius: 4 
+            shadowRadius: 4
         },
         buttonOk: {
             marginVertical: -15,
@@ -153,26 +153,26 @@ export const Cadastrar = (props) => {
 
     const cadastroUsuario = async () => {
         setLoading(true);
-        if (senha.length >= 6 && nome.length > 0 && email.length > 0){
+        if (senha.length >= 6 && nome.length > 0 && email.length > 0) {
             await Axios.post(`http://192.168.0.3:5000/cadastrar`, {
                 nome, email, senha
             })
-            .then((response) => {
-                if(response.data == true){
+                .then((response) => {
+                    if (response.data == true) {
+                        handleClose();
+                        handleOpenCadastrar();
+                        setAlertImplemented('Esse email já existe! Cadastre outro email ou restaure a sua senha.');
+                        handleOpenAlert();
+                    } else if (response.data == false) {
+                        handleClose();
+                        handleOpenCadastroFeito()
+                    }
+                })
+                .catch((error) => {
+                    console.log(error)
                     handleClose();
-                    handleOpenCadastrar();
-                    setAlertImplemented('Esse email já existe! Cadastre outro email ou restaure a sua senha.');
-                    handleOpenAlert();
-                }else if(response.data == false){
-                    handleClose();
-                    handleOpenCadastroFeito()
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-                handleClose();
-            })
-        }else if (senha.length < 6 || nome.length == 0 || email.length == 0){
+                })
+        } else if (senha.length < 6 || nome.length == 0 || email.length == 0) {
             setAlertImplemented('A senha deve conter no mínimo 6 caracteres e todos os campos devem ser preenchidos.')
             await handleClose();
             await handleOpenCadastrar()
@@ -188,22 +188,24 @@ export const Cadastrar = (props) => {
         alertImplemented;
     }, [alertImplemented])
 
-    return(
-        <Modal 
-        visible={openCadastrar}
-        transparent={true}
-        onRequestClose={handleClose}
-        animationType='fade'>
-            <View style={styles.modalBackGround}>
+    return (
+        <Modal
+            visible={openCadastrar}
+            transparent={true}
+            onRequestClose={handleClose}
+            animationType='fade'>
+            <KeyboardAvoidingView
+                behavior={Platform.OS == "ios" ? 'padding' : 'height'}
+                style={styles.modalBackGround}>
                 <SafeAreaView style={styles.container}>
-                    <View style={{padding: '5%'}}>
-                        <Text style={{color: '#E5E5E5', fontSize: 30}}>Cadastrar</Text>
+                    <View style={{ padding: '5%' }}>
+                        <Text style={{ color: '#E5E5E5', fontSize: 30 }}>Cadastrar</Text>
                     </View>
-                    <TextInput style={styles.input} placeholder="Nome"  placeholderTextColor='#D0D1CE' onChangeText={text => setNome(text)}/>
-                    <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE'onChangeText={text => setEmail(text)}/>
-                    <TextInput style={styles.inputSenha} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE'onChangeText={text => setSenha(text)}/>
+                    <TextInput style={styles.input} placeholder="Nome" placeholderTextColor='#D0D1CE' onChangeText={text => setNome(text)} />
+                    <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE' onChangeText={text => setEmail(text)} />
+                    <TextInput style={styles.inputSenha} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setSenha(text)} />
                     <View>
-                        <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE'}}>Sua senha deve ter no mínimo 6 caracteres.</Text>
+                        <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE' }}>Sua senha deve ter no mínimo 6 caracteres.</Text>
                     </View>
                     <View style={styles.content}>
                         <TouchableOpacity style={styles.saveButtom} onPress={cadastroUsuario} activeOpacity={0.7}>
@@ -220,25 +222,25 @@ export const Cadastrar = (props) => {
                         </TouchableOpacity>
                     </View>
                 </SafeAreaView>
-            </View>
-            <Modal 
-            visible={openAlert}
-            transparent={true}
-            onRequestClose={handleCloseAlert}
-            animationType='fade'>
+            </KeyboardAvoidingView>
+            <Modal
+                visible={openAlert}
+                transparent={true}
+                onRequestClose={handleCloseAlert}
+                animationType='fade'>
                 <View style={styles.modalBackGround}>
                     <SafeAreaView style={styles.containerAlert}>
-                        <View style={{padding: '5%'}}>
-                            <Text style={{color: '#E5E5E5', fontSize: 30}}>Atenção</Text>
+                        <View style={{ padding: '5%' }}>
+                            <Text style={{ color: '#E5E5E5', fontSize: 30 }}>Atenção</Text>
                         </View>
                         <View>
-                            <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17}}>
+                            <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17 }}>
                                 {alertImplemented}
                             </Text>
                         </View>
                         <View style={styles.buttonOk}>
                             <TouchableOpacity style={styles.alertButtom} onPress={handleCloseAlert} activeOpacity={0.7}>
-                                <Text style={{textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5',  fontSize: 17}}>Ok</Text>
+                                <Text style={{ textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5', fontSize: 17 }}>Ok</Text>
                             </TouchableOpacity>
                         </View>
                     </SafeAreaView>

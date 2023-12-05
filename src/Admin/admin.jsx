@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView, TextInput, Platform, KeyboardAvoidingView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Axios from 'axios';
@@ -67,7 +67,7 @@ export const Admin = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            marginTop: 120,
+            marginTop: 40,
             marginRight: 15,
             marginLeft: 15,
             height: 360,
@@ -83,11 +83,7 @@ export const Admin = () => {
             marginTop: 40,
             marginRight: 15,
             marginLeft: 15,
-            height: 530,
-            borderRadius: 15,
-            borderWidth: 1.5,
-            borderColor: 'rgba(50,115,220, 0.4)',
-            shadowRadius: 4
+            height: 530
         },
         containerButtonQuestion: {
             width: '95%',
@@ -100,7 +96,14 @@ export const Admin = () => {
             color: '#DADADA',
             fontSize: 18,
             display: 'flex',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        configTextOptions: {
+            color: '#DADADA',
+            fontSize: 18,
+            marginLeft: 80,
+            alignItems: 'center',
         },
         configLevelQuestion: {
             backgroundColor: "#000720",
@@ -133,6 +136,7 @@ export const Admin = () => {
             marginBottom: 10,
             marginTop: 15,
             paddingLeft: 8,
+            marginLeft: 17,
             height: 42,
             borderWidth: 1,
             borderColor: 'rgba(50,115,220, 0.4)',
@@ -145,7 +149,7 @@ export const Admin = () => {
             shadowOpacity: 0.28,
             shadowRadius: 4,
             color: '#D0D1CE',
-            width: "90%"
+            width: "91.5%"
         },
         containerOptions: {
             width: "100%",
@@ -303,7 +307,9 @@ export const Admin = () => {
             <ScrollView style={styles.scroll}>
                 {
                     configQuestion ?
-                        <View style={styles.containerconfigText}>
+                        <KeyboardAvoidingView
+                            behavior={Platform.OS == "ios" ? 'padding' : 'height'}
+                            style={styles.containerconfigText}>
                             <Text style={styles.configText}>Configuração das Questões</Text>
                             <TextInput style={styles.configLevelQuestion} keyboardType="numeric" placeholder="Id" placeholderTextColor='#D0D1CE' value={id} onChangeText={text => setId(text)} />
                             <TextInput style={styles.configLevelQuestion} keyboardType="numeric" placeholder="Nível" placeholderTextColor='#D0D1CE' value={nivel} onChangeText={text => setNivel(text)} />
@@ -316,81 +322,86 @@ export const Admin = () => {
                                     notification ? <Text style={{ color: 'green', marginRight: 10 }}>OK</Text> : ''
                                 }
                             </View>
-                        </View>
+                        </KeyboardAvoidingView>
                         :
-                        <View style={styles.containerconfigOptions}>
-                            <Text style={styles.configText}>Configuração das Opções</Text>
-                            <TextInput style={styles.input} placeholder="Nível" placeholderTextColor='#D0D1CE' value={nivelOptions} onChangeText={text => setNivelOptions(text)} />
-                            <TextInput style={styles.input} placeholder="Questão" placeholderTextColor='#D0D1CE' value={questionOptions} onChangeText={text => setQuestionOptions(text)} />
-                            <View style={styles.containerOptions}>
-                                <TextInput style={styles.inputOptions} value={options[0].option1} placeholder="Opção1" placeholderTextColor='#D0D1CE' onChangeText={(e) => changeOption1(e)} />
-                                <SelectDropdown
-                                    data={optionsSelect}
-                                    buttonStyle={styles.select}
-                                    defaultButtonText="Correta"
-                                    rowStyle={styles.selectOptions}
-                                    buttonTextStyle={{ color: '#D0D1CE' }}
-                                    rowTextStyle={{ color: '#D0D1CE' }}
-                                    onSelect={(_, index) => {
-                                        let newArray = [...options];
-                                        newArray[0].correct1 = index
-                                        setOptions(newArray)
-                                    }} />
-                            </View>
-                            <View style={styles.containerOptions}>
-                                <TextInput style={styles.inputOptions} value={options[1].option2} placeholder="Opção2" placeholderTextColor='#D0D1CE' onChangeText={(e) => changeOption2(e)} />
-                                <SelectDropdown
-                                    data={optionsSelect}
-                                    buttonStyle={styles.select}
-                                    defaultButtonText="Correta"
-                                    rowStyle={styles.selectOptions}
-                                    buttonTextStyle={{ color: '#D0D1CE' }}
-                                    rowTextStyle={{ color: '#D0D1CE' }}
-                                    onSelect={(_, index) => {
-                                        let newArray = [...options];
-                                        newArray[1].correct2 = index
-                                        setOptions(newArray)
-                                    }} />
-                            </View>
-                            <View style={styles.containerOptions}>
-                                <TextInput style={styles.inputOptions} value={options[2].option3} placeholder="Opção3" placeholderTextColor='#D0D1CE' onChangeText={(e) => changeOption3(e)} />
-                                <SelectDropdown
-                                    data={optionsSelect}
-                                    buttonStyle={styles.select}
-                                    defaultButtonText="Correta"
-                                    rowStyle={styles.selectOptions}
-                                    buttonTextStyle={{ color: '#D0D1CE' }}
-                                    rowTextStyle={{ color: '#D0D1CE' }}
-                                    onSelect={(_, index) => {
-                                        let newArray = [...options];
-                                        newArray[2].correct3 = index
-                                        setOptions(newArray)
-                                    }} />
-                            </View>
-                            <View style={styles.containerOptions}>
-                                <TextInput style={styles.inputOptions} value={options[3].option4} placeholder="Opção4" placeholderTextColor='#D0D1CE' onChangeText={(e) => changeOption4(e)} />
-                                <SelectDropdown
-                                    data={optionsSelect}
-                                    buttonStyle={styles.select}
-                                    defaultButtonText="Correta"
-                                    rowStyle={styles.selectOptions}
-                                    buttonTextStyle={{ color: '#D0D1CE' }}
-                                    rowTextStyle={{ color: '#D0D1CE' }}
-                                    onSelect={(_, index) => {
-                                        let newArray = [...options];
-                                        newArray[3].correct4 = index
-                                        setOptions(newArray)
-                                    }} />
-                            </View>
-                            <View style={styles.containerButtonQuestion}>
-                                <TouchableOpacity style={styles.buttonQuestionOptions} onPress={submitConfigurationOptions}>
-                                    <Text style={styles.textButtonQuestionSave}>Salvar Configuração</Text>
-                                </TouchableOpacity>
-                                {
-                                    notification ? <Text style={{ color: 'green', marginRight: 10 }}>OK</Text> : ''
-                                }
-                            </View>
-                        </View>
+                        <KeyboardAvoidingView
+                            behavior={Platform.OS == "ios" ? 'padding' : 'height'}
+                            keyboardVerticalOffset={250}
+                            style={styles.containerconfigOptions}>
+                            <ScrollView style={{width: "100%"}}>
+                                <Text style={styles.configTextOptions}>Configuração das Opções</Text>
+                                <TextInput style={styles.input} placeholder="Nível" placeholderTextColor='#D0D1CE' value={nivelOptions} onChangeText={text => setNivelOptions(text)} />
+                                <TextInput style={styles.input} placeholder="Questão" placeholderTextColor='#D0D1CE' value={questionOptions} onChangeText={text => setQuestionOptions(text)} />
+                                <View style={styles.containerOptions}>
+                                    <TextInput style={styles.inputOptions} value={options[0].option1} placeholder="Opção1" placeholderTextColor='#D0D1CE' onChangeText={(e) => changeOption1(e)} />
+                                    <SelectDropdown
+                                        data={optionsSelect}
+                                        buttonStyle={styles.select}
+                                        defaultButtonText="Correta"
+                                        rowStyle={styles.selectOptions}
+                                        buttonTextStyle={{ color: '#D0D1CE' }}
+                                        rowTextStyle={{ color: '#D0D1CE' }}
+                                        onSelect={(_, index) => {
+                                            let newArray = [...options];
+                                            newArray[0].correct1 = index
+                                            setOptions(newArray)
+                                        }} />
+                                </View>
+                                <View style={styles.containerOptions}>
+                                    <TextInput style={styles.inputOptions} value={options[1].option2} placeholder="Opção2" placeholderTextColor='#D0D1CE' onChangeText={(e) => changeOption2(e)} />
+                                    <SelectDropdown
+                                        data={optionsSelect}
+                                        buttonStyle={styles.select}
+                                        defaultButtonText="Correta"
+                                        rowStyle={styles.selectOptions}
+                                        buttonTextStyle={{ color: '#D0D1CE' }}
+                                        rowTextStyle={{ color: '#D0D1CE' }}
+                                        onSelect={(_, index) => {
+                                            let newArray = [...options];
+                                            newArray[1].correct2 = index
+                                            setOptions(newArray)
+                                        }} />
+                                </View>
+                                <View style={styles.containerOptions}>
+                                    <TextInput style={styles.inputOptions} value={options[2].option3} placeholder="Opção3" placeholderTextColor='#D0D1CE' onChangeText={(e) => changeOption3(e)} />
+                                    <SelectDropdown
+                                        data={optionsSelect}
+                                        buttonStyle={styles.select}
+                                        defaultButtonText="Correta"
+                                        rowStyle={styles.selectOptions}
+                                        buttonTextStyle={{ color: '#D0D1CE' }}
+                                        rowTextStyle={{ color: '#D0D1CE' }}
+                                        onSelect={(_, index) => {
+                                            let newArray = [...options];
+                                            newArray[2].correct3 = index
+                                            setOptions(newArray)
+                                        }} />
+                                </View>
+                                <View style={styles.containerOptions}>
+                                    <TextInput style={styles.inputOptions} value={options[3].option4} placeholder="Opção4" placeholderTextColor='#D0D1CE' onChangeText={(e) => changeOption4(e)} />
+                                    <SelectDropdown
+                                        data={optionsSelect}
+                                        buttonStyle={styles.select}
+                                        defaultButtonText="Correta"
+                                        rowStyle={styles.selectOptions}
+                                        buttonTextStyle={{ color: '#D0D1CE' }}
+                                        rowTextStyle={{ color: '#D0D1CE' }}
+                                        onSelect={(_, index) => {
+                                            let newArray = [...options];
+                                            newArray[3].correct4 = index
+                                            setOptions(newArray)
+                                        }} />
+                                </View>
+                                <View style={styles.containerButtonQuestion}>
+                                    <TouchableOpacity style={styles.buttonQuestionOptions} onPress={submitConfigurationOptions}>
+                                        <Text style={styles.textButtonQuestionSave}>Salvar Configuração</Text>
+                                    </TouchableOpacity>
+                                    {
+                                        notification ? <Text style={{ color: 'green', marginRight: 10 }}>OK</Text> : ''
+                                    }
+                                </View>
+                            </ScrollView>
+                        </KeyboardAvoidingView>
                 }
             </ScrollView>
         </LinearGradient>
