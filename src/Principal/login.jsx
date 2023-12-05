@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput, Platform, KeyboardAvoidingView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import  Axios  from 'axios';
+import Axios from 'axios';
 
 export const Login = (props) => {
-    const {openLogin, handleCloseLogin, handleOpenLogin} = props;
+    const { openLogin, handleCloseLogin, handleOpenLogin } = props;
     const navigation = useNavigation();
 
     const styles = StyleSheet.create({
@@ -28,7 +28,7 @@ export const Login = (props) => {
             },
             elevation: 5,
             shadowOpacity: 0.28,
-            shadowRadius: 4 
+            shadowRadius: 4
         },
         content: {
             marginVertical: -8,
@@ -71,7 +71,7 @@ export const Login = (props) => {
             },
             elevation: 5,
             shadowOpacity: 0.28,
-            shadowRadius: 4 
+            shadowRadius: 4
         },
         actionText: {
             textAlign: 'center',
@@ -92,7 +92,7 @@ export const Login = (props) => {
             },
             elevation: 5,
             shadowOpacity: 0.28,
-            shadowRadius: 4 
+            shadowRadius: 4
         },
         alertButtom: {
             marginRight: '5%',
@@ -129,10 +129,10 @@ export const Login = (props) => {
         await Axios.post(`http://192.168.0.3:5000/login`, {
             loginEmail, loginSenha
         }).then((response) => {
-            if(response.data[0] == true){
+            if (response.data[0] == true) {
                 setDadosUsuario(response.data[1])
                 handleCloseLogin()
-            }else{
+            } else {
                 handleCloseLogin();
                 handleOpenLogin();
                 handleOpenAlert();
@@ -152,26 +152,28 @@ export const Login = (props) => {
         setLoadingMudarSenha(false);
     }
 
-    useEffect (() => {
+    useEffect(() => {
         dadosUsuario
-        if(dadosUsuario !== ""){
-            navigation.navigate('Nivel', {dadosUsuario: dadosUsuario})
+        if (dadosUsuario !== "") {
+            navigation.navigate('Nivel', { dadosUsuario: dadosUsuario })
         }
     }, [dadosUsuario])
 
-    return(
+    return (
         <Modal
-        visible={openLogin}
-        transparent={true}
-        onRequestClose={handleCloseLogin}
-        animationType='fade'>
-            <View style={styles.modalBackGround}>
+            visible={openLogin}
+            transparent={true}
+            onRequestClose={handleCloseLogin}
+            animationType='fade'>
+            <KeyboardAvoidingView
+                behavior={Platform.OS == "ios" ? 'padding' : 'height'}
+                style={styles.modalBackGround}>
                 <SafeAreaView style={styles.container}>
-                    <View style={{padding: '5%'}}>
-                        <Text style={{color: '#E5E5E5', fontSize: 30}}>Entrar</Text>
+                    <View style={{ padding: '5%' }}>
+                        <Text style={{ color: '#E5E5E5', fontSize: 30 }}>Entrar</Text>
                     </View>
-                    <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginEmail(text)}/>
-                    <TextInput style={styles.input} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginSenha(text)}/>
+                    <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginEmail(text)} />
+                    <TextInput style={styles.input} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setLoginSenha(text)} />
                     <View style={styles.content}>
                         {loadingMudarSenha == true ?
                             <View style={[styles.containerLoading, styles.horizontalLoading]}>
@@ -184,13 +186,13 @@ export const Login = (props) => {
                         }
                         <TouchableOpacity style={styles.saveButtom} onPress={loginUsuario} activeOpacity={0.7}>
                             {loading == true ?
-                            <View style={[styles.containerLoading, styles.horizontalLoading]}>
-                                <ActivityIndicator size="small" color="#0000ff" />
-                            </View>
-                            :
-                            <Text style={styles.actionText}>
-                                Entrar
-                            </Text>
+                                <View style={[styles.containerLoading, styles.horizontalLoading]}>
+                                    <ActivityIndicator size="small" color="#0000ff" />
+                                </View>
+                                :
+                                <Text style={styles.actionText}>
+                                    Entrar
+                                </Text>
                             }
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
@@ -198,25 +200,25 @@ export const Login = (props) => {
                         </TouchableOpacity>
                     </View>
                 </SafeAreaView>
-            </View>
+            </KeyboardAvoidingView>
             <Modal
-             visible={openAlert}
-             transparent={true}
-             onRequestClose={handleCloseAlert}
-             animationType='fade'>
+                visible={openAlert}
+                transparent={true}
+                onRequestClose={handleCloseAlert}
+                animationType='fade'>
                 <View style={styles.modalBackGround}>
                     <SafeAreaView style={styles.containerAlert}>
-                        <View style={{padding: '5%'}}>
-                            <Text style={{color: '#E5E5E5', fontSize: 30}}>Atenção</Text>
+                        <View style={{ padding: '5%' }}>
+                            <Text style={{ color: '#E5E5E5', fontSize: 30 }}>Atenção</Text>
                         </View>
                         <View>
-                            <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17}}>
+                            <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17 }}>
                                 Seu email e/ou sua senha estão incorretos!
                             </Text>
                         </View>
                         <View style={styles.buttonOk}>
                             <TouchableOpacity style={styles.alertButtom} onPress={handleCloseAlert} activeOpacity={0.7}>
-                                <Text style={{textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5',  fontSize: 17}}>Ok</Text>
+                                <Text style={{ textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5', fontSize: 17 }}>Ok</Text>
                             </TouchableOpacity>
                         </View>
                     </SafeAreaView>
