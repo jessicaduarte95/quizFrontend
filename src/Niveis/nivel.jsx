@@ -58,7 +58,35 @@ export const Nivel = () => {
             justifyContent: 'center',
             alignItems: 'center',
         },
-        buttonLevels: {
+        buttonLevelsDisabled: {
+            zIndex: 99,
+            backgroundColor: '#00061B',
+            borderRadius: 6,
+            marginTop: 13,
+            marginBottom: 13,
+            padding: 10,
+            borderWidth: 1,
+            borderColor: 'rgba(50,115,220, 0.4)',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            elevation: 5,
+            shadowOpacity: 0.28,
+            shadowRadius: 4,
+            width: 230,
+        },
+        actionText: {
+            textAlign: 'center',
+            fontWeight: 'bold',
+            color: '#E5E5E5',
+            fontSize: 20
+        },
+        scroll: {
+            width: 270
+        },
+        buttonLevelsAbled: {
             zIndex: 99,
             backgroundColor: '#000720',
             borderRadius: 6,
@@ -180,28 +208,28 @@ export const Nivel = () => {
             </View>
             <ScrollView style={styles.scroll}>
                 <View style={styles.levels}>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(1) }}>
+                    <TouchableOpacity style={styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(1) }}>
                         <Text style={styles.actionText}>Nível 1</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(2) }} disabled={disabled.nivel2}>
+                    <TouchableOpacity style={disabled.nivel2 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(2) }} disabled={disabled.nivel2}>
                         <Text style={styles.actionText}>Nível 2</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(3) }} disabled={disabled.nivel3}>
+                    <TouchableOpacity style={disabled.nivel3 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(3) }} disabled={disabled.nivel3}>
                         <Text style={styles.actionText}>Nível 3</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(4) }} disabled={disabled.nivel4}>
+                    <TouchableOpacity style={disabled.nivel4 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(4) }} disabled={disabled.nivel4}>
                         <Text style={styles.actionText}>Nível 4</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(5) }} disabled={disabled.nivel5}>
+                    <TouchableOpacity style={disabled.nivel5 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(5) }} disabled={disabled.nivel5}>
                         <Text style={styles.actionText}>Nível 5</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(6) }} disabled={disabled.nivel6}>
+                    <TouchableOpacity style={disabled.nivel6 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(6) }} disabled={disabled.nivel6}>
                         <Text style={styles.actionText}>Nível 6</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(7) }} disabled={disabled.nivel7}>
+                    <TouchableOpacity style={disabled.nivel7 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(7) }} disabled={disabled.nivel7}>
                         <Text style={styles.actionText}>Nível 7</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonLevels} onPress={() => { perguntas(); setNivel(8) }} disabled={disabled.nivel8}>
+                    <TouchableOpacity style={disabled.nivel8 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(8) }} disabled={disabled.nivel8}>
                         <Text style={styles.actionText}>Nível 8</Text>
                     </TouchableOpacity>
                     <ModalNivel
