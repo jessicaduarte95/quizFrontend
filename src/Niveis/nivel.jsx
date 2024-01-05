@@ -161,6 +161,7 @@ export const Nivel = () => {
                 console.log(error);
             })
     }
+    
 
     useEffect(() => {
         if (nivel !== false) {
