@@ -109,7 +109,6 @@ export const Nivel = () => {
         let id = dadosUsuario.id
         Axios.get(`http://192.168.0.3:5000/habilitarNivel/${id}`)
             .then((response) => {
-                console.log("Response: ", response.data);
                 let dados = response.data  
                 dados.forEach(function(object) {
                     if (object.nivel == 2){
@@ -129,8 +128,6 @@ export const Nivel = () => {
                         }))
                     }
                 })
-
-                console.log('disabled', disabled)
             })
             .catch((error) => {
                 console.log(error);
@@ -213,6 +210,7 @@ export const Nivel = () => {
                         nivel={nivel}
                         level={level}
                         dadosUsuario={dadosUsuario}
+                        getEnableLevel={getEnableLevel}
                     />
                 </View>
             </ScrollView>
