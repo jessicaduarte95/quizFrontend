@@ -89,7 +89,7 @@ export const Nivel = () => {
         },
         buttonLevelsAbled: {
             zIndex: 99,
-            backgroundColor: '#000720',
+            backgroundColor: '#000929',
             borderRadius: 6,
             marginTop: 13,
             marginBottom: 13,
