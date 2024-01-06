@@ -119,9 +119,13 @@ export const Nivel = () => {
 
     const [openModalNivel, setOpenModalNivel] = useState(false);
     const [openFinishLevel, setOpenFinishLevel] = useState(false);
-    const handleCloseModal = () => setOpenModalNivel(false);
+    const [closeLevel, setCloseLevel] = useState(false);
+    const handleCloseModal = () => { setOpenModalNivel(false); }
     const handleOpenModal = () => setOpenModalNivel(true);
-    const handleCloseFinishLevel = () => setOpenFinishLevel(false);
+    const handleCloseFinishLevel = () => {
+        setCloseLevel(false);
+        setOpenFinishLevel(false);
+    }
     const handleOpenFinishLevel = () => setOpenFinishLevel(true);
     const [nivel, setNivel] = useState(false);
     const handleChangeNivel = () => setNivel(0);
@@ -141,19 +145,19 @@ export const Nivel = () => {
         let id = dadosUsuario.id
         Axios.get(`http://192.168.0.3:5000/habilitarNivel/${id}`)
             .then((response) => {
-                let dados = response.data  
-                dados.forEach(function(object) {
-                    if (object.nivel == 2){
+                let dados = response.data
+                dados.forEach(function (object) {
+                    if (object.nivel == 2) {
                         setDisabled(prevState => ({
                             ...prevState,
                             nivel2: false
                         }))
-                    }else if(object.nivel == 3){
+                    } else if (object.nivel == 3) {
                         setDisabled(prevState => ({
                             ...prevState,
                             nivel3: false
                         }))
-                    }else if(object.nivel == 4){
+                    } else if (object.nivel == 4) {
                         setDisabled(prevState => ({
                             ...prevState,
                             nivel4: false
@@ -165,7 +169,7 @@ export const Nivel = () => {
                 console.log(error);
             })
     }
-    
+
 
     useEffect(() => {
         if (nivel !== false) {
@@ -183,10 +187,16 @@ export const Nivel = () => {
     }, [dadosUsuario, nivel])
 
     useEffect(() => {
-        if(dadosUsuario.id){
+        if (dadosUsuario.id) {
             getEnableLevel()
         }
     }, [])
+
+    useEffect(() => {
+        if (closeLevel) {
+            handleOpenFinishLevel();
+        }
+    }, [closeLevel])
 
     return (
         <LinearGradient
@@ -197,10 +207,10 @@ export const Nivel = () => {
             colors={['#3544A7', '#000720']}>
             <View style={styles.buttonSairAjuda}>
                 {dadosUsuario.id == 1 ?
-                <TouchableOpacity onPress={() => navigation.navigate('Admin')}>
-                    <Text style={styles.buttonAdmin}>Admin</Text>
-                </TouchableOpacity>
-                :''}
+                    <TouchableOpacity onPress={() => navigation.navigate('Admin')}>
+                        <Text style={styles.buttonAdmin}>Admin</Text>
+                    </TouchableOpacity>
+                    : ''}
                 <TouchableOpacity>
                     <Text style={styles.buttonAjuda}>Ajuda</Text>
                 </TouchableOpacity>
@@ -244,12 +254,12 @@ export const Nivel = () => {
                         level={level}
                         dadosUsuario={dadosUsuario}
                         getEnableLevel={getEnableLevel}
-                        handleOpenFinishLevel={handleOpenFinishLevel}
+                        setCloseLevel={setCloseLevel}
                     />
-                    {/* <ModalFinishLevel
+                    <ModalFinishLevel
                         openFinishLevel={openFinishLevel}
                         handleCloseFinishLevel={handleCloseFinishLevel}
-                    /> */}
+                    />
                 </View>
             </ScrollView>
             <View>

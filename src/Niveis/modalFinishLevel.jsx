@@ -25,7 +25,7 @@ export const ModalFinishLevel = (props) => {
             elevation: 5,
             shadowOpacity: 0.28,
             shadowRadius: 4,
-            width: 380,
+            width: 360,
             height: 520
         },
         closeButtom: {
@@ -36,10 +36,8 @@ export const ModalFinishLevel = (props) => {
         },
         content: {
             display: 'flex',
-            // justifyContent: 'center',
         },
         text: {
-            // backgroundColor: 'red',
             display: 'flex',
             alignItems: 'center',
             marginBottom: 8
