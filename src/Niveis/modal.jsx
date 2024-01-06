@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const ModalNivel = (props) => {
 
-    const { handleCloseModal, openModalNivel, level, dadosUsuario, getEnableLevel } = props;
+    const { handleCloseModal, openModalNivel, level, dadosUsuario, getEnableLevel, handleOpenFinishLevel } = props;
 
     const styles = StyleSheet.create({
         modalBackGround: {
@@ -245,7 +245,7 @@ export const ModalNivel = (props) => {
                 <SafeAreaView style={styles.container}>
                     <View style={styles.closeButtom}>
                         <TouchableOpacity  onPress={handleCloseModal}>
-                            <Icon name="close" size={27} color="#3273DC" />
+                            <Icon name="close" size={27} color="#D0D1CE" />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.containerQuestion}>

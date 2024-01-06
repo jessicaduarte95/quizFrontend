@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } from 'rea
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { ModalNivel } from "./modal";
+import { ModalFinishLevel } from "./modalFinishLevel";
 import Axios from "axios";
 
 export const Nivel = () => {
@@ -117,8 +118,11 @@ export const Nivel = () => {
     })
 
     const [openModalNivel, setOpenModalNivel] = useState(false);
+    const [openFinishLevel, setOpenFinishLevel] = useState(false);
     const handleCloseModal = () => setOpenModalNivel(false);
     const handleOpenModal = () => setOpenModalNivel(true);
+    const handleCloseFinishLevel = () => setOpenFinishLevel(false);
+    const handleOpenFinishLevel = () => setOpenFinishLevel(true);
     const [nivel, setNivel] = useState(false);
     const handleChangeNivel = () => setNivel(0);
     const [level, setLevel] = useState()
@@ -240,7 +244,12 @@ export const Nivel = () => {
                         level={level}
                         dadosUsuario={dadosUsuario}
                         getEnableLevel={getEnableLevel}
+                        handleOpenFinishLevel={handleOpenFinishLevel}
                     />
+                    {/* <ModalFinishLevel
+                        openFinishLevel={openFinishLevel}
+                        handleCloseFinishLevel={handleCloseFinishLevel}
+                    /> */}
                 </View>
             </ScrollView>
             <View>
