@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const ModalNivel = (props) => {
 
-    const { handleCloseModal, openModalNivel, level, dadosUsuario, getEnableLevel, handleOpenFinishLevel } = props;
+    const { handleCloseModal, openModalNivel, level, dadosUsuario, getEnableLevel, setCloseLevel } = props;
 
     const styles = StyleSheet.create({
         modalBackGround: {
@@ -217,6 +217,7 @@ export const ModalNivel = (props) => {
         setPoints(0);
 
         await getEnableLevel();
+        await setCloseLevel(true);
     }
 
     useEffect(() => {
