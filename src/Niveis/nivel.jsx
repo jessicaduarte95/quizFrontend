@@ -135,6 +135,7 @@ export const Nivel = () => {
         nivel5: true, nivel6: true, nivel7: true,
         nivel8: true
     })
+    const [enableLevel, setEnableLevel] = useState({});
 
     const perguntas = () => {
         handleChangeNivel()
@@ -255,10 +256,12 @@ export const Nivel = () => {
                         dadosUsuario={dadosUsuario}
                         getEnableLevel={getEnableLevel}
                         setCloseLevel={setCloseLevel}
+                        setEnableLevel={setEnableLevel}
                     />
                     <ModalFinishLevel
                         openFinishLevel={openFinishLevel}
                         handleCloseFinishLevel={handleCloseFinishLevel}
+                        enableLevel={enableLevel}
                     />
                 </View>
             </ScrollView>
