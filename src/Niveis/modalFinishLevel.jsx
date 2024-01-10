@@ -61,17 +61,7 @@ export const ModalFinishLevel = (props) => {
                             <Icon name="close" size={27} color="#D0D1CE" />
                         </TouchableOpacity>
                     </View>
-                    {Object.keys(enableLevel).length !== 0 ?
-                        <View style={styles.content}>
-                            <View style={styles.text}>
-                                <Text style={{ color: "#D0D1CE", fontSize: 30, fontWeight: 'bold', marginBottom: 8 }}>Parabéns, Astronauta!</Text>
-                                <Text style={{ color: "#D0D1CE", fontSize: 20, display: 'flex', textAlign: 'center' }}>Você acaba de alcançar o próximo patamar. Que a sorte esteja ao seu lado nessa jornada incrível!</Text>
-                            </View>
-                            <View style={{ alignItems: 'center', justifyContent: 'flex-end', height: '70%' }}>
-                                <Image style={{ height: '100%', width: '100%' }} source={require('../../img/astronautaInteiro.png')} />
-                            </View>
-                        </View>
-                        :
+                    {Object.keys(enableLevel).length !== 0 && enableLevel.enableLevel.concluido == 0 ?
                         <View style={styles.contentSecond}>
                             <View style={styles.text}>
                                 <Text style={{ color: "#D0D1CE", fontSize: 24, fontWeight: 'bold', marginBottom: 8, textAlign: 'center' }}>Astronauta, não foi dessa vez!</Text>
@@ -79,6 +69,17 @@ export const ModalFinishLevel = (props) => {
                             </View>
                             <View style={{ alignItems: 'center', justifyContent: 'flex-end', height: '75%', width: '70%' }}>
                                 <Image style={{ height: '100%', width: '100%' }} source={require('../../img/astronautaImg3.png')} />
+                            </View>
+                        </View>
+
+                        :
+                        <View style={styles.content}>
+                            <View style={styles.text}>
+                                <Text style={{ color: "#D0D1CE", fontSize: 30, fontWeight: 'bold', marginBottom: 8 }}>Parabéns, Astronauta!</Text>
+                                <Text style={{ color: "#D0D1CE", fontSize: 20, display: 'flex', textAlign: 'center' }}>Você acaba de alcançar o próximo patamar. Que a sorte esteja ao seu lado nessa jornada incrível!</Text>
+                            </View>
+                            <View style={{ alignItems: 'center', justifyContent: 'flex-end', height: '70%' }}>
+                                <Image style={{ height: '100%', width: '100%' }} source={require('../../img/astronautaInteiro.png')} />
                             </View>
                         </View>
                     }
