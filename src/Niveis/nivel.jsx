@@ -119,24 +119,20 @@ export const Nivel = () => {
 
     const [openModalNivel, setOpenModalNivel] = useState(false);
     const [openFinishLevel, setOpenFinishLevel] = useState(false);
-    const [closeLevel, setCloseLevel] = useState(false);
     const handleCloseModal = () => { setOpenModalNivel(false); }
     const handleOpenModal = () => setOpenModalNivel(true);
-    const handleCloseFinishLevel = () => {
-        setCloseLevel(false);
-        setOpenFinishLevel(false);
-    }
+    const handleCloseFinishLevel = () => { setOpenFinishLevel(false); }
     const handleOpenFinishLevel = () => setOpenFinishLevel(true);
     const [nivel, setNivel] = useState(false);
     const handleChangeNivel = () => setNivel(0);
     const [level, setLevel] = useState()
+    const [points, setPoints] = useState(0);
+    const [finishLevel, setFinishLevel] = useState(false);
     const [disabled, setDisabled] = useState({
         nivel2: true, nivel3: true, nivel4: true,
         nivel5: true, nivel6: true, nivel7: true,
         nivel8: true
     })
-    const [enableLevel, setEnableLevel] = useState({});
-
     const perguntas = () => {
         handleChangeNivel()
         handleOpenModal()
@@ -171,6 +167,22 @@ export const Nivel = () => {
             })
     }
 
+    const checkFinishLevel = () => {
+        let id = dadosUsuario.id
+        Axios.get(`http://192.168.0.3:5000/nivelConcluido/${id}/${nivel}`)
+            .then((response) => {
+                const dataNivel = response.data
+                if (dataNivel.length > 0 && dataNivel[0].concluido == 1) {
+                    setFinishLevel(true);
+                } else {
+                    setFinishLevel(false);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
 
     useEffect(() => {
         if (nivel !== false) {
@@ -194,10 +206,10 @@ export const Nivel = () => {
     }, [])
 
     useEffect(() => {
-        if (closeLevel) {
-            handleOpenFinishLevel();
+        if (nivel) {
+            checkFinishLevel();
         }
-    }, [closeLevel])
+    }, [nivel])
 
     return (
         <LinearGradient
@@ -255,13 +267,16 @@ export const Nivel = () => {
                         level={level}
                         dadosUsuario={dadosUsuario}
                         getEnableLevel={getEnableLevel}
-                        setCloseLevel={setCloseLevel}
-                        setEnableLevel={setEnableLevel}
+                        setPoints={setPoints}
+                        points={points}
+                        handleOpenFinishLevel={handleOpenFinishLevel}
+                        finishLevel={finishLevel}
                     />
                     <ModalFinishLevel
                         openFinishLevel={openFinishLevel}
                         handleCloseFinishLevel={handleCloseFinishLevel}
-                        enableLevel={enableLevel}
+                        points={points}
+                        setPoints={setPoints}
                     />
                 </View>
             </ScrollView>

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, Image } 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const ModalFinishLevel = (props) => {
-    const { openFinishLevel, handleCloseFinishLevel, enableLevel } = props;
+    const { openFinishLevel, handleCloseFinishLevel, points, setPoints } = props;
 
     const styles = StyleSheet.create({
         modalBackGround: {
@@ -57,11 +57,11 @@ export const ModalFinishLevel = (props) => {
             <View style={styles.modalBackGround}>
                 <SafeAreaView style={styles.container}>
                     <View style={styles.closeButtom}>
-                        <TouchableOpacity onPress={handleCloseFinishLevel}>
+                        <TouchableOpacity onPress={() => {handleCloseFinishLevel(), setPoints(0)}}>
                             <Icon name="close" size={27} color="#D0D1CE" />
                         </TouchableOpacity>
                     </View>
-                    {Object.keys(enableLevel).length !== 0 && enableLevel.enableLevel.concluido == 0 ?
+                    {points < 6 ?
                         <View style={styles.contentSecond}>
                             <View style={styles.text}>
                                 <Text style={{ color: "#D0D1CE", fontSize: 24, fontWeight: 'bold', marginBottom: 8, textAlign: 'center' }}>Astronauta, não foi dessa vez!</Text>
