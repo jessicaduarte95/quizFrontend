@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const ModalNivel = (props) => {
 
-    const { handleCloseModal, openModalNivel, level, dadosUsuario, getEnableLevel, setCloseLevel, setEnableLevel } = props;
+    const { handleCloseModal, openModalNivel, level, dadosUsuario, getEnableLevel, setPoints, points, handleOpenFinishLevel, finishLevel } = props;
 
     const styles = StyleSheet.create({
         modalBackGround: {
@@ -35,9 +35,9 @@ export const ModalNivel = (props) => {
             paddingBottom: 10
         },
         closeButtom: {
-            display: 'flex', 
-            alignItems: 'flex-end', 
-            paddingRight: 8, 
+            display: 'flex',
+            alignItems: 'flex-end',
+            paddingRight: 8,
             paddingTop: 8
         },
         question: {
@@ -159,7 +159,6 @@ export const ModalNivel = (props) => {
     const [mudarCor3, setMudarCor3] = useState(false);
     const [mudarCor4, setMudarCor4] = useState(false);
     const [disabled, setDisabled] = useState(false);
-    const [points, setPoints] = useState(0);
 
     const change = () => {
         setMudarCor1(false);
@@ -206,9 +205,7 @@ export const ModalNivel = (props) => {
             id: dadosUsuario.id,
             nivel: level[0].nivel
         })
-            .then((response) => {
-                setEnableLevel(response.data)
-            })
+            .then(() => {})
             .catch((error) => { console.log(error); })
 
         setDisabled(false);
@@ -216,10 +213,13 @@ export const ModalNivel = (props) => {
         handleCloseModal();
         handlePontosNivel();
         setPerguntaAtual(0);
-        setPoints(0);
 
         await getEnableLevel();
-        await setCloseLevel(true);
+
+        if (!finishLevel) {
+            await handleOpenFinishLevel();
+        }
+
     }
 
     useEffect(() => {
@@ -247,7 +247,7 @@ export const ModalNivel = (props) => {
             <View style={styles.modalBackGround}>
                 <SafeAreaView style={styles.container}>
                     <View style={styles.closeButtom}>
-                        <TouchableOpacity  onPress={handleCloseModal}>
+                        <TouchableOpacity onPress={handleCloseModal}>
                             <Icon name="close" size={27} color="#D0D1CE" />
                         </TouchableOpacity>
                     </View>
