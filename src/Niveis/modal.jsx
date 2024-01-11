@@ -205,7 +205,7 @@ export const ModalNivel = (props) => {
             id: dadosUsuario.id,
             nivel: level[0].nivel
         })
-            .then(() => {})
+            .then(() => { })
             .catch((error) => { console.log(error); })
 
         setDisabled(false);
@@ -218,6 +218,8 @@ export const ModalNivel = (props) => {
 
         if (!finishLevel) {
             await handleOpenFinishLevel();
+        } else {
+            setPoints(0);
         }
 
     }
