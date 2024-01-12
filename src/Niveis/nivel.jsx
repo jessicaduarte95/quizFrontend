@@ -236,28 +236,28 @@ export const Nivel = () => {
             </View>
             <ScrollView style={styles.scroll}>
                 <View style={styles.levels}>
-                    <TouchableOpacity style={styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(1) }}>
+                    <TouchableOpacity style={styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(1); checkFinishLevel(); }}>
                         <Text style={styles.actionText}>Nível 1</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={disabled.nivel2 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(2) }} disabled={disabled.nivel2}>
+                    <TouchableOpacity style={disabled.nivel2 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(2); checkFinishLevel(); }} disabled={disabled.nivel2}>
                         <Text style={styles.actionText}>Nível 2</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={disabled.nivel3 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(3) }} disabled={disabled.nivel3}>
+                    <TouchableOpacity style={disabled.nivel3 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(3); checkFinishLevel(); }} disabled={disabled.nivel3}>
                         <Text style={styles.actionText}>Nível 3</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={disabled.nivel4 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(4) }} disabled={disabled.nivel4}>
+                    <TouchableOpacity style={disabled.nivel4 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(4); checkFinishLevel(); }} disabled={disabled.nivel4}>
                         <Text style={styles.actionText}>Nível 4</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={disabled.nivel5 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(5) }} disabled={disabled.nivel5}>
+                    <TouchableOpacity style={disabled.nivel5 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(5); checkFinishLevel(); }} disabled={disabled.nivel5}>
                         <Text style={styles.actionText}>Nível 5</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={disabled.nivel6 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(6) }} disabled={disabled.nivel6}>
+                    <TouchableOpacity style={disabled.nivel6 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(6); checkFinishLevel(); }} disabled={disabled.nivel6}>
                         <Text style={styles.actionText}>Nível 6</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={disabled.nivel7 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(7) }} disabled={disabled.nivel7}>
+                    <TouchableOpacity style={disabled.nivel7 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(7); checkFinishLevel(); }} disabled={disabled.nivel7}>
                         <Text style={styles.actionText}>Nível 7</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={disabled.nivel8 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(8) }} disabled={disabled.nivel8}>
+                    <TouchableOpacity style={disabled.nivel8 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(8); checkFinishLevel(); }} disabled={disabled.nivel8}>
                         <Text style={styles.actionText}>Nível 8</Text>
                     </TouchableOpacity>
                     <ModalNivel
