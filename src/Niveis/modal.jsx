@@ -244,12 +244,12 @@ export const ModalNivel = (props) => {
         <Modal
             visible={openModalNivel}
             transparent={true}
-            onRequestClose={handleCloseModal}
+            onRequestClose={() => {handleCloseModal(), setPerguntaAtual(0)}}
             animationType='fade'>
             <View style={styles.modalBackGround}>
                 <SafeAreaView style={styles.container}>
                     <View style={styles.closeButtom}>
-                        <TouchableOpacity onPress={handleCloseModal}>
+                        <TouchableOpacity onPress={() => {handleCloseModal(), setPerguntaAtual(0)}}>
                             <Icon name="close" size={27} color="#D0D1CE" />
                         </TouchableOpacity>
                     </View>
