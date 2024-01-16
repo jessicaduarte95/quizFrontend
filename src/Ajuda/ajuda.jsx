@@ -25,8 +25,7 @@ export const ModalAjuda = (props) => {
             elevation: 5,
             shadowOpacity: 0.28,
             shadowRadius: 4,
-            width: 360,
-            height: 520
+            margin: 25
         },
         closeButtom: {
             display: 'flex',
@@ -34,6 +33,18 @@ export const ModalAjuda = (props) => {
             paddingRight: 8,
             paddingTop: 8
         },
+        title: {
+            display: 'flex',
+            alignItems: 'center',
+            margin: 12,
+            marginTop: 0
+        },
+        text: {
+            display: 'flex',
+            alignItems: 'center',
+            margin: 18,
+            marginTop: 0
+        }
     })
 
 
@@ -49,6 +60,19 @@ export const ModalAjuda = (props) => {
                         <TouchableOpacity onPress={handleCloseModalHelp}>
                             <Icon name="close" size={27} color="#D0D1CE" />
                         </TouchableOpacity>
+                    </View>
+                    <View style={styles.title}>
+                        <Text style={{ fontWeight: 'bold', color: '#E5E5E5', fontSize: 30 }}>Olá Astronauta!</Text>
+                    </View>
+                    <View style={styles.text}>
+                        <Text style={{ color: '#E5E5E5', fontSize: 20, textAlign: 'center' }}>
+                        Prepare-se para embarcar em uma jornada emocionante de conhecimento científico e exploração do universo! 
+                        Ao iniciar nosso jogo de perguntas, você começará no nível 1. Se você conseguir acertar 6 ou mais questões, 
+                        desbloqueará o próximo nível e estará pronto para desafios ainda mais fascinantes.
+                        Cada pergunta é uma oportunidade de expandir seus horizontes e aprofundar seu entendimento sobre o mundo ao nosso redor. 
+                        Esteja pronto para explorar conceitos científicos intrigantes e descobrir os mistérios do cosmos.
+                        Então, ajuste seu cinto de segurança, pois esta nave do conhecimento está prestes a decolar. 
+                        </Text>
                     </View>
                 </SafeAreaView>
             </View>
