@@ -14,7 +14,7 @@ export const Nivel = () => {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            alignItems: 'center',
+            alignItems: 'center'
         },
         buttonSairAjuda: {
             paddingTop: 42,
@@ -54,10 +54,17 @@ export const Nivel = () => {
             color: '#E5E5E5',
             fontSize: 30
         },
-        levels: {
-            flexDirection: 'column',
-            justifyContent: 'center',
+        body: {
+            display: 'flex',
+            flexDirection: 'row',
+            height: '100%',
+        },
+        image: {
+            display: 'flex',
             alignItems: 'center',
+            justifyContent: 'flex-end',
+            width: '55%',
+            height: '86%'
         },
         buttonLevelsDisabled: {
             zIndex: 99,
@@ -76,16 +83,13 @@ export const Nivel = () => {
             elevation: 5,
             shadowOpacity: 0.28,
             shadowRadius: 4,
-            width: 230,
+            width: 160,
         },
         actionText: {
             textAlign: 'center',
             fontWeight: 'bold',
             color: '#E5E5E5',
             fontSize: 20
-        },
-        scroll: {
-            width: 270
         },
         buttonLevelsAbled: {
             zIndex: 99,
@@ -104,7 +108,7 @@ export const Nivel = () => {
             elevation: 5,
             shadowOpacity: 0.28,
             shadowRadius: 4,
-            width: 230,
+            width: 160,
         },
         actionText: {
             textAlign: 'center',
@@ -113,7 +117,9 @@ export const Nivel = () => {
             fontSize: 20
         },
         scroll: {
-            width: 270
+            width: '50%',
+            height: '77%',
+            paddingLeft: 10
         }
     })
 
@@ -131,7 +137,7 @@ export const Nivel = () => {
     const [disabled, setDisabled] = useState({
         nivel2: true, nivel3: true, nivel4: true,
         nivel5: true, nivel6: true, nivel7: true,
-        nivel8: true
+        nivel8: true, nivel9: true, nivel10: true
     })
     const perguntas = () => {
         handleChangeNivel()
@@ -234,8 +240,8 @@ export const Nivel = () => {
             <View style={styles.nomeUsuario}>
                 <Text style={styles.nomeText}>Olá {dadosUsuario.nome}!</Text>
             </View>
-            <ScrollView style={styles.scroll}>
-                <View style={styles.levels}>
+            <View style={styles.body}>
+                <ScrollView style={styles.scroll}>
                     <TouchableOpacity style={styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(1); checkFinishLevel(); }}>
                         <Text style={styles.actionText}>Nível 1</Text>
                     </TouchableOpacity>
@@ -260,6 +266,12 @@ export const Nivel = () => {
                     <TouchableOpacity style={disabled.nivel8 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(8); checkFinishLevel(); }} disabled={disabled.nivel8}>
                         <Text style={styles.actionText}>Nível 8</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={disabled.nivel9 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(9); checkFinishLevel(); }} disabled={disabled.nivel9}>
+                        <Text style={styles.actionText}>Nível 9</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={disabled.nivel8 ? styles.buttonLevelsDisabled : styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(10); checkFinishLevel(); }} disabled={disabled.nivel10}>
+                        <Text style={styles.actionText}>Nível 10</Text>
+                    </TouchableOpacity>
                     <ModalNivel
                         openModalNivel={openModalNivel}
                         handleCloseModal={handleCloseModal}
@@ -278,10 +290,10 @@ export const Nivel = () => {
                         points={points}
                         setPoints={setPoints}
                     />
+                </ScrollView>
+                <View style={styles.image}>
+                    <Image style={{ width: 210, height: 630 }} source={require('../../img/astronautaImg4.png')} />
                 </View>
-            </ScrollView>
-            <View>
-                <Image source={require('../../img/astronautaImg2.png')} />
             </View>
         </LinearGradient>
     )
