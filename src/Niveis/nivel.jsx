@@ -118,7 +118,7 @@ export const Nivel = () => {
         },
         scroll: {
             width: '50%',
-            height: '77%',
+            height: '80%',
             paddingLeft: 10
         }
     })
