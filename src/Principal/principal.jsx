@@ -46,7 +46,6 @@ export const Principal = () => {
         },
         containerAlert: {
           width: '90%',
-          height: 230,
           backgroundColor: '#000929',
           borderRadius: 15,
           borderWidth: 1.5,
@@ -64,6 +63,7 @@ export const Principal = () => {
           marginVertical: -15,
           marginLeft: 10,
           marginRight: 10,
+          marginBottom: 15,
           flexDirection: 'row',
           justifyContent: 'flex-end'
         },
@@ -119,10 +119,10 @@ export const Principal = () => {
                 <View style={styles.modalBackGround}>
                 <SafeAreaView style={styles.containerAlert}>
                     <View style={{padding: '5%'}}>
-                        <Text style={{color: '#E5E5E5', fontSize: 30}}>Parabéns</Text>
+                        <Text style={{color: '#E5E5E5', fontSize: 30}}>Parabéns Astronauta!</Text>
                     </View>
                     <View>
-                        <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 19.5}}>
+                        <Text style={{ marginBottom: 25, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 19.5}}>
                             Seu cadastro foi realizado com sucesso!
                         </Text>
                     </View>

@@ -109,7 +109,6 @@ export const Cadastrar = (props) => {
         },
         containerAlert: {
             width: '90%',
-            height: 230,
             backgroundColor: '#000929',
             borderRadius: 15,
             borderWidth: 1.5,
@@ -127,6 +126,7 @@ export const Cadastrar = (props) => {
             marginVertical: -15,
             marginLeft: 10,
             marginRight: 10,
+            marginBottom: 15,
             flexDirection: 'row',
             justifyContent: 'flex-end'
         },
@@ -160,7 +160,11 @@ export const Cadastrar = (props) => {
 
     const cadastroUsuario = async () => {
         setLoading(true);
-        if (senha.length >= 6 && nome.length > 0 && email.length > 0) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            setAlertImplemented('O email digitado é inválido.'); 
+            handleOpenAlert();
+        } else if (senha.length >= 6 && nome.length > 0 && email.length > 0) {
             await Axios.post(`http://192.168.0.3:5000/cadastrar`, {
                 nome, email, senha
             })
@@ -263,7 +267,7 @@ export const Cadastrar = (props) => {
                             <Text style={{ color: '#E5E5E5', fontSize: 30 }}>Atenção</Text>
                         </View>
                         <View>
-                            <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17 }}>
+                            <Text style={{ marginBottom: 25, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17 }}>
                                 {alertImplemented}
                             </Text>
                         </View>
