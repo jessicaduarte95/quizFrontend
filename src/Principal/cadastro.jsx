@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { ActivityIndicator, StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput, Platform, KeyboardAvoidingView } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export const Cadastrar = (props) => {
     const { openCadastrar, handleClose, handleOpenCadastrar, handleOpenCadastroFeito } = props;
@@ -137,6 +138,13 @@ export const Cadastrar = (props) => {
             flexDirection: "row",
             justifyContent: "space-around",
             padding: 10
+        },
+        checkbox: {
+            display: "flex",
+            flexDirection: "row",
+            marginLeft: 15,
+            marginRight: 15,
+            marginBottom: 8
         }
     })
 
@@ -148,6 +156,7 @@ export const Cadastrar = (props) => {
     const handleCloseAlert = () => setOpenAlert(false);
     const handleOpenAlert = () => setOpenAlert(true);
     const [loading, setLoading] = useState(false);
+    const [isCheck, setIsCheck] = useState(false);
 
     const cadastroUsuario = async () => {
         setLoading(true);
@@ -182,15 +191,23 @@ export const Cadastrar = (props) => {
         setLoading(false);
     }
 
+    const isChecked = () => {
+        setIsCheck(!isCheck);
+    }
+
     useEffect(() => {
         alertImplemented;
     }, [alertImplemented])
+
+    useEffect(() => {
+        ;
+    }, [isCheck])
 
     return (
         <Modal
             visible={openCadastrar}
             transparent={true}
-            onRequestClose={handleClose}
+            onRequestClose={() => { handleClose(), setIsCheck(false) }}
             animationType='fade'>
             <KeyboardAvoidingView
                 behavior={Platform.OS == "ios" ? 'padding' : 'height'}
@@ -201,7 +218,21 @@ export const Cadastrar = (props) => {
                     </View>
                     <TextInput style={styles.input} placeholder="Nome" placeholderTextColor='#D0D1CE' onChangeText={text => setNome(text)} />
                     <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE' onChangeText={text => setEmail(text)} />
-                    <TextInput style={styles.inputSenha} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setSenha(text)} />
+                    {isCheck ?
+                        <TextInput style={styles.inputSenha} secureTextEntry={false} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setSenha(text)} />
+                        :
+                        <TextInput style={styles.inputSenha} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setSenha(text)} />
+                    }
+                    <View style={styles.checkbox}>
+                        <TouchableOpacity onPress={isChecked}>
+                            {isCheck ?
+                                <MaterialIcons name="check-box" size={24} color="#D0D1CE" />
+                                :
+                                <MaterialIcons name="check-box-outline-blank" size={24} color="#D0D1CE" />
+                            }
+                        </TouchableOpacity>
+                        <Text style={{ marginLeft: 5, marginTop: 5, color: '#D0D1CE' }}>Mostrar Senha</Text>
+                    </View>
                     <View>
                         <Text style={{ marginBottom: 15, marginLeft: 15, marginRight: 15, color: '#D0D1CE' }}>Sua senha deve ter no mínimo 6 caracteres.</Text>
                     </View>
@@ -216,7 +247,7 @@ export const Cadastrar = (props) => {
                             }
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
-                            <Text style={styles.cancelText} onPress={handleClose}>Fechar</Text>
+                            <Text style={styles.cancelText} onPress={() => { handleClose(), setIsCheck(false) }}>Fechar</Text>
                         </TouchableOpacity>
                     </View>
                 </SafeAreaView>
