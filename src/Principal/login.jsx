@@ -16,7 +16,6 @@ export const Login = (props) => {
         },
         container: {
             width: '90%',
-            height: 270,
             backgroundColor: '#000929',
             borderRadius: 15,
             borderWidth: 1.5,
@@ -31,9 +30,9 @@ export const Login = (props) => {
             shadowRadius: 4
         },
         content: {
-            marginVertical: -8,
             marginLeft: 15,
             marginRight: 15,
+            marginBottom: 17,
             flexDirection: 'row',
             justifyContent: 'space-between'
         },

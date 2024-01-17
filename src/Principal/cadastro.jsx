@@ -14,7 +14,6 @@ export const Cadastrar = (props) => {
         },
         container: {
             width: '90%',
-            height: 370,
             backgroundColor: '#000929',
             borderRadius: 15,
             borderWidth: 1.5,
@@ -29,7 +28,6 @@ export const Cadastrar = (props) => {
             shadowRadius: 4
         },
         content: {
-            marginVertical: -15,
             marginLeft: 10,
             marginRight: 10,
             flexDirection: 'row',
@@ -77,7 +75,7 @@ export const Cadastrar = (props) => {
             zIndex: 99,
             backgroundColor: '#000720',
             borderRadius: 6,
-            marginTop: 3,
+            marginBottom: 17,
             marginRight: 8,
             padding: 10,
             borderWidth: 1,
@@ -205,7 +203,7 @@ export const Cadastrar = (props) => {
                     <TextInput style={styles.input} placeholder="Email" placeholderTextColor='#D0D1CE' onChangeText={text => setEmail(text)} />
                     <TextInput style={styles.inputSenha} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={text => setSenha(text)} />
                     <View>
-                        <Text style={{ marginBottom: 35, marginLeft: 15, marginRight: 15, color: '#D0D1CE' }}>Sua senha deve ter no mínimo 6 caracteres.</Text>
+                        <Text style={{ marginBottom: 15, marginLeft: 15, marginRight: 15, color: '#D0D1CE' }}>Sua senha deve ter no mínimo 6 caracteres.</Text>
                     </View>
                     <View style={styles.content}>
                         <TouchableOpacity style={styles.saveButtom} onPress={cadastroUsuario} activeOpacity={0.7}>
