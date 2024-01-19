@@ -106,7 +106,7 @@ export const Principal = () => {
           <Text style={styles.title2}>Universo</Text>
         </View>
         <View>
-          <Image style={{height: 365, width: 410, marginRight: 20}} source={require('../../img/astronautaImg5.png')}/>
+          <Image style={{height: 350, width: 410, marginRight: 20}} source={require('../../img/astronautaImg5.png')}/>
         </View>
         <StatusBar style="auto"/>
         <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar} handleOpenCadastroFeito={handleOpenCadastroFeito}/>

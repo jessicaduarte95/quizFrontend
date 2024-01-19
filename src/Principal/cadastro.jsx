@@ -165,7 +165,7 @@ export const Cadastrar = (props) => {
             setAlertImplemented('O email digitado é inválido.'); 
             handleOpenAlert();
         } else if (senha.length >= 6 && nome.length > 0 && email.length > 0) {
-            await Axios.post(`http://192.168.0.3:5000/cadastrar`, {
+            await Axios.post(`${process.env.DOMAIN}/cadastrar`, {
                 nome, email, senha
             })
                 .then((response) => {

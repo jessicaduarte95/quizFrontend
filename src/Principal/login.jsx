@@ -125,7 +125,7 @@ export const Login = (props) => {
 
     const loginUsuario = async () => {
         setLoading(true);
-        await Axios.post(`http://192.168.0.3:5000/login`, {
+        await Axios.post(`${process.env.DOMAIN}/login`, {
             loginEmail, loginSenha
         }).then((response) => {
             if (response.data[0] == true) {

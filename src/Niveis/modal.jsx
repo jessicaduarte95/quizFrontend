@@ -189,7 +189,7 @@ export const ModalNivel = (props) => {
     }
 
     const handlePontosNivel = () => {
-        Axios.post("http://192.168.0.3:5000/cadastrarPontos", {
+        Axios.post(`${process.env.DOMAIN}/cadastrarPontos`, {
             pontos: points,
             id: dadosUsuario.id,
             nivel: level[0].nivel
@@ -200,7 +200,7 @@ export const ModalNivel = (props) => {
 
     const handleChangeLevel = async () => {
 
-        await Axios.post("http://192.168.0.3:5000/habilitarNivel", {
+        await Axios.post(`${process.env.DOMAIN}/habilitarNivel`, {
             pontos: points,
             id: dadosUsuario.id,
             nivel: level[0].nivel
@@ -226,7 +226,7 @@ export const ModalNivel = (props) => {
 
     useEffect(() => {
         if (level != undefined) {
-            Axios.post("http://192.168.0.3:5000/obterOpcoes", {
+            Axios.post(`${process.env.DOMAIN}/obterOpcoes`, {
                 level, perguntaAtual
             })
                 .then((response) => {
