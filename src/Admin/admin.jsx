@@ -224,7 +224,7 @@ export const Admin = () => {
     const optionsSelect = ['Não', 'Sim'];
 
     const submitConfigurationQuestion = async () => {
-        await Axios.post(`http://192.168.0.3:5000/insertQuestion`, {
+        await Axios.post(`${process.env.DOMAIN}/insertQuestion`, {
             id, nivel, pergunta
         }).then(() => {
             setNotification(true)
@@ -236,7 +236,7 @@ export const Admin = () => {
     }
 
     const submitConfigurationOptions = async () => {
-        await Axios.post(`http://192.168.0.3:5000/insertOptions`, {
+        await Axios.post(`${process.env.DOMAIN}/insertOptions`, {
             nivelOptions, questionOptions, options
         }).then(() => {
             setNotification(true)
