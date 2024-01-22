@@ -1,6 +1,7 @@
 import react from 'react';
 import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import * as Animatable from 'react-native-animatable';
 
 export const ModalFinishLevel = (props) => {
     const { openFinishLevel, handleCloseFinishLevel, points, setPoints } = props;
@@ -62,7 +63,7 @@ export const ModalFinishLevel = (props) => {
                         </TouchableOpacity>
                     </View>
                     {points < 6 ?
-                        <View style={styles.contentSecond}>
+                        <Animatable.View  delay={1000} animation="fadeInUp" style={styles.contentSecond}>
                             <View style={styles.text}>
                                 <Text style={{ color: "#D0D1CE", fontSize: 24, fontWeight: 'bold', marginBottom: 8, textAlign: 'center' }}>Astronauta, não foi dessa vez!</Text>
                                 <Text style={{ color: "#D0D1CE", fontSize: 20, display: 'flex', textAlign: 'center', marginLeft: 3, marginRight: 3 }}>Para atingir o próximo nível, é necessário acertar, no mínimo, seis questões.</Text>
@@ -70,10 +71,10 @@ export const ModalFinishLevel = (props) => {
                             <View style={{ alignItems: 'center', justifyContent: 'flex-end', height: '75%', width: '70%' }}>
                                 <Image style={{ height: '100%', width: '100%' }} source={require('../../img/astronautaImg3.png')} />
                             </View>
-                        </View>
+                        </Animatable.View>
 
                         :
-                        <View style={styles.content}>
+                        <Animatable.View  delay={1000} animation="fadeInUp" style={styles.content}>
                             <View style={styles.text}>
                                 <Text style={{ color: "#D0D1CE", fontSize: 30, fontWeight: 'bold', marginBottom: 8 }}>Parabéns, Astronauta!</Text>
                                 <Text style={{ color: "#D0D1CE", fontSize: 20, display: 'flex', textAlign: 'center' }}>Você acaba de alcançar o próximo patamar. Que a sorte esteja ao seu lado nessa jornada incrível!</Text>
@@ -81,7 +82,7 @@ export const ModalFinishLevel = (props) => {
                             <View style={{ alignItems: 'center', justifyContent: 'flex-end', height: '70%' }}>
                                 <Image style={{ height: '100%', width: '100%' }} source={require('../../img/astronautaInteiro.png')} />
                             </View>
-                        </View>
+                        </Animatable.View>
                     }
 
                 </SafeAreaView>
