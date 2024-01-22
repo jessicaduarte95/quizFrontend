@@ -6,6 +6,7 @@ import { ModalNivel } from "./modal";
 import { ModalFinishLevel } from "./modalFinishLevel";
 import { ModalAjuda } from '../Ajuda/ajuda';
 import Axios from "axios";
+import * as Animatable from 'react-native-animatable';
 
 export const Nivel = () => {
     const navigation = useNavigation();
@@ -244,7 +245,7 @@ export const Nivel = () => {
             <View style={styles.nomeUsuario}>
                 <Text style={styles.nomeText}>Olá {dadosUsuario.nome}!</Text>
             </View>
-            <View style={styles.body}>
+            <Animatable.View  delay={1000} animation="fadeInUp" style={styles.body}>
                 <ScrollView style={styles.scroll}>
                     <TouchableOpacity style={styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(1); checkFinishLevel(); }}>
                         <Text style={styles.actionText}>Nível 1</Text>
@@ -302,7 +303,7 @@ export const Nivel = () => {
                 <View style={styles.image}>
                     <Image style={{ width: 210, height: 630 }} source={require('../../img/astronautaImg4.png')} />
                 </View>
-            </View>
+            </Animatable.View>
         </LinearGradient>
     )
 }
