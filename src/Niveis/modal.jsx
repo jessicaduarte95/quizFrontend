@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity, ActivityIndicator } from 'react-native';
 import Axios from "axios";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import * as Animatable from 'react-native-animatable';
 
 export const ModalNivel = (props) => {
 
@@ -150,6 +151,15 @@ export const ModalNivel = (props) => {
             shadowOpacity: 0.28,
             shadowRadius: 4,
         },
+        containerLoading: {
+            flex: 1,
+            justifyContent: "center"
+        },
+        horizontalLoading: {
+            flexDirection: "row",
+            justifyContent: "space-around",
+            padding: 10
+        }
     })
 
     const [perguntaAtual, setPerguntaAtual] = useState(0)
@@ -159,6 +169,7 @@ export const ModalNivel = (props) => {
     const [mudarCor3, setMudarCor3] = useState(false);
     const [mudarCor4, setMudarCor4] = useState(false);
     const [disabled, setDisabled] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const change = () => {
         setMudarCor1(false);
@@ -224,17 +235,24 @@ export const ModalNivel = (props) => {
 
     }
 
+    const getOptions = async () => {
+        setLoading(true)
+        Axios.post(`${process.env.DOMAIN}/obterOpcoes`, {
+            level, perguntaAtual
+        })
+            .then((response) => {
+                setOpcoes(response.data);
+                setLoading(false)
+            })
+            .catch((error) => {
+                console.log(error);
+                setLoading(false)
+            })
+    }
+
     useEffect(() => {
         if (level != undefined) {
-            Axios.post(`${process.env.DOMAIN}/obterOpcoes`, {
-                level, perguntaAtual
-            })
-                .then((response) => {
-                    setOpcoes(response.data);
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
+            getOptions()
         }
 
     }, [level, perguntaAtual])
@@ -244,22 +262,22 @@ export const ModalNivel = (props) => {
         <Modal
             visible={openModalNivel}
             transparent={true}
-            onRequestClose={() => {handleCloseModal(), setPerguntaAtual(0)}}
+            onRequestClose={() => { handleCloseModal(), setPerguntaAtual(0) }}
             animationType='fade'>
             <View style={styles.modalBackGround}>
                 <SafeAreaView style={styles.container}>
                     <View style={styles.closeButtom}>
-                        <TouchableOpacity onPress={() => {handleCloseModal(), setPerguntaAtual(0)}}>
+                        <TouchableOpacity onPress={() => { handleCloseModal(), setPerguntaAtual(0) }}>
                             <Icon name="close" size={27} color="#D0D1CE" />
                         </TouchableOpacity>
                     </View>
-                    <View style={styles.containerQuestion}>
+                    <Animatable.View delay={800} animation="fadeInUp" style={styles.containerQuestion}>
                         <Text style={styles.question}>{level != undefined ? level[perguntaAtual].pergunta : ""}</Text>
-                    </View>
+                    </Animatable.View>
                     <View style={styles.containerNumberQuestion}>
                         <Text style={styles.numberQuestionText}>Pergunta {perguntaAtual + 1} / 10</Text>
                     </View>
-                    <View style={styles.containerOptions}>
+                    <Animatable.View delay={800} animation="fadeInUp" style={styles.containerOptions}>
                         {mudarCor1 == true ? "" :
                             <TouchableOpacity style={styles.stylesOptions} onPress={() => { setMudarCor1(true); setDisabled(true); countPointOption1() }} disabled={disabled}>
                                 <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].opcao : ""}</Text>
@@ -319,7 +337,7 @@ export const ModalNivel = (props) => {
                                     <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].opcao : ""}</Text>
                                 </TouchableOpacity>
                                 : ""}
-                    </View>
+                    </Animatable.View>
                     {perguntaAtual == 9 ?
                         <View style={styles.conatinerNextQuestion}>
                             <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => { handleChangeLevel() }}>
@@ -329,7 +347,14 @@ export const ModalNivel = (props) => {
                         :
                         <View style={styles.conatinerNextQuestion}>
                             <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={() => { setPerguntaAtual(perguntaAtual + 1); setDisabled(false); change(); handlePontosNivel() }}>
-                                <Text style={styles.textButton}>Próxima Pergunta</Text>
+                                {loading == true ?
+                                    // <View style={[styles.containerLoading, styles.horizontalLoading]}>
+                                    //     <ActivityIndicator size="small" color="#0000ff" />
+                                    // </View>
+                                    <ActivityIndicator size="small" color="#0000ff" />
+                                    :
+                                    <Text style={styles.textButton}>Próxima Pergunta</Text>
+                                }
                             </TouchableOpacity>
                         </View>
                     }
