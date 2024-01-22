@@ -245,7 +245,7 @@ export const Nivel = () => {
             <View style={styles.nomeUsuario}>
                 <Text style={styles.nomeText}>Olá {dadosUsuario.nome}!</Text>
             </View>
-            <Animatable.View  delay={1000} animation="fadeInUp" style={styles.body}>
+            <Animatable.View  delay={3000} animation="fadeInUp" style={styles.body}>
                 <ScrollView style={styles.scroll}>
                     <TouchableOpacity style={styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(1); checkFinishLevel(); }}>
                         <Text style={styles.actionText}>Nível 1</Text>

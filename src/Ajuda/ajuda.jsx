@@ -1,6 +1,7 @@
 import react from 'react';
 import { StyleSheet, Text, View, Modal, SafeAreaView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import * as Animatable from 'react-native-animatable';
 
 export const ModalAjuda = (props) => {
     const { handleCloseModalHelp, openHelp } = props;
@@ -54,7 +55,7 @@ export const ModalAjuda = (props) => {
             transparent={true}
             onRequestClose={handleCloseModalHelp}
             animationType='fade'>
-            <View style={styles.modalBackGround}>
+            <Animatable.View delay={500} animation="fadeInUp" style={styles.modalBackGround}>
                 <SafeAreaView style={styles.container}>
                     <View style={styles.closeButtom}>
                         <TouchableOpacity onPress={handleCloseModalHelp}>
@@ -66,16 +67,16 @@ export const ModalAjuda = (props) => {
                     </View>
                     <View style={styles.text}>
                         <Text style={{ color: '#E5E5E5', fontSize: 20, textAlign: 'center' }}>
-                        Prepare-se para embarcar em uma jornada emocionante de conhecimento científico e exploração do universo! 
-                        Ao iniciar nosso jogo de perguntas, você começará no nível 1. Se você conseguir acertar 6 ou mais questões, 
-                        desbloqueará o próximo nível e estará pronto para desafios ainda mais fascinantes.
-                        Cada pergunta é uma oportunidade de expandir seus horizontes e aprofundar seu entendimento sobre o mundo ao nosso redor. 
-                        Esteja pronto para explorar conceitos científicos intrigantes e descobrir os mistérios do cosmos.
-                        Então, ajuste seu cinto de segurança, pois esta nave do conhecimento está prestes a decolar. 
+                            Prepare-se para embarcar em uma jornada emocionante de conhecimento científico e exploração do universo!
+                            Ao iniciar nosso jogo de perguntas, você começará no nível 1. Se você conseguir acertar 6 ou mais questões,
+                            desbloqueará o próximo nível e estará pronto para desafios ainda mais fascinantes.
+                            Cada pergunta é uma oportunidade de expandir seus horizontes e aprofundar seu entendimento sobre o mundo ao nosso redor.
+                            Esteja pronto para explorar conceitos científicos intrigantes e descobrir os mistérios do cosmos.
+                            Então, ajuste seu cinto de segurança, pois esta nave do conhecimento está prestes a decolar.
                         </Text>
                     </View>
                 </SafeAreaView>
-            </View>
+            </Animatable.View>
         </Modal>
     )
 }
