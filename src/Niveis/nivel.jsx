@@ -19,10 +19,10 @@ export const Nivel = () => {
             alignItems: 'center'
         },
         buttonSairAjuda: {
+            flex: 1,
             paddingTop: 42,
             flexDirection: 'row',
-            justifyContent: 'flex-end',
-            width: '100%'
+            justifyContent: 'flex-end'
         },
         buttonAdmin: {
             color: '#D0D1CE',
@@ -44,12 +44,11 @@ export const Nivel = () => {
             fontSize: 17
         },
         nomeUsuario: {
+            flex: 1,
             paddingTop: 15,
-            marginBottom: 15,
+            marginBottom: 10,
             flexDirection: 'row',
             justifyContent: 'center',
-            paddingLeft: 35,
-            width: '100%'
         },
         nomeText: {
             fontWeight: 'bold',
@@ -57,19 +56,16 @@ export const Nivel = () => {
             fontSize: 30
         },
         body: {
+            flex: 15,
             display: 'flex',
             flexDirection: 'row',
-            height: '100%',
         },
         image: {
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'flex-end',
-            width: '55%',
-            height: '86%'
+            justifyContent: 'flex-end'
         },
         buttonLevelsDisabled: {
-            zIndex: 99,
             backgroundColor: '#00061B',
             borderRadius: 6,
             marginTop: 13,
@@ -85,7 +81,6 @@ export const Nivel = () => {
             elevation: 5,
             shadowOpacity: 0.28,
             shadowRadius: 4,
-            width: 160,
         },
         actionText: {
             textAlign: 'center',
@@ -94,7 +89,6 @@ export const Nivel = () => {
             fontSize: 20
         },
         buttonLevelsAbled: {
-            zIndex: 99,
             backgroundColor: '#000929',
             borderRadius: 6,
             marginTop: 13,
@@ -109,19 +103,20 @@ export const Nivel = () => {
             },
             elevation: 5,
             shadowOpacity: 0.28,
-            shadowRadius: 4,
-            width: 160,
+            shadowRadius: 4
         },
         actionText: {
             textAlign: 'center',
             fontWeight: 'bold',
             color: '#E5E5E5',
+            paddingRight: 18,
+            paddingLeft: 18,
             fontSize: 20
         },
         scroll: {
-            width: '50%',
-            height: '80%',
-            paddingLeft: 10
+            flex: 1,
+            marginBottom: 10,
+            marginLeft: 10
         },
         startType1: {
             width: 0.8,
