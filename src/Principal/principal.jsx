@@ -95,7 +95,7 @@ export const Principal = () => {
       locations={[.3, 0.67]}
       colors={['#3544A7', '#000720']}>
       <View style={styles.loginCadastro}>
-        <TouchableOpacity onPress={handleOpenLogin}>
+        <TouchableOpacity onPress={handleOpenLogin} style={{ width: 60}}>
           <Text style={{ color: '#D0D1CE', paddingRight: '6%', fontSize: 17 }}>Entrar</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={handleOpenCadastrar}>
