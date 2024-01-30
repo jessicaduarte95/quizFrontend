@@ -122,7 +122,71 @@ export const Nivel = () => {
             width: '50%',
             height: '80%',
             paddingLeft: 10
-        }
+        },
+        startType1: {
+            width: 0.8,
+            height: 0.8,
+            backgroundColor: 'white',
+            borderRadius: '50%',
+            borderWidth: 0.8,
+            borderColor: 'white',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            marginBottom: 70,
+            marginRight: 50
+        },
+        startType2: {
+            width: 1.3,
+            height: 1.3,
+            backgroundColor: '#E5E5E5',
+            borderRadius: '50%',
+            borderWidth: 1.3,
+            borderColor: '#E5E5E5',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            marginLeft: 30,
+        },
+        startType3: {
+            width: 0.8,
+            height: 0.8,
+            backgroundColor: 'white',
+            borderRadius: '50%',
+            borderWidth: 0.8,
+            borderColor: 'white',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            marginTop: 80,
+            marginLeft: 30,
+            marginRight: 50
+        },
+        startType4: {
+            width: 1.3,
+            height: 1.3,
+            backgroundColor: '#E5E5E5',
+            borderRadius: '50%',
+            borderWidth: 1.3,
+            borderColor: '#E5E5E5',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            marginLeft: 30,
+            marginTop: 25
+        },
+        startType5: {
+            width: 0.8,
+            height: 0.8,
+            backgroundColor: 'white',
+            borderRadius: '50%',
+            borderWidth: 0.8,
+            borderColor: 'white',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            marginLeft: 70
+        },
+        startType6: {
+            width: 0.8,
+            height: 0.8,
+            backgroundColor: '#E5E5E5',
+            borderRadius: '50%',
+            borderWidth: 0.8,
+            borderColor: '#E5E5E5',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+        },
+
     })
 
     const [openModalNivel, setOpenModalNivel] = useState(false);
@@ -245,7 +309,7 @@ export const Nivel = () => {
             <View style={styles.nomeUsuario}>
                 <Text style={styles.nomeText}>Olá {dadosUsuario.nome}!</Text>
             </View>
-            <Animatable.View  delay={3000} animation="fadeInUp" style={styles.body}>
+            <Animatable.View delay={3000} animation="fadeInUp" style={styles.body}>
                 <ScrollView style={styles.scroll}>
                     <TouchableOpacity style={styles.buttonLevelsAbled} onPress={() => { perguntas(); setNivel(1); checkFinishLevel(); }}>
                         <Text style={styles.actionText}>Nível 1</Text>
@@ -301,7 +365,25 @@ export const Nivel = () => {
                     />
                 </ScrollView>
                 <View style={styles.image}>
-                    <Image style={{ width: 210, height: 630 }} source={require('../../img/astronautaImg4.png')} />
+                    <View style={{ display: 'flex', flexDirection: 'row', width: '100%', marginBottom: 20, marginLeft: 20, height: '17%' }}>
+                        <View>
+                            <View style={styles.startType1} />
+                            <View style={styles.startType2} />
+                        </View>
+                        <View style={{ paddingTop: 10 }}>
+                            <View style={styles.startType4} />
+                            <View style={styles.startType3} />
+                        </View>
+                        <View>
+                            <View style={styles.startType1} />
+                            <View style={styles.startType2} />
+                        </View>
+                    </View>
+                    <View>
+                        <View style={styles.startType5} />
+                        <View style={styles.startType6} />
+                    </View>
+                    <Image style={{ width: 210, height: 560, marginBottom: 10 }} source={require('../../img/astronautaImg4.png')} />
                 </View>
             </Animatable.View>
         </LinearGradient>
