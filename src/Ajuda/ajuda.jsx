@@ -66,7 +66,7 @@ export const ModalAjuda = (props) => {
                         <Text style={{ fontWeight: 'bold', color: '#E5E5E5', fontSize: 30 }}>Olá Astronauta!</Text>
                     </View>
                     <View style={styles.text}>
-                        <Text style={{ color: '#E5E5E5', fontSize: 20, textAlign: 'center' }}>
+                        <Text style={{ color: '#E5E5E5', fontSize: 18, textAlign: 'center' }}>
                             Prepare-se para embarcar em uma jornada emocionante de conhecimento científico e exploração do universo!
                             Ao iniciar nosso jogo de perguntas, você começará no nível 1. Se você conseguir acertar 6 ou mais questões,
                             desbloqueará o próximo nível e estará pronto para desafios ainda mais fascinantes.
