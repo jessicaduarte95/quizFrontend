@@ -26,7 +26,7 @@ export const ModalFinishLevel = (props) => {
             elevation: 5,
             shadowOpacity: 0.28,
             shadowRadius: 4,
-            width: 360,
+            width: 345,
             height: 520
         },
         closeButtom: {
@@ -36,11 +36,13 @@ export const ModalFinishLevel = (props) => {
             paddingTop: 8
         },
         content: {
+            flex: 1,
             display: 'flex'
         },
         contentSecond: {
+            flex: 1,
             display: 'flex',
-            alignItems: 'center',
+            alignItems: 'center'
         },
         text: {
             display: 'flex',
@@ -68,7 +70,7 @@ export const ModalFinishLevel = (props) => {
                                 <Text style={{ color: "#D0D1CE", fontSize: 24, fontWeight: 'bold', marginBottom: 8, textAlign: 'center' }}>Astronauta, não foi dessa vez!</Text>
                                 <Text style={{ color: "#D0D1CE", fontSize: 20, display: 'flex', textAlign: 'center', marginLeft: 3, marginRight: 3 }}>Para atingir o próximo nível, é necessário acertar, no mínimo, seis questões.</Text>
                             </View>
-                            <View style={{ alignItems: 'center', justifyContent: 'flex-end', height: '75%', width: '70%' }}>
+                            <View style={{ alignItems: 'center', justifyContent: 'flex-end', height: '75%', width: '70%'}}>
                                 <Image style={{ height: '100%', width: '100%' }} source={require('../../img/astronautaImg3.png')} />
                             </View>
                         </Animatable.View>

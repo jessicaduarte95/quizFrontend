@@ -59,6 +59,7 @@ export const Nivel = () => {
             flex: 15,
             display: 'flex',
             flexDirection: 'row',
+            marginBottom: 15
         },
         image: {
             display: 'flex',

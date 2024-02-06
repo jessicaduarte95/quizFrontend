@@ -28,7 +28,7 @@ export const ModalNivel = (props) => {
             elevation: 5,
             shadowOpacity: 0.28,
             shadowRadius: 4,
-            width: 375
+            width: 350
         },
         containerQuestion: {
             padding: 25,
