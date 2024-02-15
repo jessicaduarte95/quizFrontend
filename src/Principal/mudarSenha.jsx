@@ -1,14 +1,16 @@
+import { useState } from 'react';
 import { StyleSheet, Text, View, Modal, Image, TouchableOpacity, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import Axios from 'axios';
 
 export const MudarSenha = () => {
     const navigation = useNavigation();
 
     const styles = StyleSheet.create({
         container: {
-          flex: 1,
-          backgroundColor: 'red'
+            flex: 1,
+            backgroundColor: 'red'
         },
         buttonSair: {
             paddingTop: 50,
@@ -16,8 +18,8 @@ export const MudarSenha = () => {
             flexDirection: 'row',
             justifyContent: 'flex-end',
             width: '100%'
-          },
-          title: {
+        },
+        title: {
             paddingTop: 0,
             flexDirection: 'row',
             justifyContent: 'center',
@@ -80,34 +82,50 @@ export const MudarSenha = () => {
         }
     })
 
-    return(
-        <LinearGradient 
-        style={styles.container}
-        start={{x:1,y:1.9}}
-        end={{x:1,y:0}}
-        locations={[.3,0.67]}
-        colors={['#3544A7','#000720']}>
+    const [email, setEmail] = useState('');
+    const [modalChangePassword, setModalChangePassword] = useState(false);
+
+    const checkUser = async () => {
+
+        await Axios.post(`${process.env.DOMAIN}/checkUser`, {
+            email
+        }).then((response) => {
+            if (response.data) {
+                setModalChangePassword(true);
+            }
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
+
+    return (
+        <LinearGradient
+            style={styles.container}
+            start={{ x: 1, y: 1.9 }}
+            end={{ x: 1, y: 0 }}
+            locations={[.3, 0.67]}
+            colors={['#3544A7', '#000720']}>
             <View style={styles.buttonSair}>
                 <TouchableOpacity onPress={() => navigation.navigate('Principal')}>
-                    <Text style={{color: '#D0D1CE', fontSize: 17, width: 50, display: 'flex', justifyContent: 'flex-end'}}>Sair</Text>
+                    <Text style={{ color: '#D0D1CE', fontSize: 17, width: 50, display: 'flex', justifyContent: 'flex-end' }}>Sair</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.title}>
-                <Text style={{fontWeight: 'bold', color: '#E5E5E5', fontSize: 30}}>Alterar Senha</Text>
+                <Text style={{ fontWeight: 'bold', color: '#E5E5E5', fontSize: 30 }}>Alterar Senha</Text>
             </View>
-            <View style={{padding: 30}}>
-                <Text style={{color: '#E5E5E5', fontSize: 20, textAlign: 'justify'}}>
+            <View style={{ padding: 30 }}>
+                <Text style={{ color: '#E5E5E5', fontSize: 20, textAlign: 'justify' }}>
                     Para redefinir sua senha, por favor, insira seu endereço de email abaixo.
                 </Text>
             </View>
-                <TextInput style={styles.input} placeholder="Digite seu Email" placeholderTextColor='#D0D1CE'></TextInput>
+            <TextInput style={styles.input} placeholder="Digite seu Email" placeholderTextColor='#D0D1CE' onChange={(e) => setEmail(e.target.value)}></TextInput>
             <View style={styles.content}>
-                <TouchableOpacity style={styles.buttom} activeOpacity={0.7}>
+                <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={checkUser}>
                     <Text style={styles.textButton}>OK</Text>
                 </TouchableOpacity>
             </View>
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'flex-start'}}>
-                <Image style={{height: 500, width: 350}} source={require('../../img/astronautaImg6.png')}/>
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
+                <Image style={{ height: 500, width: 350 }} source={require('../../img/astronautaImg6.png')} />
             </View>
         </LinearGradient>
     )
