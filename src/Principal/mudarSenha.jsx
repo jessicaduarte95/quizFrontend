@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import Axios from 'axios';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export const MudarSenha = () => {
     const navigation = useNavigation();
@@ -59,7 +60,7 @@ export const MudarSenha = () => {
             marginRight: 15,
             marginBottom: 15
         },
-        buttom: {
+        buttonOK: {
             zIndex: 99,
             backgroundColor: '#000720',
             borderRadius: 6,
@@ -143,12 +144,20 @@ export const MudarSenha = () => {
             shadowOpacity: 0.28,
             shadowRadius: 4
         },
+        checkbox: {
+            display: "flex",
+            flexDirection: "row",
+            marginLeft: 15,
+            marginRight: 15,
+            marginBottom: 8
+        }
     })
 
     const [email, setEmail] = useState('');
     const [modalChangePassword, setModalChangePassword] = useState(false);
     const handleCloseChangePassword = () => setModalChangePassword(false);
     const handleOpenChangePassword = () => setModalChangePassword(true);
+    const [isCheck, setIsCheck] = useState(false);
 
     const checkUser = async () => {
 
@@ -166,6 +175,10 @@ export const MudarSenha = () => {
 
     const changePassword = async () => {
         handleCloseChangePassword();
+    }
+
+    const isChecked = () => {
+        setIsCheck(!isCheck);
     }
 
     return (
@@ -190,7 +203,7 @@ export const MudarSenha = () => {
             </View>
             <TextInput style={styles.input} placeholder="Digite seu Email" placeholderTextColor='#D0D1CE' onChange={(e) => setEmail(e.target.value)}></TextInput>
             <View style={styles.content}>
-                <TouchableOpacity style={styles.buttom} activeOpacity={0.7} onPress={checkUser}>
+                <TouchableOpacity style={styles.buttonOK} activeOpacity={0.7} onPress={checkUser}>
                     <Text style={styles.textButton}>OK</Text>
                 </TouchableOpacity>
             </View>
@@ -209,8 +222,25 @@ export const MudarSenha = () => {
                                 Digite sua nova senha:
                             </Text>
                         </View>
-                        <TextInput style={styles.inputSenha} secureTextEntry={false} placeholder="Senha" placeholderTextColor='#D0D1CE' />
+                        {isCheck ?
+                            <TextInput style={styles.inputSenha} secureTextEntry={false} placeholder="Senha" placeholderTextColor='#D0D1CE' />
+                            :
+                            <TextInput style={styles.inputSenha} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' />
+                        }
+                        <View style={styles.checkbox}>
+                            <TouchableOpacity onPress={isChecked}>
+                                {isCheck ?
+                                    <MaterialIcons name="check-box" size={24} color="#D0D1CE" />
+                                    :
+                                    <MaterialIcons name="check-box-outline-blank" size={24} color="#D0D1CE" />
+                                }
+                            </TouchableOpacity>
+                            <Text style={{ marginLeft: 5, marginTop: 5, color: '#D0D1CE' }}>Mostrar Senha</Text>
+                        </View>
                         <View style={styles.button}>
+                            <TouchableOpacity style={styles.saveButton} activeOpacity={0.7}>
+                                <Text style={{ textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5', fontSize: 17 }} onPress={() => { handleCloseChangePassword(), setIsCheck(false) }}>Fechar</Text>
+                            </TouchableOpacity>
                             <TouchableOpacity style={styles.saveButton} onPress={changePassword} activeOpacity={0.7}>
                                 <Text style={{ textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5', fontSize: 17 }}>Salvar</Text>
                             </TouchableOpacity>
