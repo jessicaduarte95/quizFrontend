@@ -156,8 +156,8 @@ export const MudarSenha = () => {
     const [email, setEmail] = useState('');
     const [modalChangePassword, setModalChangePassword] = useState(false);
     const handleCloseChangePassword = () => setModalChangePassword(false);
-    const handleOpenChangePassword = () => setModalChangePassword(true);
     const [isCheck, setIsCheck] = useState(false);
+    const [senha, setSenha] = useState('');
 
     const checkUser = async () => {
 
@@ -174,7 +174,17 @@ export const MudarSenha = () => {
 
 
     const changePassword = async () => {
-        handleCloseChangePassword();
+
+        await Axios.put(`${process.env.DOMAIN}/changePassword`, {
+            email, senha
+        })
+            .then(() => { })
+            .catch((error) => {
+                console.log(error)
+            })
+            .finally(() => {
+                handleCloseChangePassword();
+            })
     }
 
     const isChecked = () => {
@@ -223,9 +233,9 @@ export const MudarSenha = () => {
                             </Text>
                         </View>
                         {isCheck ?
-                            <TextInput style={styles.inputSenha} secureTextEntry={false} placeholder="Senha" placeholderTextColor='#D0D1CE' />
+                            <TextInput style={styles.inputSenha} secureTextEntry={false} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={senha => setSenha(senha)} />
                             :
-                            <TextInput style={styles.inputSenha} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' />
+                            <TextInput style={styles.inputSenha} secureTextEntry={true} placeholder="Senha" placeholderTextColor='#D0D1CE' onChangeText={senha => setSenha(senha)} />
                         }
                         <View style={styles.checkbox}>
                             <TouchableOpacity onPress={isChecked}>
