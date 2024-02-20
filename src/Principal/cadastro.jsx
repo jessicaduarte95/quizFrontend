@@ -72,7 +72,7 @@ export const Cadastrar = (props) => {
             shadowRadius: 4,
             color: '#D0D1CE'
         },
-        saveButtom: {
+        saveButton: {
             zIndex: 99,
             backgroundColor: '#000720',
             borderRadius: 6,
@@ -241,7 +241,7 @@ export const Cadastrar = (props) => {
                         <Text style={{ marginBottom: 15, marginLeft: 15, marginRight: 15, color: '#D0D1CE' }}>Sua senha deve ter no mínimo 6 caracteres.</Text>
                     </View>
                     <View style={styles.content}>
-                        <TouchableOpacity style={styles.saveButtom} onPress={cadastroUsuario} activeOpacity={0.7}>
+                        <TouchableOpacity style={styles.saveButton} onPress={cadastroUsuario} activeOpacity={0.7}>
                             {loading == true ?
                                 <View style={[styles.containerLoading, styles.horizontalLoading]}>
                                     <ActivityIndicator size="small" color="#0000ff" />
@@ -250,7 +250,7 @@ export const Cadastrar = (props) => {
                                 <Text style={styles.actionText}>Salvar</Text>
                             }
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.saveButtom} activeOpacity={0.7}>
+                        <TouchableOpacity style={styles.saveButton} activeOpacity={0.7}>
                             <Text style={styles.cancelText} onPress={() => { handleClose(), setIsCheck(false) }}>Fechar</Text>
                         </TouchableOpacity>
                     </View>

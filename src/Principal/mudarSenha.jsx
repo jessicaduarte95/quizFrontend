@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Modal, Image, TouchableOpacity, TextInput } fro
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import Axios from 'axios';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const MudarSenha = () => {
     const navigation = useNavigation();
@@ -79,11 +80,75 @@ export const MudarSenha = () => {
             textAlign: 'center',
             fontWeight: 'bold',
             color: '#E5E5E5'
-        }
+        },
+        modalBackGround: {
+            flex: 1,
+            backgroundColor: 'rgba(0,0,0,0.82)',
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        containerModal: {
+            width: '90%',
+            backgroundColor: '#000929',
+            borderRadius: 15,
+            borderWidth: 1.5,
+            borderColor: 'rgba(50,115,220, 0.4)',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            elevation: 5,
+            shadowOpacity: 0.28,
+            shadowRadius: 4
+        },
+        inputSenha: {
+            backgroundColor: "#000720",
+            marginBottom: 10,
+            marginLeft: 15,
+            marginRight: 15,
+            paddingLeft: 8,
+            height: 42,
+            borderWidth: 1,
+            borderColor: 'rgba(50,115,220, 0.4)',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            elevation: 5,
+            shadowOpacity: 0.28,
+            shadowRadius: 4,
+            color: '#D0D1CE'
+        },
+        button: {
+            flexDirection: 'row',
+            justifyContent: 'flex-end'
+        },
+        saveButton: {
+            zIndex: 99,
+            backgroundColor: '#000720',
+            borderRadius: 6,
+            marginBottom: 17,
+            marginRight: 8,
+            padding: 10,
+            borderWidth: 1,
+            borderColor: 'rgba(50,115,220, 0.4)',
+            shadowColor: 'rgba(50,115,220, 0.9)',
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            elevation: 5,
+            shadowOpacity: 0.28,
+            shadowRadius: 4
+        },
     })
 
     const [email, setEmail] = useState('');
     const [modalChangePassword, setModalChangePassword] = useState(false);
+    const handleCloseChangePassword = () => setModalChangePassword(false);
+    const handleOpenChangePassword = () => setModalChangePassword(true);
 
     const checkUser = async () => {
 
@@ -96,6 +161,11 @@ export const MudarSenha = () => {
         }).catch((error) => {
             console.log(error);
         });
+    }
+
+
+    const changePassword = async () => {
+        handleCloseChangePassword();
     }
 
     return (
@@ -127,6 +197,27 @@ export const MudarSenha = () => {
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
                 <Image style={{ height: 500, width: 350 }} source={require('../../img/astronautaImg6.png')} />
             </View>
+            <Modal
+                visible={modalChangePassword}
+                transparent={true}
+                onRequestClose={handleCloseChangePassword}
+                animationType='fade'>
+                <View style={styles.modalBackGround}>
+                    <SafeAreaView style={styles.containerModal}>
+                        <View>
+                            <Text style={{ margin: 25, color: '#D0D1CE', fontSize: 19.5 }}>
+                                Digite sua nova senha:
+                            </Text>
+                        </View>
+                        <TextInput style={styles.inputSenha} secureTextEntry={false} placeholder="Senha" placeholderTextColor='#D0D1CE' />
+                        <View style={styles.button}>
+                            <TouchableOpacity style={styles.saveButton} onPress={changePassword} activeOpacity={0.7}>
+                                <Text style={{ textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5', fontSize: 17 }}>Salvar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </SafeAreaView>
+                </View>
+            </Modal>
         </LinearGradient>
     )
 }
