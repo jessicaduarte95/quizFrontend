@@ -150,14 +150,32 @@ export const MudarSenha = () => {
             marginLeft: 15,
             marginRight: 15,
             marginBottom: 8
+        },
+        buttonOk: {
+            marginVertical: -15,
+            marginLeft: 10,
+            marginRight: 10,
+            marginBottom: 15,
+            flexDirection: 'row',
+            justifyContent: 'flex-end'
+        },
+        alertButtom: {
+            zIndex: 99,
+            borderRadius: 6,
+            marginTop: 3,
+            marginRight: 8,
+            padding: 10
         }
     })
 
     const [email, setEmail] = useState('');
     const [modalChangePassword, setModalChangePassword] = useState(false);
     const handleCloseChangePassword = () => setModalChangePassword(false);
+    const [modalAlert, setModalAlert] = useState(false);
+    const handleCloseAlert = () => setModalAlert(false);
     const [isCheck, setIsCheck] = useState(false);
     const [senha, setSenha] = useState('');
+    const [textAlert, setTextAlert] = useState('');
 
     const checkUser = async () => {
 
@@ -166,6 +184,9 @@ export const MudarSenha = () => {
         }).then((response) => {
             if (response.data) {
                 setModalChangePassword(true);
+            } else {
+                setTextAlert('O email digitado não existe.');
+                setModalAlert(true);
             }
         }).catch((error) => {
             console.log(error);
@@ -175,16 +196,24 @@ export const MudarSenha = () => {
 
     const changePassword = async () => {
 
-        await Axios.put(`${process.env.DOMAIN}/changePassword`, {
-            email, senha
-        })
-            .then(() => { })
-            .catch((error) => {
-                console.log(error)
+        if (senha.length < 6) {
+            setTextAlert('A senha deve conter no mínimo 6 caracteres.');
+            setModalAlert(true);
+            handleCloseChangePassword();
+        } else {
+            await Axios.put(`${process.env.DOMAIN}/changePassword`, {
+                email, senha
             })
-            .finally(() => {
-                handleCloseChangePassword();
-            })
+                .then(() => { })
+                .catch((error) => {
+                    console.log(error)
+                })
+                .finally(() => {
+                    handleCloseChangePassword();
+                    setSenha('');
+                    setEmail('');
+                })
+        }
     }
 
     const isChecked = () => {
@@ -247,12 +276,38 @@ export const MudarSenha = () => {
                             </TouchableOpacity>
                             <Text style={{ marginLeft: 5, marginTop: 5, color: '#D0D1CE' }}>Mostrar Senha</Text>
                         </View>
+                        <View>
+                            <Text style={{ marginBottom: 15, marginLeft: 15, marginRight: 15, color: '#D0D1CE' }}>Sua senha deve ter no mínimo 6 caracteres.</Text>
+                        </View>
                         <View style={styles.button}>
                             <TouchableOpacity style={styles.saveButton} activeOpacity={0.7}>
-                                <Text style={{ textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5', fontSize: 17 }} onPress={() => { handleCloseChangePassword(), setIsCheck(false) }}>Fechar</Text>
+                                <Text style={{ textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5', fontSize: 17 }} onPress={() => { handleCloseChangePassword(); setIsCheck(false); setSenha(''); setEmail('') }}>Fechar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.saveButton} onPress={changePassword} activeOpacity={0.7}>
                                 <Text style={{ textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5', fontSize: 17 }}>Salvar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </SafeAreaView>
+                </View>
+            </Modal>
+            <Modal
+                visible={modalAlert}
+                transparent={true}
+                onRequestClose={() => { handleCloseAlert(); setSenha(''); setEmail('') }}
+                animationType='fade'>
+                <View style={styles.modalBackGround}>
+                    <SafeAreaView style={styles.containerModal}>
+                        <View>
+                            <Text style={{ color: '#E5E5E5', fontSize: 30, margin: 10 }}>Atenção!</Text>
+                        </View>
+                        <View>
+                            <Text style={{ marginBottom: 25, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17 }}>
+                                {textAlert}
+                            </Text>
+                        </View>
+                        <View style={styles.buttonOk}>
+                            <TouchableOpacity style={styles.alertButtom} onPress={() => { handleCloseAlert(); setSenha(''); setEmail('') }} activeOpacity={0.7}>
+                                <Text style={{ textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5', fontSize: 17 }}>Ok</Text>
                             </TouchableOpacity>
                         </View>
                     </SafeAreaView>
