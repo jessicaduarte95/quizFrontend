@@ -177,6 +177,7 @@ export const MudarSenha = () => {
     const [senha, setSenha] = useState('');
     const [textAlert, setTextAlert] = useState('');
     const [titleAlert, setTitleAlert] = useState('');
+    const [idUser, setIdUser] = useState('');
 
     const checkUser = async () => {
 
@@ -184,6 +185,7 @@ export const MudarSenha = () => {
             email
         }).then((response) => {
             if (response.data) {
+                setIdUser(response.data.id)
                 setModalChangePassword(true);
             } else {
                 setTitleAlert('Atenção!')
@@ -205,7 +207,7 @@ export const MudarSenha = () => {
             handleCloseChangePassword();
         } else {
             await Axios.put(`${process.env.DOMAIN}/changePassword`, {
-                email, senha
+                idUser, email, senha
             })
                 .then(() => {
                     setTitleAlert('Parabéns!')
