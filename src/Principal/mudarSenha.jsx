@@ -176,6 +176,7 @@ export const MudarSenha = () => {
     const [isCheck, setIsCheck] = useState(false);
     const [senha, setSenha] = useState('');
     const [textAlert, setTextAlert] = useState('');
+    const [titleAlert, setTitleAlert] = useState('');
 
     const checkUser = async () => {
 
@@ -185,6 +186,7 @@ export const MudarSenha = () => {
             if (response.data) {
                 setModalChangePassword(true);
             } else {
+                setTitleAlert('Atenção!')
                 setTextAlert('O email digitado não existe.');
                 setModalAlert(true);
             }
@@ -197,6 +199,7 @@ export const MudarSenha = () => {
     const changePassword = async () => {
 
         if (senha.length < 6) {
+            setTitleAlert('Atenção!')
             setTextAlert('A senha deve conter no mínimo 6 caracteres.');
             setModalAlert(true);
             handleCloseChangePassword();
@@ -204,7 +207,11 @@ export const MudarSenha = () => {
             await Axios.put(`${process.env.DOMAIN}/changePassword`, {
                 email, senha
             })
-                .then(() => { })
+                .then(() => {
+                    setTitleAlert('Parabéns!')
+                    setTextAlert('Sua senha foi alterada com sucesso.');
+                    setModalAlert(true);
+                })
                 .catch((error) => {
                     console.log(error)
                 })
@@ -298,7 +305,7 @@ export const MudarSenha = () => {
                 <View style={styles.modalBackGround}>
                     <SafeAreaView style={styles.containerModal}>
                         <View>
-                            <Text style={{ color: '#E5E5E5', fontSize: 30, margin: 10 }}>Atenção!</Text>
+                            <Text style={{ color: '#E5E5E5', fontSize: 30, margin: 10 }}>{titleAlert}</Text>
                         </View>
                         <View>
                             <Text style={{ marginBottom: 25, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 17 }}>
