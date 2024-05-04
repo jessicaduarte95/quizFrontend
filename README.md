@@ -4,6 +4,8 @@
 
 <h2 align="center"> Tecnologias Usadas (Technologies) </h2>
 
+- Javascript;
+
 - React Native;
 
 - Node  (v20.11.1).
@@ -24,6 +26,7 @@
 <h2 align="center"> Apresentação do projeto (Project Presentation) </h2>
 
 ### Funcionalidades (Features)
+
 <p>Página inicial (Homepage): </p>
 
 <div display="flex" align="center">
@@ -36,6 +39,7 @@
 <div display="flex" align="center">
   <img src="/img/foto4.png" alt="Início do jogo">
 </div>
+
 
 <p>Clicando no botão de ajuda obtém-se a explicação do jogo (Clicking on the help button provides an explanation of the game): </p>
 <div display="flex" align="center">
