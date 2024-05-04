@@ -12,5 +12,5 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
 <p>Instale as dependências (Install the dependencies): npm i;</p>
 <p>Rode o projeto (Run the project): npm start; </p>
 
-**Backend disponível no link (Backend available at the link): https://github.com/jessicaduarte95/quizBackend ;**
-**O backend e o banco de dados foram hospedados na AWS (The database and the backend hosted on AWS).**
+<p>**Backend disponível no link (Backend available at the link): https://github.com/jessicaduarte95/quizBackend ;**</p>
+<p>**O backend e o banco de dados foram hospedados na AWS (The database and the backend hosted on AWS).**</p>
