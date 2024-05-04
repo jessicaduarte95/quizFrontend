@@ -1,6 +1,6 @@
 <h1 align="center"> Aplicativo de Quiz sobre ciências (App Science Quiz) </h1>
 <p>O aplicativo tem como objetivo testar os conhecimentos do usuário, em cada nível o usuário precisa responder um número mínimo de questões corretamente para avançar para o próximo nível.</p>
-<p>(The App aims to test the user's knowledge, in each level, the user needs to answer a minimum number of questions correctly to advance to the next stage.)</p>
+<p>( The App aims to test the user's knowledge, in each level, the user needs to answer a minimum number of questions correctly to advance to the next stage.)</p>
 
 <h2 align="center"> Tecnologias Usadas (Technologies) </h2>
 
@@ -27,7 +27,7 @@
 
 ### Funcionalidades (Features)
 
-<p>Página inicial (Homepage): </p>
+## Página inicial (Homepage): 
 
 <div display="flex" align="center">
   <img src="/img/foto1.png" alt="Parte Inicial"> 
@@ -35,7 +35,7 @@
   <img src="/img/foto3.png" alt="Login">
 </div>
 
-<p>Início do jogo com o nível 1 (Game Start with Level 1): </p>
+## Início do jogo com o nível 1 (Game Start with Level 1):
 <div display="flex" align="center">
   <img src="/img/foto4.png" alt="Início do jogo">
 </div>
