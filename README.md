@@ -6,4 +6,5 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
 ## Tecnologias Usadas (Technologies)
 <p>React Native</p>
 <p>Node  (v20.11.1)</p>
-**Rodar o Projeto (Run Project): npm start**
+
+## Siga os seguintes passos para rodar o projeto (To run the project, follow these steps):
