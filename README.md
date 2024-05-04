@@ -9,5 +9,5 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
 
 <h2 align="center">  Siga os seguintes passos para rodar o projeto (To run the project, follow these steps): </h2>
 <p>Clone o projeto (Clone the project);</p>
-<p>Instale as dependências Install the dependencies: npm i;</p>
-<p>Rode o projeto Run the project: npm start; </p>
+<p>Instale as dependências (Install the dependencies): npm i;</p>
+<p>Rode o projeto (Run the project): npm start; </p>
