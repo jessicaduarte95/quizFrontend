@@ -38,3 +38,8 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
   <img src="/img/foto4.png" alt="Início do jogo">
 </div>
 
+<p>Clicando no botão de ajuda obtém-se a explicação do jogo (Clicking on the help button provides an explanation of the game): </p>
+<div display="flex" align="center">
+  <img src="/img/foto10.png" alt="Ajuda">
+</div>
+
