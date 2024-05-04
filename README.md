@@ -25,9 +25,9 @@
 
 <h2 align="center"> Apresentação do projeto (Project Presentation) </h2>
 
-### Funcionalidades (Features)
+## Funcionalidades (Features)
 
-## Página inicial (Homepage): 
+### Página inicial (Homepage): 
 
 <div display="flex" align="center">
   <img src="/img/foto1.png" alt="Parte Inicial"> 
@@ -35,7 +35,7 @@
   <img src="/img/foto3.png" alt="Login">
 </div>
 
-## Início do jogo com o nível 1 (Game Start with Level 1):
+### Início do jogo com o nível 1 (Game Start with Level 1):
 <div display="flex" align="center">
   <img src="/img/foto4.png" alt="Início do jogo">
 </div>
