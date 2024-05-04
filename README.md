@@ -27,7 +27,7 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
 ### Funcionalidades (Features)
 <p>Página inicial (Homepage): </p>
 
-<div display="flex">
-  <img src="/img/foto1.png" alt="Parte Inicial" style="margin-right: 30px"> 
+<div display="flex" style="gap: 30px;">
+  <img src="/img/foto1.png" alt="Parte Inicial"> 
   <img src="/img/foto2.png" alt="Cadastro">
 </div>
