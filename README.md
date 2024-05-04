@@ -10,9 +10,13 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
 - Node  (v20.11.1).
 
 <h2 align="center">  Siga os seguintes passos para rodar o projeto (To run the project, follow these steps) </h2>
-<p>Clone o projeto (Clone the project);</p>
-<p>Instale as dependências (Install the dependencies): npm i;</p>
-<p>Rode o projeto (Run the project): npm start; </p>
+
+- Clone o projeto (Clone the project);
+
+- Instale as dependências (Install the dependencies): npm i;
+
+- Rode o projeto (Run the project): npm start; 
+
 
 <p> <strong>Backend disponível no link (Backend available at the link): https://github.com/jessicaduarte95/quizBackend. </strong> </p>
 <p> <strong>O backend e o banco de dados foram hospedados na AWS (The database and the backend hosted on AWS). </strong></p>
