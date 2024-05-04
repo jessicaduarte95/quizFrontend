@@ -30,4 +30,5 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
 <div display="flex" align="center">
   <img src="/img/foto1.png" alt="Parte Inicial"> 
   <img src="/img/foto2.png" alt="Cadastro">
+  <img src="/img/foto3.png" alt="Login">
 </div>
