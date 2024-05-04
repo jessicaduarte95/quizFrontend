@@ -11,3 +11,5 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
 <p>Clone o projeto (Clone the project);</p>
 <p>Instale as dependências (Install the dependencies): npm i;</p>
 <p>Rode o projeto (Run the project): npm start; </p>
+
+**Backend disponível no link (Backend available at the link): https://github.com/jessicaduarte95/quizBackend**
