@@ -4,5 +4,5 @@ O aplicativo tem como objetivo testar os conhecimentos do usuário, em cada nív
 <p align="center">........................</p>
 The App aims to test the user's knowledge, in each level, the user needs to answer a minimum number of questions correctly to advance to the next stage.
 
-## Tecnologias Usadas (Technologies Used)
+### Tecnologias Usadas (Technologies)
 
