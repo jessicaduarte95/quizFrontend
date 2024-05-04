@@ -55,3 +55,8 @@
   <img src="/img/foto8.png" alt="TenteNovamente">
 </div>
 
+<h2 align="center"> Desenvolvedora (Developer) </h2>
+
+<p> <strong> Jéssica Duarte </strong></p>
+
+
