@@ -43,3 +43,10 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
   <img src="/img/foto10.png" alt="Ajuda">
 </div>
 
+<p> Ao clicar no primeiro nível, o usuário precisa responder a 10 perguntas e para avançar para o próximo nível, deve acertar pelo menos 6 questões (Upon clicking the first level, the user needs to answer 10 questions, and to advance to the next level, they must correctly answer at least 6 questions): </p>
+<div display="flex" align="center">
+  <img src="/img/foto5.png" alt="Questao">
+  <img src="/img/foto6.png" alt="QuestaoCorreta">
+  <img src="/img/foto7.png" alt="Errada">
+</div>
+
