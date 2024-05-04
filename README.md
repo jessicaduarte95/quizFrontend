@@ -28,6 +28,6 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
 <p>Página inicial (Homepage): </p>
 
 <div display="flex">
-  <img src="/img/foto1.png" alt="Parte Inicial" marginRight= "1rem"> 
+  <img src="/img/foto1.png" alt="Parte Inicial" marginRigth= "1rem"> 
   <img src="/img/foto2.png" alt="Cadastro">
 </div>
