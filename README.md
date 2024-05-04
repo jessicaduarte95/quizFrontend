@@ -1,4 +1,4 @@
-<h2 align="center"> Aplicativo de Quiz sobre ciências (App Science Quiz) </h2>
+<h1 align="center"> Aplicativo de Quiz sobre ciências (App Science Quiz) </h1>
 O aplicativo tem como objetivo testar os conhecimentos do usuário, em cada nível o usuário precisa responder um número mínimo de questões corretamente para avançar para o próximo nível.
 <p align="center">........................</p>
 The App aims to test the user's knowledge, in each level, the user needs to answer a minimum number of questions correctly to advance to the next stage.
@@ -48,5 +48,11 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
   <img src="/img/foto5.png" alt="Questao">
   <img src="/img/foto6.png" alt="QuestaoCorreta">
   <img src="/img/foto7.png" alt="Errada">
+</div>
+
+<p>Se o usuário avançar para o próximo nível, uma mensagem de parabéns será exibida; caso contrário, será necessário tentar novamente (If the user advances to the next level, a congratulations message will appear; if not, they will need to try again): </p>
+<div display="flex" align="center">
+  <img src="/img/foto9.png" alt="Parabens">
+  <img src="/img/foto8.png" alt="TenteNovamente">
 </div>
 
