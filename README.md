@@ -7,4 +7,4 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
 <p>React Native</p>
 <p>Node  (v20.11.1)</p>
 
-## Siga os seguintes passos para rodar o projeto (To run the project, follow these steps):
+<h2 align="center">  Siga os seguintes passos para rodar o projeto (To run the project, follow these steps): </h2>
