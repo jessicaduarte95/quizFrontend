@@ -8,3 +8,6 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
 <p>Node  (v20.11.1)</p>
 
 <h2 align="center">  Siga os seguintes passos para rodar o projeto (To run the project, follow these steps): </h2>
+Clone o projeto (Clone the project);
+Instale as dependências Install the dependencies: npm i;
+Rode o projeto Run the project: npm start; 
