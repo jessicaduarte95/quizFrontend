@@ -14,3 +14,9 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
 
 <p> <strong>Backend disponível no link (Backend available at the link): https://github.com/jessicaduarte95/quizBackend. </strong> </p>
 <p> <strong>O backend e o banco de dados foram hospedados na AWS (The database and the backend hosted on AWS). </strong></p>
+
+
+<h2 align="center"> Apresentação do projeto (Project Presentation) </h2>
+
+### Funcionalidades (Features)
+<p>Página inicial (Homepage): </p>
