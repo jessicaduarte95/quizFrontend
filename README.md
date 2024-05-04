@@ -32,3 +32,9 @@ The App aims to test the user's knowledge, in each level, the user needs to answ
   <img src="/img/foto2.png" alt="Cadastro">
   <img src="/img/foto3.png" alt="Login">
 </div>
+
+<p>Início do jogo com o nível 1 (Game Start with Level 1): </p>
+<div display="flex" align="center">
+  <img src="/img/foto4.png" alt="Início do jogo">
+</div>
+
