@@ -11,3 +11,8 @@ export const SubTitle = props => {
 	const { children } = props;
 	return <Text style={S.Text.SubTitle}>{children}</Text>;
 };
+
+export const TitleModal = props => {
+	const { children } = props;
+	return <Text style={S.Text.TitleModal}>{children}</Text>;
+};

@@ -10,5 +10,9 @@ export const Text = StyleSheet.create({
 		fontSize: 30,
 		display: 'flex',
 		alignItems: 'flex-end'
+	},
+	TitleModal: {
+		color: '#E5E5E5', 
+		fontSize: 25
 	}
 });

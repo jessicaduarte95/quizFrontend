@@ -9,6 +9,7 @@ import { Button } from '../../components/Button/Button';
 import { Title, SubTitle } from '../../components/Text/Text';
 import * as S from './Style/principalStyle';
 import { ModalAlert } from './Modais/ModalAlert/ModalAlert';
+import { ModalRegister } from './Modais/ModalRegister/ModalRegister';
 
 export const Principal = () => {
 	const [openCadastrar, setOpenCadastrar] = useState(false);
@@ -38,6 +39,7 @@ export const Principal = () => {
 			<Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar} handleOpenCadastroFeito={handleOpenCadastroFeito} />
 			<Login openLogin={openLogin} handleCloseLogin={handleCloseLogin} handleOpenLogin={handleOpenLogin} />
 			<ModalAlert open={openCadastroFeito} handleClose={handleCloseCadastroFeito} title={'Parabéns Astronauta!'} text={'Seu cadastro foi realizado com sucesso!'} />
+			{/* <ModalRegister open={openCadastrar}  handleClose={handleCloseCadastrar}/> */}
 		</BackgroundContainer>
 	);
 };
