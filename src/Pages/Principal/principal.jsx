@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, TouchableOpacity, Modal, SafeAreaView } from 'react-native';
+import { View } from 'react-native';
 import { Cadastrar } from './cadastro';
 import { Login } from './login';
 import * as Animatable from 'react-native-animatable';
@@ -8,6 +8,7 @@ import { BackgroundContainer } from '../../components/Background/Background';
 import { Button } from '../../components/Button/Button';
 import { Title, SubTitle } from '../../components/Text/Text';
 import * as S from './Style/principalStyle';
+import { ModalAlert } from './Modais/ModalAlert/ModalAlert';
 
 export const Principal = () => {
 	const [openCadastrar, setOpenCadastrar] = useState(false);
@@ -36,23 +37,7 @@ export const Principal = () => {
 			<StatusBar style="auto" />
 			<Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar} handleOpenCadastroFeito={handleOpenCadastroFeito} />
 			<Login openLogin={openLogin} handleCloseLogin={handleCloseLogin} handleOpenLogin={handleOpenLogin} />
-			{/* <Modal visible={openCadastroFeito} transparent={true} onRequestClose={handleCloseCadastroFeito} animationType="fade">
-				<View style={styles.modalBackGround}>
-					<SafeAreaView style={styles.containerAlert}>
-						<View style={{ padding: '5%' }}>
-							<Text style={{ color: '#E5E5E5', fontSize: 30 }}>Parabéns Astronauta!</Text>
-						</View>
-						<View>
-							<Text style={{ marginBottom: 25, marginLeft: 15, marginRight: 15, color: '#D0D1CE', fontSize: 19.5 }}>Seu cadastro foi realizado com sucesso!</Text>
-						</View>
-						<View style={styles.buttonOk}>
-							<TouchableOpacity style={styles.alertButtom} onPress={handleCloseCadastroFeito} activeOpacity={0.7}>
-								<Text style={{ textAlign: 'center', fontWeight: 'bold', color: '#E5E5E5', fontSize: 17 }}>Ok</Text>
-							</TouchableOpacity>
-						</View>
-					</SafeAreaView>
-				</View>
-			</Modal> */}
+			<ModalAlert open={openCadastroFeito} handleClose={handleCloseCadastroFeito} title={'Parabéns Astronauta!'} text={'Seu cadastro foi realizado com sucesso!'} />
 		</BackgroundContainer>
 	);
 };
