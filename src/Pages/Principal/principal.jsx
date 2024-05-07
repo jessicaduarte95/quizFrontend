@@ -94,7 +94,7 @@ export const Principal = () => {
 				<Title>Universo</Title>
 			</Animatable.View>
 			<View>
-				<Animatable.Image delay={1000} animation="fadeInUp" style={{ height: 350, width: 410, marginRight: 20 }} source={require('../../img/astronautaImg5.png')} />
+				<Animatable.Image delay={1000} animation="fadeInUp" style={{ height: 350, width: 410, marginRight: 20 }} source={require('../../../img/astronautaImg5.png')} />
 			</View>
 			<StatusBar style="auto" />
 			<Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar} handleOpenCadastroFeito={handleOpenCadastroFeito} />
