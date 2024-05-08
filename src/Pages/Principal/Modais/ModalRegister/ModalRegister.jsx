@@ -9,26 +9,23 @@ import { CloseSaveButton } from '../../../../components/Button/Button';
 export const ModalRegister = props => {
 	const { open, handleClose } = props;
 
-	const {
-		register,
-		handleSubmit,
-		reset,
-		formState: { errors }
-	} = useForm();
+	const { handleSubmit, control, reset } = useForm();
 
-	const onSubmit = data => console.log(data);
+	const onSubmit = data => {
+		handleClose();
+		console.log('Dados: ', data);
+		reset();
+	};
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
-			<BasicModal open={open} handleClose={handleClose}>
-				<TitleModal>Cadastrar</TitleModal>
-				<Input {...register('nome')} placeholder={'Nome'} />
-				<Input {...register('email')} placeholder={'Email'} />
-				<View style={S.ModalRegister.ContainerButton}>
-					<CloseSaveButton>Salvar</CloseSaveButton>
-					<CloseSaveButton onPress={handleClose}>Fechar</CloseSaveButton>
-				</View>
-			</BasicModal>
-		</form>
+		<BasicModal open={open} handleClose={handleClose}>
+			<TitleModal>Cadastrar</TitleModal>
+			<Input name="nome" control={control} placeholder={'Nome'} />
+			<Input name="email" control={control} placeholder={'Email'} />
+			<View style={S.ModalRegister.ContainerButton}>
+				<CloseSaveButton onPress={handleClose}>Fechar</CloseSaveButton>
+				<CloseSaveButton onPress={handleSubmit(onSubmit)}>Salvar</CloseSaveButton>
+			</View>
+		</BasicModal>
 	);
 };

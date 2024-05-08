@@ -36,10 +36,10 @@ export const Principal = () => {
 				<Animatable.Image delay={1000} animation="fadeInUp" style={S.Container.Image} source={require('../../../img/astronautaImg5.png')} />
 			</View>
 			<StatusBar style="auto" />
-			<Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar} handleOpenCadastroFeito={handleOpenCadastroFeito} />
+			{/* <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar} handleOpenCadastroFeito={handleOpenCadastroFeito} /> */}
 			<Login openLogin={openLogin} handleCloseLogin={handleCloseLogin} handleOpenLogin={handleOpenLogin} />
 			<ModalAlert open={openCadastroFeito} handleClose={handleCloseCadastroFeito} title={'Parabéns Astronauta!'} text={'Seu cadastro foi realizado com sucesso!'} />
-			{/* <ModalRegister open={openCadastrar}  handleClose={handleCloseCadastrar}/> */}
+			<ModalRegister open={openCadastrar}  handleClose={handleCloseCadastrar}/>
 		</BackgroundContainer>
 	);
 };

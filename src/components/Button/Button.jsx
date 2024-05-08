@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import * as S from './style';
 import { TouchableOpacity, Text } from 'react-native';
 
@@ -11,11 +11,11 @@ export const Button = props => {
 	);
 };
 
-export const CloseSaveButton = props => {
-	const { children, onPress } = props;
+export const CloseSaveButton = forwardRef((props, ref) => {
+	const { children, onPress, type, ...rest } = props;
 	return (
-		<TouchableOpacity onPress={onPress} style={S.Button.CloseButton}>
+		<TouchableOpacity onPress={onPress} style={S.Button.CloseButton} type={type} {...rest}>
 			<Text style={S.Button.TextButton}>{children}</Text>
 		</TouchableOpacity>
 	);
-};
+});
