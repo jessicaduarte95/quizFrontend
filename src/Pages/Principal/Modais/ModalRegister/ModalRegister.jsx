@@ -22,8 +22,15 @@ export const ModalRegister = props => {
 			<TitleModal>Cadastrar</TitleModal>
 			<Input name="nome" control={control} placeholder={'Nome'} />
 			<Input name="email" control={control} placeholder={'Email'} />
+			<Input name="senha" control={control} placeholder={'Senha'} secureTextEntry={true} />
 			<View style={S.ModalRegister.ContainerButton}>
-				<CloseSaveButton onPress={handleClose}>Fechar</CloseSaveButton>
+				<CloseSaveButton
+					onPress={() => {
+						handleClose();
+						reset();
+					}}>
+					Fechar
+				</CloseSaveButton>
 				<CloseSaveButton onPress={handleSubmit(onSubmit)}>Salvar</CloseSaveButton>
 			</View>
 		</BasicModal>
