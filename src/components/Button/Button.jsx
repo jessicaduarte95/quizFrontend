@@ -10,3 +10,12 @@ export const Button = props => {
 		</TouchableOpacity>
 	);
 };
+
+export const CloseSaveButton = props => {
+	const { children, onPress } = props;
+	return (
+		<TouchableOpacity onPress={onPress} style={S.Button.CloseButton}>
+			<Text style={S.Button.TextButton}>{children}</Text>
+		</TouchableOpacity>
+	);
+};

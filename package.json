@@ -20,6 +20,7 @@
     "linear-gradient": "^1.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.51.4",
     "react-native": "0.72.10",
     "react-native-animatable": "^1.4.0",
     "react-native-config": "^1.5.1",
