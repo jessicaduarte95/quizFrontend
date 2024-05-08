@@ -1,5 +1,5 @@
 import { BasicModal } from '../../../../components/Modal/Modal';
-import { Text, View, TouchableOpacity, SafeAreaView, TextInput } from 'react-native';
+import { View } from 'react-native';
 import * as S from './style';
 import { TitleModal } from '../../../../components/Text/Text';
 import { Input } from '../../../../components/Input/Input';
@@ -12,7 +12,7 @@ export const ModalRegister = props => {
 	const {
 		register,
 		handleSubmit,
-		watch,
+		reset,
 		formState: { errors }
 	} = useForm();
 
@@ -26,7 +26,7 @@ export const ModalRegister = props => {
 				<Input {...register('email')} placeholder={'Email'} />
 				<View style={S.ModalRegister.ContainerButton}>
 					<CloseSaveButton>Salvar</CloseSaveButton>
-					<CloseSaveButton>Fechar</CloseSaveButton>
+					<CloseSaveButton onPress={handleClose}>Fechar</CloseSaveButton>
 				</View>
 			</BasicModal>
 		</form>
