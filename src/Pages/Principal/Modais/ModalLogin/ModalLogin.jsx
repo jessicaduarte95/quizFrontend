@@ -11,7 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 import Axios from 'axios';
 
 export const ModalLogin = props => {
-	const { open, handleClose, dadosUsuario, setDadosUsuario } = props;
+	const { open, handleClose, dadosUsuario, setDadosUsuario, setTitleAlert, setTextAlert, handleOpenAlert } = props;
 	const navigation = useNavigation();
 	const [isCheck, setIsCheck] = useState(false);
 	const { handleSubmit, control, reset } = useForm();
@@ -40,7 +40,9 @@ export const ModalLogin = props => {
 				if (response.data[0] == true) {
 					setDadosUsuario(response.data[1]);
 				} else {
-					// handleOpenAlert();
+					setTitleAlert('Atenção');
+					setTextAlert('Seu email e/ou sua senha estão incorretos!');
+					handleOpenAlert();
 				}
 			})
 			.catch(error => {

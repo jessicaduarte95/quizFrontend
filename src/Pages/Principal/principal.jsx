@@ -15,14 +15,16 @@ import { ModalLogin } from './Modais/ModalLogin/ModalLogin';
 export const Principal = () => {
 	const [openCadastrar, setOpenCadastrar] = useState(false);
 	const [openLogin, setOpenLogin] = useState(false);
+	const [openAlert, setOpenAlert] = useState(false);
 	const handleCloseCadastrar = () => setOpenCadastrar(false);
 	const handleOpenCadastrar = () => setOpenCadastrar(true);
 	const handleCloseLogin = () => setOpenLogin(false);
 	const handleOpenLogin = () => setOpenLogin(true);
-	const [openCadastroFeito, setOpenCadastroFeito] = useState(false);
-	const handleCloseCadastroFeito = () => setOpenCadastroFeito(false);
-	const handleOpenCadastroFeito = () => setOpenCadastroFeito(true);
+	const handleCloseAlert = () => setOpenAlert(false);
+	const handleOpenAlert = () => setOpenAlert(true);
 	const [dadosUsuario, setDadosUsuario] = useState('');
+	const [titleAlert, setTitleAlert] = useState('');
+	const [textAlert, setTextAlert] = useState('');
 
 	return (
 		<BackgroundContainer>
@@ -40,8 +42,8 @@ export const Principal = () => {
 			<StatusBar style="auto" />
 			{/* <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar} handleOpenCadastroFeito={handleOpenCadastroFeito} /> */}
 			{/* <Login openLogin={openLogin} handleCloseLogin={handleCloseLogin} handleOpenLogin={handleOpenLogin} /> */}
-			<ModalLogin open={openLogin} handleClose={handleCloseLogin} dadosUsuario={dadosUsuario} setDadosUsuario={setDadosUsuario} />
-			<ModalAlert open={openCadastroFeito} handleClose={handleCloseCadastroFeito} title={'Parabéns Astronauta!'} text={'Seu cadastro foi realizado com sucesso!'} />
+			<ModalLogin open={openLogin} handleClose={handleCloseLogin} dadosUsuario={dadosUsuario} setDadosUsuario={setDadosUsuario} setTitleAlert={setTitleAlert} setTextAlert={setTextAlert} handleOpenAlert={handleOpenAlert} />
+			<ModalAlert open={openAlert} handleClose={handleCloseAlert} title={titleAlert} text={textAlert} />
 			<ModalRegister open={openCadastrar} handleClose={handleCloseCadastrar} />
 		</BackgroundContainer>
 	);
