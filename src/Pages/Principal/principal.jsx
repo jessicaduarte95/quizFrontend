@@ -22,6 +22,7 @@ export const Principal = () => {
 	const [openCadastroFeito, setOpenCadastroFeito] = useState(false);
 	const handleCloseCadastroFeito = () => setOpenCadastroFeito(false);
 	const handleOpenCadastroFeito = () => setOpenCadastroFeito(true);
+	const [dadosUsuario, setDadosUsuario] = useState('');
 
 	return (
 		<BackgroundContainer>
@@ -39,7 +40,7 @@ export const Principal = () => {
 			<StatusBar style="auto" />
 			{/* <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar} handleOpenCadastroFeito={handleOpenCadastroFeito} /> */}
 			{/* <Login openLogin={openLogin} handleCloseLogin={handleCloseLogin} handleOpenLogin={handleOpenLogin} /> */}
-			<ModalLogin open={openLogin} handleClose={handleCloseLogin}/>
+			<ModalLogin open={openLogin} handleClose={handleCloseLogin} dadosUsuario={dadosUsuario} setDadosUsuario={setDadosUsuario} />
 			<ModalAlert open={openCadastroFeito} handleClose={handleCloseCadastroFeito} title={'Parabéns Astronauta!'} text={'Seu cadastro foi realizado com sucesso!'} />
 			<ModalRegister open={openCadastrar} handleClose={handleCloseCadastrar} />
 		</BackgroundContainer>

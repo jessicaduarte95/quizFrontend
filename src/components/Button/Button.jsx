@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import * as S from './style';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity, Text, ActivityIndicator } from 'react-native';
 
 export const Button = props => {
 	const { children, onPress } = props;
@@ -12,10 +12,11 @@ export const Button = props => {
 };
 
 export const CloseSaveButton = forwardRef((props, ref) => {
-	const { children, onPress, type, ...rest } = props;
+	const { children, onPress, type, isLoading, ...rest } = props;
 	return (
 		<TouchableOpacity onPress={onPress} style={S.Button.CloseButton} type={type} {...rest}>
-			<Text style={S.Button.TextButton}>{children}</Text>
+			{!isLoading && <Text style={S.Button.TextButton}>{children}</Text>}
+			{isLoading && <ActivityIndicator size="small" color="#0000ff" />}
 		</TouchableOpacity>
 	);
 });
