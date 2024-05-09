@@ -10,6 +10,7 @@ import { Title, SubTitle } from '../../components/Text/Text';
 import * as S from './Style/principalStyle';
 import { ModalAlert } from './Modais/ModalAlert/ModalAlert';
 import { ModalRegister } from './Modais/ModalRegister/ModalRegister';
+import { ModalLogin } from './Modais/ModalLogin/ModalLogin';
 
 export const Principal = () => {
 	const [openCadastrar, setOpenCadastrar] = useState(false);
@@ -37,9 +38,10 @@ export const Principal = () => {
 			</View>
 			<StatusBar style="auto" />
 			{/* <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar} handleOpenCadastroFeito={handleOpenCadastroFeito} /> */}
-			<Login openLogin={openLogin} handleCloseLogin={handleCloseLogin} handleOpenLogin={handleOpenLogin} />
+			{/* <Login openLogin={openLogin} handleCloseLogin={handleCloseLogin} handleOpenLogin={handleOpenLogin} /> */}
+			<ModalLogin open={openLogin} handleClose={handleCloseLogin}/>
 			<ModalAlert open={openCadastroFeito} handleClose={handleCloseCadastroFeito} title={'Parabéns Astronauta!'} text={'Seu cadastro foi realizado com sucesso!'} />
-			<ModalRegister open={openCadastrar}  handleClose={handleCloseCadastrar}/>
+			<ModalRegister open={openCadastrar} handleClose={handleCloseCadastrar} />
 		</BackgroundContainer>
 	);
 };
