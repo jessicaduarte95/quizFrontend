@@ -13,6 +13,7 @@ export const ModalRegister = props => {
 	const { open, handleClose, setTitleAlert, setTextAlert, handleOpenAlert } = props;
 
 	const [isCheck, setIsCheck] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const { handleSubmit, control, reset } = useForm();
 
 	const isChecked = () => {
@@ -20,6 +21,7 @@ export const ModalRegister = props => {
 	};
 
 	const onSubmit = async data => {
+		setIsLoading(true);
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailRegex.test(data.email)) {
 			setTitleAlert('Atenção!');
@@ -57,6 +59,9 @@ export const ModalRegister = props => {
 				.catch(error => {
 					console.log(error);
 					handleClose();
+				})
+				.finally(() => {
+					setIsLoading(false);
 				});
 		}
 		setIsCheck(false);
@@ -77,7 +82,9 @@ export const ModalRegister = props => {
 					}}>
 					Fechar
 				</CloseSaveButton>
-				<CloseSaveButton onPress={handleSubmit(onSubmit)}>Salvar</CloseSaveButton>
+				<CloseSaveButton onPress={handleSubmit(onSubmit)} isLoading={isLoading}>
+					Salvar
+				</CloseSaveButton>
 			</View>
 		</BasicModal>
 	);
