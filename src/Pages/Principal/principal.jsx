@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
-import { Cadastrar } from './cadastro';
-import { Login } from './login';
 import * as Animatable from 'react-native-animatable';
 import { BackgroundContainer } from '../../components/Background/Background';
 import { Button } from '../../components/Button/Button';
@@ -40,11 +38,9 @@ export const Principal = () => {
 				<Animatable.Image delay={1000} animation="fadeInUp" style={S.Container.Image} source={require('../../../img/astronautaImg5.png')} />
 			</View>
 			<StatusBar style="auto" />
-			{/* <Cadastrar openCadastrar={openCadastrar} handleClose={handleCloseCadastrar} handleOpenCadastrar={handleOpenCadastrar} handleOpenCadastroFeito={handleOpenCadastroFeito} /> */}
-			{/* <Login openLogin={openLogin} handleCloseLogin={handleCloseLogin} handleOpenLogin={handleOpenLogin} /> */}
 			<ModalLogin open={openLogin} handleClose={handleCloseLogin} dadosUsuario={dadosUsuario} setDadosUsuario={setDadosUsuario} setTitleAlert={setTitleAlert} setTextAlert={setTextAlert} handleOpenAlert={handleOpenAlert} />
 			<ModalAlert open={openAlert} handleClose={handleCloseAlert} title={titleAlert} text={textAlert} />
-			<ModalRegister open={openCadastrar} handleClose={handleCloseCadastrar} />
+			<ModalRegister open={openCadastrar} handleClose={handleCloseCadastrar} setTitleAlert={setTitleAlert} setTextAlert={setTextAlert} handleOpenAlert={handleOpenAlert}/>
 		</BackgroundContainer>
 	);
 };
