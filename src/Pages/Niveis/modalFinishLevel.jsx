@@ -71,7 +71,7 @@ export const ModalFinishLevel = (props) => {
                                 <Text style={{ color: "#D0D1CE", fontSize: 20, display: 'flex', textAlign: 'center', marginLeft: 3, marginRight: 3 }}>Para atingir o próximo nível, é necessário acertar, no mínimo, seis questões.</Text>
                             </View>
                             <View style={{ alignItems: 'center', justifyContent: 'flex-end', height: '75%', width: '70%'}}>
-                                <Image style={{ height: '100%', width: '100%' }} source={require('../../img/astronautaImg3.png')} />
+                                <Image style={{ height: '100%', width: '100%' }} source={require('../../../img/astronautaImg3.png')} />
                             </View>
                         </Animatable.View>
 
@@ -82,7 +82,7 @@ export const ModalFinishLevel = (props) => {
                                 <Text style={{ color: "#D0D1CE", fontSize: 20, display: 'flex', textAlign: 'center' }}>Você acaba de alcançar o próximo patamar. Que a sorte esteja ao seu lado nessa jornada incrível!</Text>
                             </View>
                             <View style={{ alignItems: 'center', justifyContent: 'flex-end', height: '70%' }}>
-                                <Image style={{ height: '100%', width: '100%' }} source={require('../../img/astronautaInteiro.png')} />
+                                <Image style={{ height: '100%', width: '100%' }} source={require('../../../img/astronautaInteiro.png')} />
                             </View>
                         </Animatable.View>
                     }

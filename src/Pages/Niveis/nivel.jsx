@@ -379,7 +379,7 @@ export const Nivel = () => {
                         <View style={styles.startType5} />
                         <View style={styles.startType6} />
                     </View>
-                    <Image style={{ width: 210, height: 560, marginBottom: 10 }} source={require('../../img/astronautaImg4.png')} />
+                    <Image style={{ width: 210, height: 560, marginBottom: 10 }} source={require('../../../img/astronautaImg4.png')} />
                 </View>
             </Animatable.View>
         </LinearGradient>
