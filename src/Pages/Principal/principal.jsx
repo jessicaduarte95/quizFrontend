@@ -9,6 +9,7 @@ import * as S from './Style/principalStyle';
 import { ModalAlert } from './Modais/ModalAlert/ModalAlert';
 import { ModalRegister } from './Modais/ModalRegister/ModalRegister';
 import { ModalLogin } from './Modais/ModalLogin/ModalLogin';
+// import {handleCaptureDocument} from 'hiveplace-onboarding';
 
 export const Principal = () => {
 	const [openCadastrar, setOpenCadastrar] = useState(false);
@@ -30,13 +31,14 @@ export const Principal = () => {
 				<Button onPress={handleOpenLogin}>Entrar</Button>
 				<Button onPress={handleOpenCadastrar}>Cadastrar</Button>
 			</View>
-			<Animatable.View animation="slideInRight" style={S.Container.ContainerTitle}>
+			<Button>Teste</Button>
+			{/* <Animatable.View animation="slideInRight" style={S.Container.ContainerTitle}>
 				<SubTitle>Quiz</SubTitle>
 				<Title>Universo</Title>
 			</Animatable.View>
 			<View>
 				<Animatable.Image delay={1000} animation="fadeInUp" style={S.Container.Image} source={require('../../../img/astronautaImg5.png')} />
-			</View>
+			</View> */}
 			<StatusBar style="auto" />
 			<ModalLogin open={openLogin} handleClose={handleCloseLogin} dadosUsuario={dadosUsuario} setDadosUsuario={setDadosUsuario} setTitleAlert={setTitleAlert} setTextAlert={setTextAlert} handleOpenAlert={handleOpenAlert} />
 			<ModalAlert open={openAlert} handleClose={handleCloseAlert} title={titleAlert} text={textAlert} />

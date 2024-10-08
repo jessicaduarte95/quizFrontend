@@ -1,6 +1,6 @@
 import { createStackNavigator, TransitionPresets, } from '@react-navigation/stack';
 import { Principal } from './src/Pages/Principal/principal';
-import { Nivel } from './src/Pages/Niveis/nivel';
+import { Nivel } from './src/Pages/Niveis/index';
 import { MudarSenha } from './src/Pages/Principal/mudarSenha';
 import { Admin } from './src/Pages/Admin/admin';
 

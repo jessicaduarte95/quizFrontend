@@ -20,3 +20,12 @@ export const CloseSaveButton = forwardRef((props, ref) => {
 		</TouchableOpacity>
 	);
 });
+
+export const ButtonLevel = props => {
+	const { children, onPress, ...rest } = props;
+	return (
+		<TouchableOpacity onPress={onPress} style={S.Button.LevelButton} {...rest}>
+			<Text style={S.Button.LevelText}>{children}</Text>
+		</TouchableOpacity>
+	);
+};
