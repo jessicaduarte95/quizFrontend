@@ -77,7 +77,7 @@ export const ModalLogin = props => {
 					Fechar
 				</CloseSaveButton>
 				<CloseSaveButton onPress={handleSubmit(handleChangePassword)} isLoading={isLoadingChangePassword}>
-					Esqueci minha senha
+					Esqueci a senha
 				</CloseSaveButton>
 				<CloseSaveButton onPress={handleSubmit(onSubmit)} isLoading={isLoading}>
 					Entrar
