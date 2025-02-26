@@ -17,6 +17,7 @@ export const ModalBody = StyleSheet.create({
 	Button: {
 		zIndex: 99,
 		borderRadius: 6,
-		marginTop: 3
+		marginTop: 3,
+		alignItems: 'flex-end',
 	}
 });

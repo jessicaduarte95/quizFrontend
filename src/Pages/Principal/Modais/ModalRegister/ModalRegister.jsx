@@ -36,32 +36,29 @@ export const ModalRegister = props => {
 			handleClose();
 			handleOpenAlert();
 		} else if (data.senha.length >= 6 || data.nome.length > 0 || data.email.length > 0) {
-			await Axios.post(`${process.env.DOMAIN}/cadastrar`, {
-				nome: data.nome,
+			await Axios.post(`http://192.168.1.3:8080/user/create`, {
+				name: data.nome,
 				email: data.email,
-				senha: data.senha
+				password: data.senha
 			})
-				.then(response => {
-					if (response.data == true) {
-						setTitleAlert('Atenção!');
-						setTextAlert('Esse email já existe! Cadastre outro email ou restaure a sua senha.');
-						reset();
-						handleClose();
-						handleOpenAlert();
-					} else if (response.data == false) {
+				.then(_ => {
 						setTitleAlert('Parabéns Astronauta!');
 						setTextAlert('Seu cadastro foi realizado com sucesso!');
 						reset();
-						handleClose();
+						handleOpenAlert();
+				})
+				.catch(error => {
+					console.log("Erro:", error.response?.data.message);
+					if(error.response?.data.message == 'Error: already_registered_user') {
+						setTitleAlert('Atenção!');
+						setTextAlert('Esse email já existe! Cadastre outro email ou restaure a sua senha.');
+						reset();
 						handleOpenAlert();
 					}
 				})
-				.catch(error => {
-					console.log(error);
-					handleClose();
-				})
 				.finally(() => {
 					setIsLoading(false);
+					handleClose();
 				});
 		}
 		setIsCheck(false);
