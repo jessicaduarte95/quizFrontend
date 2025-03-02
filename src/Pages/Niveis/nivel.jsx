@@ -303,7 +303,7 @@ export const Nivel = () => {
                 </TouchableOpacity>
             </View>
             <View style={styles.nomeUsuario}>
-                <Text style={styles.nomeText}>Olá {dadosUsuario.nome}!</Text>
+                <Text style={styles.nomeText}>Olá {dadosUsuario.name}!</Text>
             </View>
             <Animatable.View delay={3000} animation="fadeInUp" style={styles.body}>
                 <ScrollView style={styles.scroll}>

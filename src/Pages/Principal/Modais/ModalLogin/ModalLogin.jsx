@@ -32,21 +32,12 @@ export const ModalLogin = props => {
 
 	const onSubmit = async data => {
 		setIsLoading(true);
-		console.log("Passou")
 		await Axios.post(`http://192.168.1.20:8080/user/login`, {
 			email: data.email,
 			password: data.senha
 		})
 			.then(response => {
-				console.log("Response", response.data)
 				setDadosUsuario(response.data.result);
-				// if (response.data[0] == true) {
-				// 	setDadosUsuario(response.data[1]);
-				// } else {
-				// 	setTitleAlert('Atenção');
-				// 	setTextAlert('Seu email e/ou sua senha estão incorretos!');
-				// 	handleOpenAlert();
-				// }
 			})
 			.catch(error => {
 				setTitleAlert('Atenção');
