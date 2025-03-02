@@ -20,9 +20,10 @@ export const Nivel = () => {
         },
         buttonSairAjuda: {
             flex: 1,
-            paddingTop: 42,
+            paddingTop: 55,
+            width: '100%',
             flexDirection: 'row',
-            justifyContent: 'flex-end'
+            justifyContent: 'flex-end',
         },
         buttonAdmin: {
             color: '#D0D1CE',
@@ -45,7 +46,6 @@ export const Nivel = () => {
         },
         nomeUsuario: {
             flex: 1,
-            paddingTop: 15,
             marginBottom: 10,
             flexDirection: 'row',
             justifyContent: 'center',

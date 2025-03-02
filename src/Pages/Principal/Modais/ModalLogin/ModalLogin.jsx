@@ -32,26 +32,33 @@ export const ModalLogin = props => {
 
 	const onSubmit = async data => {
 		setIsLoading(true);
-		await Axios.post(`${process.env.DOMAIN}/login`, {
-			loginEmail: data.email,
-			loginSenha: data.senha
+		console.log("Passou")
+		await Axios.post(`http://192.168.1.20:8080/user/login`, {
+			email: data.email,
+			password: data.senha
 		})
 			.then(response => {
-				if (response.data[0] == true) {
-					setDadosUsuario(response.data[1]);
-				} else {
-					setTitleAlert('Atenção');
-					setTextAlert('Seu email e/ou sua senha estão incorretos!');
-					handleOpenAlert();
-				}
+				console.log("Response", response.data)
+				setDadosUsuario(response.data.result);
+				// if (response.data[0] == true) {
+				// 	setDadosUsuario(response.data[1]);
+				// } else {
+				// 	setTitleAlert('Atenção');
+				// 	setTextAlert('Seu email e/ou sua senha estão incorretos!');
+				// 	handleOpenAlert();
+				// }
 			})
 			.catch(error => {
+				setTitleAlert('Atenção');
+				setTextAlert('Seu email e/ou sua senha estão incorretos!');
+				handleOpenAlert();
 				console.log(error);
 			})
 			.finally(() => {
 				setIsLoading(false);
 				handleClose();
 				reset();
+				setIsCheck(false);
 			});
 	};
 
@@ -73,6 +80,7 @@ export const ModalLogin = props => {
 					onPress={() => {
 						handleClose();
 						reset();
+						setIsCheck(false);
 					}}>
 					Fechar
 				</CloseSaveButton>
