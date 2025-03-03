@@ -239,32 +239,31 @@ export const Nivel = () => {
     }
 
     const checkFinishLevel = () => {
-        let id = dadosUsuario.id
-        Axios.get(`${process.env.DOMAIN}/nivelConcluido/${id}/${nivel}`)
-            .then((response) => {
-                const dataNivel = response.data
-                if (dataNivel.length > 0 && dataNivel[0].concluido == 1) {
-                    setFinishLevel(true);
-                } else {
-                    setFinishLevel(false);
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+        // let id = dadosUsuario.id
+        // Axios.get(`${process.env.DOMAIN}/nivelConcluido/${id}/${nivel}`)
+        //     .then((response) => {
+        //         const dataNivel = response.data
+        //         if (dataNivel.length > 0 && dataNivel[0].concluido == 1) {
+        //             setFinishLevel(true);
+        //         } else {
+        //             setFinishLevel(false);
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     })
     }
 
 
     useEffect(() => {
         if (nivel !== false) {
-            Axios.post(`${process.env.DOMAIN}/obterPerguntas`, {
-                nivel
-            })
+            console.log("Entrou")
+            Axios.get(`http://192.168.1.20:8080/question/${nivel}`)
                 .then((response) => {
-                    setLevel(response.data);
+                    setLevel(response.data.result);
                 })
                 .catch((error) => {
-                    console.log(error);
+                    console.log("Erro: ", error);
                 })
         }
         dadosUsuario
@@ -272,13 +271,13 @@ export const Nivel = () => {
 
     useEffect(() => {
         if (dadosUsuario.id) {
-            getEnableLevel()
+            // getEnableLevel()
         }
     }, [])
 
     useEffect(() => {
         if (nivel) {
-            checkFinishLevel();
+            // checkFinishLevel();
         }
     }, [nivel])
 
