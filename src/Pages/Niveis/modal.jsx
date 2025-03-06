@@ -239,7 +239,7 @@ export const ModalNivel = (props) => {
         setLoading(true)
         const idQuestion = perguntaAtual + 1
         const teste = 1
-        Axios.get(`http://192.168.1.20:8080/options/${idQuestion}`, {
+        Axios.get(`http://192.168.1.3:8080/options/${idQuestion}`, {
             params: { level: teste }
         })
             .then((response) => {

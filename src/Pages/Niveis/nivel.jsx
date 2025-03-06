@@ -239,26 +239,26 @@ export const Nivel = () => {
     }
 
     const checkFinishLevel = () => {
-        // let id = dadosUsuario.id
-        // Axios.get(`${process.env.DOMAIN}/nivelConcluido/${id}/${nivel}`)
-        //     .then((response) => {
-        //         const dataNivel = response.data
-        //         if (dataNivel.length > 0 && dataNivel[0].concluido == 1) {
-        //             setFinishLevel(true);
-        //         } else {
-        //             setFinishLevel(false);
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     })
+        let id = dadosUsuario.id
+        Axios.get(`http://192.168.1.3:8080/completed/level/${id}`, {
+                params: { level: 1 }})
+            .then((response) => {
+                const dataNivel = response.data.result
+                if (dataNivel.length > 0 && dataNivel[0].concluido == 1) {
+                    setFinishLevel(true);
+                } else {
+                    setFinishLevel(false);
+                }
+            })
+            .catch((error) => {
+                console.log("Error: ",error);
+            })
     }
 
 
     useEffect(() => {
         if (nivel !== false) {
-            console.log("Entrou")
-            Axios.get(`http://192.168.1.20:8080/question/${nivel}`)
+            Axios.get(`http://192.168.1.3:8080/question/${nivel}`)
                 .then((response) => {
                     setLevel(response.data.result);
                 })
@@ -277,7 +277,7 @@ export const Nivel = () => {
 
     useEffect(() => {
         if (nivel) {
-            // checkFinishLevel();
+            checkFinishLevel();
         }
     }, [nivel])
 
