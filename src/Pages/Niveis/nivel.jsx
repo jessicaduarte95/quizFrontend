@@ -211,9 +211,9 @@ export const Nivel = () => {
 
     const getEnableLevel = () => {
         let id = dadosUsuario.id
-        Axios.get(`${process.env.DOMAIN}/habilitarNivel/${id}`)
+        Axios.get(`http://192.168.1.8:8080/enable/level/${id}`)
             .then((response) => {
-                let dados = response.data
+                let dados = response.data.result
                 dados.forEach(function (object) {
                     if (object.nivel == 2) {
                         setDisabled(prevState => ({
@@ -240,7 +240,7 @@ export const Nivel = () => {
 
     const checkFinishLevel = () => {
         let id = dadosUsuario.id
-        Axios.get(`http://192.168.1.3:8080/completed/level/${id}`, {
+        Axios.get(`http://192.168.1.8:8080/completed/level/${id}`, {
                 params: { level: 1 }})
             .then((response) => {
                 const dataNivel = response.data.result
@@ -258,7 +258,7 @@ export const Nivel = () => {
 
     useEffect(() => {
         if (nivel !== false) {
-            Axios.get(`http://192.168.1.3:8080/question/${nivel}`)
+            Axios.get(`http://192.168.1.8:8080/question/${nivel}`)
                 .then((response) => {
                     setLevel(response.data.result);
                 })
@@ -271,7 +271,7 @@ export const Nivel = () => {
 
     useEffect(() => {
         if (dadosUsuario.id) {
-            // getEnableLevel()
+            getEnableLevel()
         }
     }, [])
 

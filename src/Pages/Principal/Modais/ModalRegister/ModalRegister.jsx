@@ -36,7 +36,7 @@ export const ModalRegister = props => {
 			handleClose();
 			handleOpenAlert();
 		} else if (data.senha.length >= 6 || data.nome.length > 0 || data.email.length > 0) {
-			await Axios.post(`http://192.168.1.3:8080/user/create`, {
+			await Axios.post(`http://192.168.1.8:8080/user/create`, {
 				name: data.nome,
 				email: data.email,
 				password: data.senha

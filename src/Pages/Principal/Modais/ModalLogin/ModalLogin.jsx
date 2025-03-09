@@ -32,7 +32,7 @@ export const ModalLogin = props => {
 
 	const onSubmit = async data => {
 		setIsLoading(true);
-		await Axios.post(`http://192.168.1.3:8080/user/login`, {
+		await Axios.post(`http://192.168.1.8:8080/user/login`, {
 			email: data.email,
 			password: data.senha
 		})

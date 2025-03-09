@@ -200,10 +200,10 @@ export const ModalNivel = (props) => {
     }
 
     const handlePontosNivel = () => {
-        Axios.post(`${process.env.DOMAIN}/cadastrarPontos`, {
-            pontos: points,
-            id: dadosUsuario.id,
-            nivel: level[0].nivel
+        let id = dadosUsuario.id
+        Axios.post(`http://192.168.1.8:8080/points/${id}`, {
+            points: points,
+            level: level[0].level
         })
             .then(() => { })
             .catch((error) => { console.log(error); })
@@ -238,9 +238,8 @@ export const ModalNivel = (props) => {
     const getOptions = async () => {
         setLoading(true)
         const idQuestion = perguntaAtual + 1
-        const teste = 1
-        Axios.get(`http://192.168.1.3:8080/options/${idQuestion}`, {
-            params: { level: teste }
+        Axios.get(`http://192.168.1.8:8080/options/${idQuestion}`, {
+            params: { level: level[0].level }
         })
             .then((response) => {
                 setOpcoes(response.data.result);
@@ -286,11 +285,11 @@ export const ModalNivel = (props) => {
                             </TouchableOpacity>
                         }
 
-                        {mudarCor1 == true && opcoes != undefined && opcoes[0].correta == 1 ?
+                        {mudarCor1 == true && opcoes != undefined && opcoes[0].correct == 1 ?
                             <TouchableOpacity style={styles.correctQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
                                 <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].option : ""}</Text>
                             </TouchableOpacity>
-                            : mudarCor1 == true && opcoes != undefined && opcoes[0].correta == 0 ?
+                            : mudarCor1 == true && opcoes != undefined && opcoes[0].correct == 0 ?
                                 <TouchableOpacity style={styles.wrongQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
                                     <Text style={styles.textButton}>{opcoes != undefined ? opcoes[0].option : ""}</Text>
                                 </TouchableOpacity>
@@ -302,11 +301,11 @@ export const ModalNivel = (props) => {
                             </TouchableOpacity>
                         }
 
-                        {mudarCor2 == true && opcoes != undefined && opcoes[1].correta == 1 ?
+                        {mudarCor2 == true && opcoes != undefined && opcoes[1].correct == 1 ?
                             <TouchableOpacity style={styles.correctQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
                                 <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].option : ""}</Text>
                             </TouchableOpacity>
-                            : mudarCor2 == true && opcoes != undefined && opcoes[1].correta == 0 ?
+                            : mudarCor2 == true && opcoes != undefined && opcoes[1].correct == 0 ?
                                 <TouchableOpacity style={styles.wrongQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
                                     <Text style={styles.textButton}>{opcoes != undefined ? opcoes[1].option : ""}</Text>
                                 </TouchableOpacity>
@@ -316,11 +315,11 @@ export const ModalNivel = (props) => {
                                 <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].option : ""}</Text>
                             </TouchableOpacity>
                         }
-                        {mudarCor3 == true && opcoes != undefined && opcoes[2].correta == 1 ?
+                        {mudarCor3 == true && opcoes != undefined && opcoes[2].correct == 1 ?
                             <TouchableOpacity style={styles.correctQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
                                 <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].option : ""}</Text>
                             </TouchableOpacity>
-                            : mudarCor3 == true && opcoes != undefined && opcoes[2].correta == 0 ?
+                            : mudarCor3 == true && opcoes != undefined && opcoes[2].correct == 0 ?
                                 <TouchableOpacity style={styles.wrongQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
                                     <Text style={styles.textButton}>{opcoes != undefined ? opcoes[2].option : ""}</Text>
                                 </TouchableOpacity>
@@ -330,11 +329,11 @@ export const ModalNivel = (props) => {
                                 <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].option : ""}</Text>
                             </TouchableOpacity>
                         }
-                        {mudarCor4 == true && opcoes != undefined && opcoes[3].correta == 1 ?
+                        {mudarCor4 == true && opcoes != undefined && opcoes[3].correct == 1 ?
                             <TouchableOpacity style={styles.correctQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
                                 <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].option : ""}</Text>
                             </TouchableOpacity>
-                            : mudarCor4 == true && opcoes != undefined && opcoes[3].correta == 0 ?
+                            : mudarCor4 == true && opcoes != undefined && opcoes[3].correct == 0 ?
                                 <TouchableOpacity style={styles.wrongQuestion} onPress={() => { setDisabled(true) }} disabled={disabled}>
                                     <Text style={styles.textButton}>{opcoes != undefined ? opcoes[3].option : ""}</Text>
                                 </TouchableOpacity>
