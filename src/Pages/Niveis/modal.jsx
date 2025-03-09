@@ -179,22 +179,22 @@ export const ModalNivel = (props) => {
     }
 
     const countPointOption1 = () => {
-        if (opcoes[0].correta == 1) {
+        if (opcoes[0].correct == 1) {
             setPoints(points + 1)
         }
     }
     const countPointOption2 = () => {
-        if (opcoes[1].correta == 1) {
+        if (opcoes[1].correct == 1) {
             setPoints(points + 1)
         }
     }
     const countPointOption3 = () => {
-        if (opcoes[2].correta == 1) {
+        if (opcoes[2].correct == 1) {
             setPoints(points + 1)
         }
     }
     const countPointOption4 = () => {
-        if (opcoes[3].correta == 1) {
+        if (opcoes[3].correct == 1) {
             setPoints(points + 1)
         }
     }
