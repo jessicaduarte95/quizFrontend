@@ -215,17 +215,17 @@ export const Nivel = () => {
             .then((response) => {
                 let dados = response.data.result
                 dados.forEach(function (object) {
-                    if (object.nivel == 2) {
+                    if (object.level == 2) {
                         setDisabled(prevState => ({
                             ...prevState,
                             nivel2: false
                         }))
-                    } else if (object.nivel == 3) {
+                    } else if (object.level == 3) {
                         setDisabled(prevState => ({
                             ...prevState,
                             nivel3: false
                         }))
-                    } else if (object.nivel == 4) {
+                    } else if (object.level == 4) {
                         setDisabled(prevState => ({
                             ...prevState,
                             nivel4: false
