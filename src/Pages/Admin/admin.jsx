@@ -224,8 +224,9 @@ export const Admin = () => {
     const optionsSelect = ['Não', 'Sim'];
 
     const submitConfigurationQuestion = async () => {
-        await Axios.post(`${process.env.DOMAIN}/insertQuestion`, {
-            id, nivel, pergunta
+        await Axios.post(`http://192.168.1.8:8080/question`, {
+            level: nivel, 
+            question: pergunta
         }).then(() => {
             setNotification(true)
             setId('')
@@ -236,8 +237,10 @@ export const Admin = () => {
     }
 
     const submitConfigurationOptions = async () => {
-        await Axios.post(`${process.env.DOMAIN}/insertOptions`, {
-            nivelOptions, questionOptions, options
+        await Axios.post(`http://192.168.1.8:8080/options`, {
+            level: nivelOptions, 
+            question: questionOptions, 
+            options: options
         }).then(() => {
             setNotification(true)
             setOptions([
@@ -311,7 +314,7 @@ export const Admin = () => {
                             behavior={Platform.OS == "ios" ? 'padding' : 'height'}
                             style={styles.containerconfigText}>
                             <Text style={styles.configText}>Configuração das Questões</Text>
-                            <TextInput style={styles.configLevelQuestion} keyboardType="numeric" placeholder="Id" placeholderTextColor='#D0D1CE' value={id} onChangeText={text => setId(text)} />
+                            {/* <TextInput style={styles.configLevelQuestion} keyboardType="numeric" placeholder="Id" placeholderTextColor='#D0D1CE' value={id} onChangeText={text => setId(text)} /> */}
                             <TextInput style={styles.configLevelQuestion} keyboardType="numeric" placeholder="Nível" placeholderTextColor='#D0D1CE' value={nivel} onChangeText={text => setNivel(text)} />
                             <TextInput style={styles.configLevelQuestion} placeholder="Pergunta" placeholderTextColor='#D0D1CE' value={pergunta} onChangeText={text => setPergunta(text)} />
                             <View style={styles.containerButtonQuestion}>
