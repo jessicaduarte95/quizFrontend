@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 export const Input = StyleSheet.create({
 	Input: {
 		backgroundColor: '#000720',
+		width: '100%',
 		padding: 10,
 		marginTop: 16,
 		borderWidth: 1,
@@ -16,5 +17,10 @@ export const Input = StyleSheet.create({
 		shadowOpacity: 0.28,
 		shadowRadius: 4,
 		color: '#D0D1CE'
+	},
+	TextError: {
+		color: 'red', 
+		marginTop: 5,
+		marginLeft: 2
 	}
 });

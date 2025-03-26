@@ -1,8 +1,8 @@
 import { createStackNavigator, TransitionPresets, } from '@react-navigation/stack';
-import { Principal } from './src/Pages/Principal/principal';
-import { Nivel } from './src/Pages/Niveis/nivel';
-import { MudarSenha } from './src/Pages/Principal/mudarSenha';
-import { Admin } from './src/Pages/Admin/admin';
+import { Home } from './screens/Home';
+import { Nivel } from './Pages/Niveis/nivel';
+import { MudarSenha } from './Pages/Principal/mudarSenha';
+import { Admin } from './Pages/Admin/admin';
 
 const Stack = createStackNavigator();
 
@@ -13,8 +13,8 @@ export default function Routes() {
         options={{
           ...TransitionPresets.ModalSlideFromBottomIOS,
         }}
-        name="Principal"
-        component={Principal} />
+        name="Home"
+        component={Home} />
       <Stack.Screen
         options={{
           ...TransitionPresets.ModalSlideFromBottomIOS,
