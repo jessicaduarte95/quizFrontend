@@ -9,16 +9,20 @@ import { TitleStyle } from "../styles/TitleStyle";
 import { ImageStyle } from "../styles/ImageStyle";
 import * as Animatable from "react-native-animatable";
 import { RegisterUser } from "./RegisterUser";
+import { Login } from "./Login";
 
 export const Home = () => {
   const [openRegister, setOpenRegister] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
   const handleOpenRegister = () => setOpenRegister(true);
   const handleCloseRegister = () => setOpenRegister(false);
+  const handleOpenLogin = () => setOpenLogin(true);
+  const handleCloseLogin = () => setOpenLogin(false);
 
   return (
     <BackgroundContainer>
       <View style={ButtonStyle.ContainerButtonHome}>
-        <Button>Entrar</Button>
+        <Button onPress={handleOpenLogin}>Entrar</Button>
         <Button onPress={handleOpenRegister}>Cadastrar</Button>
       </View>
       <Animatable.View
@@ -38,6 +42,7 @@ export const Home = () => {
       </View>
       <StatusBar style="auto" />
       <RegisterUser open={openRegister} handleClose={handleCloseRegister} />
+      <Login open={openLogin} handleClose={handleCloseLogin} />
     </BackgroundContainer>
   );
 };
