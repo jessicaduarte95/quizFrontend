@@ -62,7 +62,10 @@ export const Login = (props) => {
           Fechar
         </CloseSaveButton>
         <CloseSaveButton onPress={handleSubmit(onSubmit)}>
-          Salvar
+          Esqueci a senha
+        </CloseSaveButton>
+        <CloseSaveButton onPress={handleSubmit(onSubmit)}>
+          Entrar
         </CloseSaveButton>
       </View>
     </BasicModal>

@@ -13,5 +13,9 @@ export const ButtonStyle = StyleSheet.create({
 		justifyContent: 'flex-end',
         marginTop: 16,
         gap: 10
-	}
+	},
+	ContainerButtonNotification: {
+		display: 'flex',
+		alignItems: 'end'
+	},
 });
