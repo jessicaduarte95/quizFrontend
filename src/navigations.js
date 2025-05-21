@@ -1,7 +1,7 @@
 import { createStackNavigator, TransitionPresets, } from '@react-navigation/stack';
 import { Home } from './screens/Home';
 import { Nivel } from './Pages/Niveis/nivel';
-import { MudarSenha } from './Pages/Principal/mudarSenha';
+import { ChangePassword } from './screens/ChangePassword';
 import { Admin } from './Pages/Admin/admin';
 
 const Stack = createStackNavigator();
@@ -25,8 +25,8 @@ export default function Routes() {
         options={{
           ...TransitionPresets.ModalSlideFromBottomIOS,
         }}
-        name="MudarSenha"
-        component={MudarSenha} />
+        name="ChangePassword"
+        component={ChangePassword} />
       <Stack.Screen
         options={{
           ...TransitionPresets.ModalSlideFromBottomIOS,

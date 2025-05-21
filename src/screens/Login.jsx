@@ -7,12 +7,15 @@ import { Input } from "../components/Input/Input";
 import { Checkbox } from "../components/Checkbox/Checkbox";
 import { CloseSaveButton } from "../components/Button/Button";
 import { ButtonStyle } from "../styles/ButtonStyle";
+import { useNavigation } from "@react-navigation/native";
 
 export const Login = (props) => {
   const { open, handleClose } = props;
 
   const [isCheck, setIsCheck] = useState(false);
   const { handleSubmit, control, reset } = useForm();
+
+  const navigation = useNavigation();
 
   const isChecked = () => {
     setIsCheck(!isCheck);
@@ -61,7 +64,13 @@ export const Login = (props) => {
         >
           Fechar
         </CloseSaveButton>
-        <CloseSaveButton onPress={handleSubmit(onSubmit)}>
+        <CloseSaveButton
+          onPress={() => {
+            handleClose();
+            reset();
+            navigation.navigate("ChangePassword");
+          }}
+        >
           Esqueci a senha
         </CloseSaveButton>
         <CloseSaveButton onPress={handleSubmit(onSubmit)}>

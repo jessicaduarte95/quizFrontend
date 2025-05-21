@@ -10,7 +10,7 @@ export const Modal = StyleSheet.create({
 		alignItems: 'center'
 	},
 	Container: {
-		width: width > 700 ? 400 : '87%',
+		width: width > 700 ? 400 : '80%',
 		backgroundColor: '#000929',
 		borderRadius: 15,
 		borderWidth: 1.5,
