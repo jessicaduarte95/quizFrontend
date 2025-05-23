@@ -16,4 +16,11 @@ export const HomeStyle = StyleSheet.create({
     height: width > 700 ? 350 : 420,
     width: 410,
   },
+  ContainerButtonHome: {
+    marginTop: 54,
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "center",
+    gap: 20,
+  },
 });
