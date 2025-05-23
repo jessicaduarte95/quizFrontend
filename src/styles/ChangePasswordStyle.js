@@ -14,4 +14,14 @@ export const ChangePasswordStyle = StyleSheet.create({
   ContentImg: {
     padding: 30,
   },
+  ImageChangePassword: {
+    height: 500,
+    width: 350,
+  },
+  ContainerButtonLogOut: {
+    marginTop: 54,
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "flex-end",
+  },
 });

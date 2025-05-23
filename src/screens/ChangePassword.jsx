@@ -8,8 +8,6 @@ import { BackgroundContainer } from "../components/Background/Background";
 import { TitleChangePassword, TextBasic } from "../components/Text/Text";
 import { InputBasic } from "../components/Input/Input";
 
-import { ButtonStyle } from "../styles/ButtonStyle";
-import { ImageStyle } from "../styles/ImageStyle";
 import { ChangePasswordStyle } from "../styles/ChangePasswordStyle";
 
 export const ChangePassword = () => {
@@ -20,7 +18,7 @@ export const ChangePassword = () => {
     <BackgroundContainer>
       <View style={ChangePasswordStyle.Container}>
         <View style={ChangePasswordStyle.Content}>
-          <View style={ButtonStyle.ContainerButtonLogOut}>
+          <View style={ChangePasswordStyle.ContainerButtonLogOut}>
             <Button
               onPress={() => {
                 navigation.navigate("Home");
@@ -46,7 +44,7 @@ export const ChangePassword = () => {
           <Animatable.Image
             delay={500}
             animation="fadeInUp"
-            style={ImageStyle.ImageChangePassword}
+            style={ChangePasswordStyle.ImageChangePassword}
             source={require("../../img/astronautaImg6.png")}
           />
         </View>

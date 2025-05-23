@@ -18,10 +18,4 @@ export const ButtonStyle = StyleSheet.create({
     display: "flex",
     alignItems: "end",
   },
-  ContainerButtonLogOut: {
-    marginTop: 54,
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "flex-end",
-  },
 });
