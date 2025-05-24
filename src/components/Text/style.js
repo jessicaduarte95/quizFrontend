@@ -22,7 +22,7 @@ export const Text = StyleSheet.create({
   },
   TextBasic: {
     color: "#E5E5E5",
-    fontSize: 20,
+    fontSize: 28,
     textAlign: "justify",
   },
 });

@@ -1,9 +1,10 @@
-import React from "react";
-import { BasicModal } from "../components/Modal/Modal";
 import { Text, View } from "react-native";
+
+import { BasicModal } from "../components/Modal/Modal";
 import { TitleModal } from "../components/Text/Text";
 import { CloseSaveButton } from "../components/Button/Button";
-import { ButtonStyle } from "../styles/ButtonStyle";
+
+import { NotificationStyle } from "../styles/NotificationStyle";
 
 export const NotificationModal = (props) => {
   const { open, handleClose, title, text } = props;
@@ -12,7 +13,7 @@ export const NotificationModal = (props) => {
     <BasicModal open={open} handleClose={handleClose}>
       <TitleModal>{title}</TitleModal>
       <Text>{text}</Text>
-      <View style={ButtonStyle.ContainerButtonNotification}>
+      <View style={NotificationStyle.ContainerButtonNotification}>
         <CloseSaveButton
           onPress={() => {
             handleClose();

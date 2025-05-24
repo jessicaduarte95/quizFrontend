@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { View } from "react-native";
+
 import { BasicModal } from "../components/Modal/Modal";
 import { TitleModal } from "../components/Text/Text";
 import { Input } from "../components/Input/Input";
 import { Checkbox } from "../components/Checkbox/Checkbox";
 import { CloseSaveButton } from "../components/Button/Button";
-import { ButtonStyle } from "../styles/ButtonStyle";
+
+import { RegisterUserStyle } from "../styles/RegisterUserStyle";
 
 export const RegisterUser = (props) => {
   const { open, handleClose } = props;
@@ -65,7 +67,7 @@ export const RegisterUser = (props) => {
       />
 
       <Checkbox onPress={isChecked} isCheck={isCheck} />
-      <View style={ButtonStyle.ContainerButtonRegister}>
+      <View style={RegisterUserStyle.ContainerButtonRegister}>
         <CloseSaveButton
           onPress={() => {
             handleClose();

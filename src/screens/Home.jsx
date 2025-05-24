@@ -1,18 +1,32 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import * as Animatable from "react-native-animatable";
+
 import { BackgroundContainer } from "../components/Background/Background";
 import { Title, SubTitle } from "../components/Text/Text";
-import { HomeStyle } from "../styles/HomeStyle";
-import * as Animatable from "react-native-animatable";
 import { RegisterUser } from "./RegisterUser";
 import { Login } from "./Login";
+
+import { HomeStyle } from "../styles/HomeStyle";
 
 export const Home = () => {
   const [openRegister, setOpenRegister] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
   const handleCloseRegister = () => setOpenRegister(false);
   const handleCloseLogin = () => setOpenLogin(false);
+
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log("Ação executada após 2 segundos");
+      navigation.navigate("GameLevels");
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [navigation]);
 
   return (
     <BackgroundContainer>
