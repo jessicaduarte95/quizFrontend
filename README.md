@@ -30,33 +30,33 @@
 <p>Página inicial (Homepage): </p>
 
 <div display="flex" align="center">
-  <img src="/img/foto1.png" alt="Parte Inicial"> 
-  <img src="/img/foto2.png" alt="Cadastro">
-  <img src="/img/foto3.png" alt="Login">
+  <img src="/assets/img/foto1.png" alt="Parte Inicial"> 
+  <img src="/assets/img/foto2.png" alt="Cadastro">
+  <img src="/assets/img/foto3.png" alt="Login">
 </div>
 
 <p>Início do jogo com o nível 1 (Game Start with Level 1): </p>
 <div display="flex" align="center">
-  <img src="/img/foto4.png" alt="Início do jogo">
+  <img src="/assets/img/foto4.png" alt="Início do jogo">
 </div>
 
 
 <p>Clicando no botão de ajuda obtém-se a explicação do jogo (Clicking on the help button provides an explanation of the game): </p>
 <div display="flex" align="center">
-  <img src="/img/foto10.png" alt="Ajuda">
+  <img src="/assets/img/foto10.png" alt="Ajuda">
 </div>
 
 <p> Ao clicar no primeiro nível, o usuário precisa responder a 10 perguntas e para avançar para o próximo nível, deve acertar pelo menos 6 questões (Upon clicking the first level, the user needs to answer 10 questions, and to advance to the next level, they must correctly answer at least 6 questions): </p>
 <div display="flex" align="center">
-  <img src="/img/foto5.png" alt="Questao">
-  <img src="/img/foto6.png" alt="QuestaoCorreta">
-  <img src="/img/foto7.png" alt="Errada">
+  <img src="/assets/img/foto5.png" alt="Questao">
+  <img src="/assets/img/foto6.png" alt="QuestaoCorreta">
+  <img src="/assets/img/foto7.png" alt="Errada">
 </div>
 
 <p>Se o usuário avançar para o próximo nível, uma mensagem de parabéns será exibida; caso contrário, será necessário tentar novamente (If the user advances to the next level, a congratulations message will appear; if not, they will need to try again): </p>
 <div display="flex" align="center">
-  <img src="/img/foto9.png" alt="Parabens">
-  <img src="/img/foto8.png" alt="TenteNovamente">
+  <img src="/assets/img/foto9.png" alt="Parabens">
+  <img src="/assets/img/foto8.png" alt="TenteNovamente">
 </div>
 
 <h2 align="center"> Desenvolvedora (Developer) </h2>
