@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, ScrollView, Image } from "react-native";
 import * as Animatable from "react-native-animatable";
 
@@ -8,8 +8,23 @@ import { TextBasic } from "../components/Text/Text";
 
 import { GameLevelsStyle } from "../styles/GameLevelsStyle";
 
+import { getTotalLevel } from "../service/QuestionsService";
+
 export const GameLevels = () => {
-  const [totalLevel, setTotalLevel] = useState(15);
+  const [totalLevel, setTotalLevel] = useState(0);
+
+  const totalLevelResult = async () => {
+    try {
+      const result = await getTotalLevel();
+      setTotalLevel(result.data.totalLevel);
+    } catch (error) {
+      console.error("Erro ao obter total de níveis: ", error);
+    }
+  };
+
+  useEffect(() => {
+    totalLevelResult();
+  }, []);
   return (
     <BackgroundContainer>
       <View>
