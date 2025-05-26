@@ -257,7 +257,7 @@ export const MudarSenha = () => {
                 </TouchableOpacity>
             </View>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
-                <Animatable.Image delay={500} animation="fadeInUp" style={{ height: 500, width: 350 }} source={require('../../../img/astronautaImg6.png')} />
+                <Animatable.Image delay={500} animation="fadeInUp" style={{ height: 500, width: 350 }} source={require('../../../assets/img/astronautaImg6.png')} />
             </View>
             <Modal
                 visible={modalChangePassword}

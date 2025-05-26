@@ -43,7 +43,7 @@ export const Home = () => {
             delay={1000}
             animation="fadeInUp"
             style={HomeStyle.ImageHome}
-            source={require("../../img/astronautaImg5.png")}
+            source={require("../../assets/img/astronautaImg5.png")}
           />
         </View>
         <StatusBar style="auto" />

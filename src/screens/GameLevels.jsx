@@ -66,7 +66,7 @@ export const GameLevels = () => {
             <Animatable.View delay={2000} animation="fadeInRight">
               <Image
                 style={GameLevelsStyle.Image}
-                source={require("../../img/astronautaImg4.png")}
+                source={require("../../assets/img/astronautaImg4.png")}
               />
             </Animatable.View>
           </View>

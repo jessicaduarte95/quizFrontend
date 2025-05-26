@@ -35,7 +35,7 @@ export const Principal = () => {
 				<Title>Universo</Title>
 			</Animatable.View>
 			<View>
-				<Animatable.Image delay={1000} animation="fadeInUp" style={S.Container.Image} source={require('../../../img/astronautaImg5.png')} />
+				<Animatable.Image delay={1000} animation="fadeInUp" style={S.Container.Image} source={require('../../../assets/img/astronautaImg5.png')} />
 			</View>
 			<StatusBar style="auto" />
 			<ModalLogin open={openLogin} handleClose={handleCloseLogin} dadosUsuario={dadosUsuario} setDadosUsuario={setDadosUsuario} setTitleAlert={setTitleAlert} setTextAlert={setTextAlert} handleOpenAlert={handleOpenAlert} />

@@ -45,7 +45,7 @@ export const ChangePassword = () => {
             delay={500}
             animation="fadeInUp"
             style={ChangePasswordStyle.ImageChangePassword}
-            source={require("../../img/astronautaImg6.png")}
+            source={require("../../assets/img/astronautaImg6.png")}
           />
         </View>
       </View>
