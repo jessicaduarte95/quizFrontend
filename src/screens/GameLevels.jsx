@@ -12,6 +12,11 @@ import { getTotalLevel } from "../service/QuestionsService";
 
 export const GameLevels = () => {
   const [totalLevel, setTotalLevel] = useState(0);
+  const [level, setLevel] = useState(0);
+
+  const currentLevel = (indice) => {
+    setLevel(indice + 1);
+  };
 
   const totalLevelResult = async () => {
     try {
@@ -38,7 +43,11 @@ export const GameLevels = () => {
           <Animatable.View delay={1000} animation="fadeInUp">
             <ScrollView style={GameLevelsStyle.scroll}>
               {Array.from({ length: totalLevel }, (_, index) => (
-                <LevelButton key={index} disabled={false}>
+                <LevelButton
+                  key={index}
+                  disabled={false}
+                  onPress={() => currentLevel(index)}
+                >
                   Nível {index + 1}
                 </LevelButton>
               ))}

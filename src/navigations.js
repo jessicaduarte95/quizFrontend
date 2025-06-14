@@ -26,12 +26,6 @@ export default function Routes() {
         options={{
           ...TransitionPresets.ModalSlideFromBottomIOS,
         }}
-        name="Nivel"
-        component={Nivel} />
-      <Stack.Screen
-        options={{
-          ...TransitionPresets.ModalSlideFromBottomIOS,
-        }}
         name="ChangePassword"
         component={ChangePassword} />
       <Stack.Screen
