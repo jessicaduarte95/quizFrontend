@@ -8,12 +8,18 @@ import { TextBasic } from "../components/Text/Text";
 
 import { GameLevelsStyle } from "../styles/GameLevelsStyle";
 
+import { LevelQuiz } from "./LevelQuiz";
+
 import { getTotalLevel, getQuestionsLevel } from "../service/QuestionsService";
 
 export const GameLevels = () => {
   const [totalLevel, setTotalLevel] = useState(0);
   const [level, setLevel] = useState(0);
   const [questions, setQuestions] = useState([]);
+
+  const [openLevelQuiz, setOpenLevelQuiz] = useState(false);
+  const handleCloseLevelQuiz = () => setOpenLevelQuiz(false);
+  const handleOpenLevelQuiz = () => setOpenLevelQuiz(true);
 
   const currentLevel = (indice) => {
     setLevel(indice + 1);
@@ -64,6 +70,7 @@ export const GameLevels = () => {
                   disabled={false}
                   onPress={() => {
                     currentLevel(index);
+                    handleOpenLevelQuiz();
                   }}
                 >
                   Nível {index + 1}
@@ -99,6 +106,11 @@ export const GameLevels = () => {
           </View>
         </View>
       </View>
+      <LevelQuiz
+        open={openLevelQuiz}
+        handleClose={handleCloseLevelQuiz}
+        questions={questions}
+      />
     </BackgroundContainer>
   );
 };
