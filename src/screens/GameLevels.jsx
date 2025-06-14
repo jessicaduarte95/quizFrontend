@@ -8,11 +8,12 @@ import { TextBasic } from "../components/Text/Text";
 
 import { GameLevelsStyle } from "../styles/GameLevelsStyle";
 
-import { getTotalLevel } from "../service/QuestionsService";
+import { getTotalLevel, getQuestionsLevel } from "../service/QuestionsService";
 
 export const GameLevels = () => {
   const [totalLevel, setTotalLevel] = useState(0);
   const [level, setLevel] = useState(0);
+  const [questions, setQuestions] = useState([]);
 
   const currentLevel = (indice) => {
     setLevel(indice + 1);
@@ -27,9 +28,24 @@ export const GameLevels = () => {
     }
   };
 
+  const questionsLevel = async (level) => {
+    try {
+      const result = await getQuestionsLevel(level);
+      setQuestions(result.data);
+    } catch (error) {
+      console.error("Erro ao obter questões: ", error);
+    }
+  };
+
   useEffect(() => {
     totalLevelResult();
   }, []);
+
+  useEffect(() => {
+    if (level > 0 && level) {
+      questionsLevel(level);
+    }
+  }, [level]);
   return (
     <BackgroundContainer>
       <View>
@@ -46,7 +62,9 @@ export const GameLevels = () => {
                 <LevelButton
                   key={index}
                   disabled={false}
-                  onPress={() => currentLevel(index)}
+                  onPress={() => {
+                    currentLevel(index);
+                  }}
                 >
                   Nível {index + 1}
                 </LevelButton>
