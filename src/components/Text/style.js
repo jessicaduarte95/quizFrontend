@@ -13,7 +13,7 @@ export const Text = StyleSheet.create({
   },
   TitleModal: {
     color: "#E5E5E5",
-    fontSize: 25,
+    fontSize: 20,
   },
   TitleChangePassword: {
     color: "#E5E5E5",
@@ -24,5 +24,10 @@ export const Text = StyleSheet.create({
     color: "#E5E5E5",
     fontSize: 28,
     textAlign: "justify",
+  },
+  TextNumberQuestion: {
+    color: "#E5E5E5",
+    fontSize: 17,
+    textAlign: "right",
   },
 });

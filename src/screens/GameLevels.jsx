@@ -11,11 +11,13 @@ import { GameLevelsStyle } from "../styles/GameLevelsStyle";
 import { LevelQuiz } from "./LevelQuiz";
 
 import { getTotalLevel, getQuestionsLevel } from "../service/QuestionsService";
+import { getOptionsLevel } from "../service/OptionsService";
 
 export const GameLevels = () => {
   const [totalLevel, setTotalLevel] = useState(0);
   const [level, setLevel] = useState(0);
   const [questions, setQuestions] = useState([]);
+  const [options, setOptions] = useState([]);
 
   const [openLevelQuiz, setOpenLevelQuiz] = useState(false);
   const handleCloseLevelQuiz = () => setOpenLevelQuiz(false);
@@ -43,6 +45,15 @@ export const GameLevels = () => {
     }
   };
 
+  const optionsLevel = async (level) => {
+    try {
+      const result = await getOptionsLevel(level);
+      setOptions(result.data);
+    } catch (error) {
+      console.error("Erro ao obter questões: ", error);
+    }
+  };
+
   useEffect(() => {
     totalLevelResult();
   }, []);
@@ -50,6 +61,7 @@ export const GameLevels = () => {
   useEffect(() => {
     if (level > 0 && level) {
       questionsLevel(level);
+      optionsLevel(level);
     }
   }, [level]);
   return (
@@ -110,6 +122,7 @@ export const GameLevels = () => {
         open={openLevelQuiz}
         handleClose={handleCloseLevelQuiz}
         questions={questions}
+        options={options}
       />
     </BackgroundContainer>
   );

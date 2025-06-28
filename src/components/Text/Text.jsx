@@ -26,3 +26,8 @@ export const TextBasic = (props) => {
   const { children } = props;
   return <Text style={S.Text.TextBasic}>{children}</Text>;
 };
+
+export const TextNumberQuestion = (props) => {
+  const { children } = props;
+  return <Text style={S.Text.TextNumberQuestion}>{children}</Text>;
+};
