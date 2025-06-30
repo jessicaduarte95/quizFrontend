@@ -14,6 +14,9 @@ export const LevelQuiz = (props) => {
   const [numberQuestion, setNumberQuestion] = useState(1);
   const [currentQuestion, setCurrentQuestion] = useState("");
   const [currentOptions, setCurrentOptions] = useState([]);
+  const [disabled, setDisabled] = useState(false);
+  const [correctOption, setCorrectOption] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const handleNextQuestion = () => {
     setNumberQuestion((number) => number + 1);
@@ -23,7 +26,6 @@ export const LevelQuiz = (props) => {
     const result = questions.filter(
       (indice) => indice.numberQuestion == numberQuestion
     );
-    // console.log("result", result);
     setCurrentQuestion(result[0]?.question);
   };
 
@@ -31,13 +33,22 @@ export const LevelQuiz = (props) => {
     const result = options.filter(
       (indice) => indice.question == numberQuestion
     );
-    // console.log("resultOptions", result);
     setCurrentOptions(result);
+  };
+
+  const checkQuestion = (indice) => {
+    setSelectedOption(indice.id);
+    setDisabled(true);
+    if (indice.correct) {
+      setCorrectOption(true);
+    }
   };
 
   const handleFinishLevel = () => {
     setNumberQuestion(1);
     handleClose();
+    setDisabled(false);
+    setCorrectOption(false);
   };
 
   useEffect(() => {
@@ -60,7 +71,17 @@ export const LevelQuiz = (props) => {
         <TextNumberQuestion>Pergunta {numberQuestion}/10</TextNumberQuestion>
         <View style={LevelQuizStyle.ContainerOptions}>
           {currentOptions.map((indice) => (
-            <OptionButton key={indice.id}>{ indice.option }</OptionButton>
+            <OptionButton
+              key={indice.id}
+              onPress={() => {
+                checkQuestion(indice);
+              }}
+              disabled={disabled}
+              correctOption={correctOption}
+              isSelected={selectedOption === indice.id}
+            >
+              {indice.option}
+            </OptionButton>
           ))}
         </View>
         <View style={LevelQuizStyle.NextButton}>
@@ -70,6 +91,8 @@ export const LevelQuiz = (props) => {
                 numberQuestion != 10
                   ? handleNextQuestion()
                   : handleFinishLevel();
+                setDisabled(false);
+                setCorrectOption(false);
               }
             }}
           >

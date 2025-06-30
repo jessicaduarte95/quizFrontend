@@ -41,13 +41,19 @@ export const LevelButton = (props) => {
 };
 
 export const OptionButton = (props) => {
-  const { children, onPress, disabled } = props;
+  const { children, onPress, disabled, correctOption, isSelected } = props;
+
+  const getBackgroundColor = () => {
+    if (correctOption && disabled && isSelected) return "#1F7A1F";
+    if (!correctOption && disabled && isSelected) return "#d60000";
+    return "#000929";
+  };
+
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={
-        disabled ? S.Button.ButtonOptionEnabled : S.Button.ButtonOptionDisabled
-      }
+      style={[S.Button.ButtonOption, { backgroundColor: getBackgroundColor() }]}
+      disabled={disabled}
     >
       <Text style={S.Button.TextOption}>{children}</Text>
     </TouchableOpacity>
