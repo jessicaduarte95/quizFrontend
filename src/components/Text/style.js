@@ -29,5 +29,6 @@ export const Text = StyleSheet.create({
     color: "#E5E5E5",
     fontSize: 17,
     textAlign: "right",
+    marginVertical: 10
   },
 });

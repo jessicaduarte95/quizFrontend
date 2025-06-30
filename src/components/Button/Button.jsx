@@ -39,3 +39,17 @@ export const LevelButton = (props) => {
     </TouchableOpacity>
   );
 };
+
+export const OptionButton = (props) => {
+  const { children, onPress, disabled } = props;
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      style={
+        disabled ? S.Button.ButtonOptionEnabled : S.Button.ButtonOptionDisabled
+      }
+    >
+      <Text style={S.Button.TextOption}>{children}</Text>
+    </TouchableOpacity>
+  );
+};

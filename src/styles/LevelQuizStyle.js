@@ -10,4 +10,10 @@ export const LevelQuizStyle = StyleSheet.create({
     display: "flex",
     alignItems: "flex-end",
   },
+  ContainerOptions: {
+    width: "100%",
+    paddingHorizontal: 30,
+    gap: 12,
+    marginTop: 10,
+  },
 });
