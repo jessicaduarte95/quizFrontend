@@ -25,6 +25,7 @@ export const Modal = StyleSheet.create({
 		shadowRadius: 4
 	},
     Body: {
-        padding: 15
+        paddingVertical: 15,
+		paddingHorizontal: 20
     }
 });

@@ -12,7 +12,7 @@ export const LevelQuizStyle = StyleSheet.create({
   },
   ContainerOptions: {
     width: "100%",
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
     gap: 12,
     marginTop: 10,
   },
