@@ -9,6 +9,7 @@ import { TextBasic } from "../components/Text/Text";
 import { GameLevelsStyle } from "../styles/GameLevelsStyle";
 
 import { LevelQuiz } from "./LevelQuiz";
+import { HelpCenter } from "./HelpCenter";
 
 import { getTotalLevel, getQuestionsLevel } from "../service/QuestionsService";
 import { getOptionsLevel } from "../service/OptionsService";
@@ -22,6 +23,10 @@ export const GameLevels = () => {
   const [openLevelQuiz, setOpenLevelQuiz] = useState(false);
   const handleCloseLevelQuiz = () => setOpenLevelQuiz(false);
   const handleOpenLevelQuiz = () => setOpenLevelQuiz(true);
+
+  const [openHelpCenter, setOpenHelpCenter] = useState(false);
+  const handleCloseHelpCenter = () => setOpenHelpCenter(false);
+  const handleOpenHelpCenter = () => setOpenHelpCenter(true);
 
   const currentLevel = (indice) => {
     setLevel(indice + 1);
@@ -68,7 +73,7 @@ export const GameLevels = () => {
     <BackgroundContainer>
       <View>
         <View style={GameLevelsStyle.ContainerButtonHead}>
-          <Button>Ajuda</Button>
+          <Button onPress={() => handleOpenHelpCenter()}>Ajuda</Button>
         </View>
         <View style={GameLevelsStyle.ContentTitle}>
           <TextBasic>Olá Astronauta!</TextBasic>
@@ -124,6 +129,7 @@ export const GameLevels = () => {
         questions={questions}
         options={options}
       />
+      <HelpCenter open={openHelpCenter} handleClose={handleCloseHelpCenter} />
     </BackgroundContainer>
   );
 };

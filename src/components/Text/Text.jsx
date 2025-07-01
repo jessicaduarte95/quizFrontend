@@ -31,3 +31,9 @@ export const TextNumberQuestion = (props) => {
   const { children } = props;
   return <Text style={S.Text.TextNumberQuestion}>{children}</Text>;
 };
+
+
+export const TextHelpModal = (props) => {
+  const { children } = props;
+  return <Text style={S.Text.TextHelpModal}>{children}</Text>;
+};

@@ -17,7 +17,7 @@ export const Text = StyleSheet.create({
   },
   TitleChangePassword: {
     color: "#E5E5E5",
-    fontSize: 30,
+    fontSize: 28,
     textAlign: "center",
   },
   TextBasic: {
@@ -31,4 +31,10 @@ export const Text = StyleSheet.create({
     textAlign: "right",
     marginVertical: 10
   },
+  TextHelpModal: {
+    color: "#E5E5E5",
+    fontSize: 20.5,
+    textAlign: "center",
+    lineHeight: 26
+  }
 });
