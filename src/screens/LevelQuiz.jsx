@@ -17,9 +17,14 @@ export const LevelQuiz = (props) => {
   const [disabled, setDisabled] = useState(false);
   const [correctOption, setCorrectOption] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [points, setPoints] = useState(0);
 
   const handleNextQuestion = () => {
     setNumberQuestion((number) => number + 1);
+    if (selectedQuestion?.correct) setPoints((prev) => prev + 1);
+
+    setSelectedQuestion(null);
   };
 
   const handleUpdateQuestion = () => {
@@ -38,6 +43,7 @@ export const LevelQuiz = (props) => {
 
   const checkQuestion = (indice) => {
     setSelectedOption(indice.id);
+    setSelectedQuestion(indice);
     setDisabled(true);
     if (indice.correct) {
       setCorrectOption(true);
@@ -49,6 +55,9 @@ export const LevelQuiz = (props) => {
     handleClose();
     setDisabled(false);
     setCorrectOption(false);
+    if (selectedQuestion?.correct) setPoints((prev) => prev + 1);
+
+    setSelectedQuestion(null);
   };
 
   useEffect(() => {
