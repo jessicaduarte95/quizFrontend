@@ -14,11 +14,14 @@ import { HelpCenter } from "./HelpCenter";
 import { getTotalLevel, getQuestionsLevel } from "../service/QuestionsService";
 import { getOptionsLevel } from "../service/OptionsService";
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 export const GameLevels = () => {
   const [totalLevel, setTotalLevel] = useState(0);
   const [level, setLevel] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [options, setOptions] = useState([]);
+  const [enabledLevels, setEnabledLevels] = useState([]);
 
   const [openLevelQuiz, setOpenLevelQuiz] = useState(false);
   const handleCloseLevelQuiz = () => setOpenLevelQuiz(false);
@@ -28,7 +31,7 @@ export const GameLevels = () => {
   const handleCloseHelpCenter = () => setOpenHelpCenter(false);
   const handleOpenHelpCenter = () => setOpenHelpCenter(true);
 
-  const currentLevel = (indice) => {
+  const updateCurrentLevel = (indice) => {
     setLevel(indice + 1);
   };
 
@@ -59,8 +62,40 @@ export const GameLevels = () => {
     }
   };
 
+  const checkCurrentLevel = async () => {
+    try {
+      const checkLevel = await AsyncStorage.getItem("@enabled_levels");
+      if (!checkLevel) {
+        const defaultLevels = [1];
+        setEnabledLevels(defaultLevels);
+        await AsyncStorage.setItem(
+          "@enabled_levels",
+          JSON.stringify(defaultLevels)
+        );
+      } else {
+        const enabledLevels = JSON.parse(checkLevel);
+        setEnabledLevels(enabledLevels);
+      }
+    } catch (error) {
+      console.error("Erro ao obter nível atual: ", error);
+    }
+  };
+
+  const disabledLevel = (index) => {
+    try {
+      const currentLevel = index + 1;
+      const checkLevel = enabledLevels.find((level) => level == currentLevel);
+      if (checkLevel) return false;
+
+      return true;
+    } catch (error) {
+      console.error("Erro: ", error);
+    }
+  };
+
   useEffect(() => {
     totalLevelResult();
+    checkCurrentLevel();
   }, []);
 
   useEffect(() => {
@@ -84,9 +119,9 @@ export const GameLevels = () => {
               {Array.from({ length: totalLevel }, (_, index) => (
                 <LevelButton
                   key={index}
-                  disabled={false}
+                  disabled={disabledLevel(index)}
                   onPress={() => {
-                    currentLevel(index);
+                    updateCurrentLevel(index);
                     handleOpenLevelQuiz();
                   }}
                 >

@@ -32,26 +32,7 @@ export const Button = StyleSheet.create({
     fontWeight: "bold",
     color: "#E5E5E5",
   },
-  ButtonLevelsEnabled: {
-    backgroundColor: "#000929",
-    borderRadius: 6,
-    marginVertical: 13,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: "rgba(50,115,220, 0.4)",
-    shadowColor: "rgba(50,115,220, 0.9)",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    elevation: 5,
-    shadowOpacity: 0.28,
-    shadowRadius: 4,
-    width: 140,
-    alignItems: "center",
-  },
-  ButtonLevelsDisabled: {
-    backgroundColor: "#00061B",
+  ButtonLevels: {
     borderRadius: 6,
     marginVertical: 13,
     padding: 10,

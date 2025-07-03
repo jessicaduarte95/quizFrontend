@@ -28,12 +28,17 @@ export const CloseSaveButton = forwardRef((props, ref) => {
 
 export const LevelButton = (props) => {
   const { children, onPress, disabled } = props;
+
+  const getBackgroundColor = () => {
+    if (!disabled) return "#000929";
+    if (disabled) return "#00061B";
+  };
+
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={
-        disabled ? S.Button.ButtonLevelsEnabled : S.Button.ButtonLevelsDisabled
-      }
+      style={[S.Button.ButtonLevels, { backgroundColor: getBackgroundColor() }]}
+      disabled={disabled}
     >
       <Text style={S.Button.Text}>{children}</Text>
     </TouchableOpacity>
