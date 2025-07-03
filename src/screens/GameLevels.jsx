@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { View, ScrollView, Image } from "react-native";
 import * as Animatable from "react-native-animatable";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { BackgroundContainer } from "../components/Background/Background";
 import { Button, LevelButton } from "../components/Button/Button";
@@ -13,8 +14,6 @@ import { HelpCenter } from "./HelpCenter";
 
 import { getTotalLevel, getQuestionsLevel } from "../service/QuestionsService";
 import { getOptionsLevel } from "../service/OptionsService";
-
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const GameLevels = () => {
   const [totalLevel, setTotalLevel] = useState(0);

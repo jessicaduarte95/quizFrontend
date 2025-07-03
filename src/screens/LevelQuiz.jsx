@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { View, TouchableOpacity } from "react-native";
-
 import Icon from "react-native-vector-icons/FontAwesome";
 
 import { BasicModal } from "../components/Modal/Modal";
